@@ -1,0 +1,249 @@
+* course syllabus
+
+** schedule
+
+*** Unit 1: foundations of machine learning
+**** Week 1 (Aug 26): Introduction
+Topics:
+- Machine Learning
+- The command line
+- Python programming
+
+Activities:
+- Part 1: syllabus review;
+- Part 2: using the command line, Python review if time
+
+Homework #1 for next week:
+- Write a provocation in response to the "The Dark Side of Data
+  Scaling" essay assigned for next week. Submit the provocation on
+  Canvas (max 1 page), and be prepared to share it verbally with the
+  class.
+  
+**** Week 2 (Sept 2): (Training) Data
+Readings:
+- Jesse Dodge, Maarten Sap, Ana Marasović, William Agnew, Gabriel
+  Ilharco, Dirk Groeneveld, Margaret Mitchell, and Matt Gardner. 2021.
+  "Documenting Large Webtext Corpora: A Case Study on the Colossal
+  Clean Crawled Corpus." In /Proceedings of the 2021 Conference on
+  Empirical Methods in Natural Language Processing/, November 2021.
+  Association for Computational Linguistics, Online and Punta Cana,
+  Dominican Republic, 1286–1305.
+  https://doi.org/10.18653/v1/2021.emnlp-main.98
+- Abeba Birhane, Sepehr Dehdashtian, Vinay Prabhu, and Vishnu
+  Boddeti. 2024. "The Dark Side of Dataset Scaling: Evaluating Racial
+  Classification in Multimodal Models." In The /2024 ACM Conference on
+  Fairness, Accountability, and Transparency/, June 03, 2024. ACM, Rio
+  de Janeiro Brazil, 1229–1244.
+  https://doi.org/10.1145/3630106.3658968
+
+Topics:
+- Web data
+- Dataset scaling
+
+Activities:
+- Part 1: share provocations and discuss readings; begin python lab on
+  data collections and cleaning with pandas using data from the MET
+  API.
+- Part 2: continue python lab; data exploration and cleaning in
+  groups.
+
+Homework #2 for next week:
+- find a dataset on NYC Open Data, Kaggle, or elsewhere. Open it in a
+  python notebook and practice cleaning and/or structuring the
+  dataset. Write up a summary of how you cleaned the data, as a
+  comment in the last cell. Submit your notebook to canvas.
+  
+**** Week 3 (Sept 9): Supervised Learning: Linear & Logistic Regression 
+Readings:
+- Andrew Ng's lecture notes on Linear & Logistic Regression, pages
+  8-13, 20-23
+- Andrew Ng's [[https://www.youtube.com/watch?v=4b4MUYve_U8&list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU&index=2][video explaining Linear Regression]], watch until minute
+  42 (link to the [[https://www.youtube.com/watch?v=dLc-lfEEYss&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=9][non-scary version]])
+- explore Chris Deotte, [[http://www.ccom.ucsd.edu/~cdeotte/programs/classify.html]["Classifier Playground"]]
+
+Topics:
+- Linear Regression, Logistic Regression
+  
+Activities:
+- Part 1: discussion of linear regression; in class python lab on
+  linear regression with scikit-learn
+- Part 2: discussion of logistic regression; in class python lab on
+  logistic regression with scikit-learn
+
+Homework #3 for next week:
+- Write a provocation based on one of the readings for next week.
+  Submit it on canvas and come to class ready to discuss it.
+
+**** Week 4 (Sept 16): Unsupervised learning: Clustering
+Readings:
+- Joy Buolamwini and Timnit Gebru. 2018. "Gender Shades:
+  Intersectional Accuracy Disparities in Commercial Gender
+  Classification". In /Proceedings of the 1st Conference on Fairness,
+  Accountability and Transparency/, January 21, 2018. PMLR, 77–91.
+  Retrieved July 9, 2026 from
+  https://proceedings.mlr.press/v81/buolamwini18a.html
+  - [[http://gendershades.org/overview.html][link to interactive version of results]]
+- Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, and
+  Shmargaret Shmitchell. 2021. On the Dangers of Stochastic Parrots:
+  Can Language Models Be Too Big? 🦜. In Proceedings of the 2021 ACM
+  Conference on Fairness, Accountability, and Transparency (FAccT
+  ’21), March 01, 2021. Association for Computing Machinery, New York,
+  NY, USA, 610–623. https://doi.org/10.1145/3442188.3445922
+- Gael Varoquaux, Sasha Luccioni, and Meredith Whittaker. 2025. Hype,
+  Sustainability, and the Price of the Bigger-is-Better Paradigm in
+  AI. In Proceedings of the 2025 ACM Conference on Fairness,
+  Accountability, and Transparency (FAccT ’25), June 23, 2025.
+  Association for Computing Machinery, New York, NY, USA, 61–75.
+  https://doi.org/10.1145/3715275.3732006
+ 
+Activities:
+- Part 1: discussion of provocations; start python lab on k-means
+  clusetring
+- Part 2: begin research on FAccT
+
+Homework #4 for next week:
+- Do some research on current issues in ML. You might check out some
+  of the papers from this summer's [[https://facctconference.org/2026/acceptedpapers.html][FACCT]] conference (or from last
+  year's NEURIPS or EMNLP conferences, or another related conference).
+  Pick *two* recent research papers that seem interesting to you.
+  Write up a short summary of each, and why you find them interesting
+  (about 5-8 sentences for each paper). Submit the summaries on
+  Canvas, and be ready to briefly share and discuss them with the
+  class.
+
+**** Week 5 (Sept 23): ML ethics (start papers)
+Readings:
+- None (except for homework)
+  
+Activities:
+- Part 1: share out papers that we are interested in; class discussion
+  on topics
+- Part 2: organize into teams of 3-4 by topic of interest; start work
+  on writing papers; teams to come up with check-in schedule for the
+  next month
+
+Homework #5: Each team will come to class next week with an annotated
+bibliography of at least 8-10 papers that are relevant to your topic
+of interest. 3-5 sentences of annotation per paper, including at least
+one sentence explaining how this paper may be useful for your project.
+
+*** Unit 2: language modeling
+**** Week 6 (Sept 30): Word Vectors
+Readings:
+- Jay Alammar, "[[https://jalammar.github.io/illustrated-word2vec/][The Illustrated Word2Vec]]." 2018.
+- Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
+  Efficient Estimation of Word Representations in Vector Space.
+  https://doi.org/10.48550/arXiv.1301.3781
+
+Activities:
+- Part 1: discuss word embeddings; python lab on Word2Vec
+- Part 2: group work on papers: definining a research question and
+  plan 
+
+Homework #7: Come to class next week with a well defined research
+question and plan for exploring/answering the research question
+
+**** Week 7 (Oct 7): Neural networks
+Readings:
+- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
+  Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
+  "Attention Is All You Need."
+  https://doi.org/10.48550/arXiv.1706.03762
+- Jay Alammar. The Illustrated BERT, ELMo, and co. (How NLP Cracked
+  Transfer Learning). Retrieved April 14, 2025 from
+  https://jalammar.github.io/illustrated-bert/
+- Optional (maybe helpful!):
+  - 3Blue1Brown, "[[https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi][Neural Networks]]" (YouTube playlist)
+  - Chris Deotte, "[[http://www.ccom.ucsd.edu/~cdeotte/programs/neuralnetwork.html][Neural Network Playground]]"
+
+Activities:
+- Part 1: discuss neural networks; python lab on backpropagation.
+- Part 2: discuss analysis and results section of papers;
+
+Homework #7: Come to class next week with an outline of the results of
+your analysis and some preliminary thoughts for writing the
+discussion.
+
+**** Week 8 (Oct 14): Fine-Tuning I
+Readings:
+- Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and
+  Ilya Sutskever. 2019. "Language Models are Unsupervised Multitask
+  Learners."
+  https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
+  
+Activities:
+- Part 1: discuss "Stochastic Parrots" and "Gender Shades" papers;
+  start fine-tuning lab
+- Part 2: continue to work on results & discussion components of
+  papers; discuss all of the necessary components of a paper
+
+Homework #9: Come to class next week with a preliminary draft of the
+paper, with all or most of the components drafted
+
+**** Week 9 (Oct 21): Fine-tuning II (submit abstracts)
+Readings:
+- None - focus on papers.
+
+Due: abstracts due on FAccT website.
+ 
+Activities:
+Part 1: continue fine-tuning lab; discuss web scraping
+Part 2: peer review of papers, round 1
+
+**** Week 10 (Oct 28): Paper review (submit drafts)
+Readings:
+- None - focus on papers
+
+Due in class: full draft of paper. (note: final papers due on FAccT on
+Tuesday, November 3).
+
+Activities:
+Part 1: peer review, round 2
+Part 2: peer review, round 3
+
+*** Unit 3: final projects
+**** Week 11 (Nov 4): project workshops
+Readings:
+- TBD: reading on SLMs.
+
+**** Week 12 (Nov 11): project workshops
+**** Week 13 (Nov 18): project workshops
+**** week 14 (Nov 25): NO CLASS - thanksgiving break
+**** week 15 (Dec 2): project workshops
+**** week 16 (Dec 9): presentations
+** assignments:
+Participation in class discussion: 10% of final grade. Being active
+and engaged during class discussions, showing understanding and
+attention to the assignned readings. 
+
+Weekly homeworks. 30% of final grade. These assignments may be coding
+assignments or they may be short written responses (i.e.
+"provocations"), approximately 1 page in length. Provocations consist
+of a focused reflection on the reading, and must include a question
+meant to provoke discussion among peers (a provocative, thoughtful,
+and open-ended question).
+
+Conference paper: 30% of final grade. 12 - 14 pages in length. The
+paper should explore a current issue in ML research and propose an
+intervention in the form of an experiment, audit, or review. It should
+be written in accordance with the [[https://facctconference.org/2027/cfp.html][Call for Papers (CFP)]] for the
+[[https://facctconference.org/index.html][Fairness, Accountability, and Transparency (FAccT) Conference]].
+
+Final project: 20% of final grade. A machine learning project of your
+choosing, such as a Small Language Model fine-tuned on custom data, or
+a Sentiment Analysis experiment. You might use ML techniques that we
+learned in class, but can also go beyond these techniques. All data,
+methodology, and code should be well annotated. Finally, project must
+include a README.md explaining the main components (specific
+guidelines will be distributed in the middle of the semester). Can be
+done in partners but if that's the case the final project should scale
+in complexity.
+
+Final project presentation: 10% of final grade. 8 - 10 minutes
+maximum. Must include a walkthrough of the code.
+
+** resources
+
+- Andrew Ng's [[https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU][playlist of the CS229 course]] at Standford.
+- Andrew Ng's [[https://www.youtube.com/playlist?list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI][playlist of Machine Learning couse]] on Coursera.
+
