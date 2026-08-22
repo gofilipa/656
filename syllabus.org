@@ -1,45 +1,201 @@
-* course syllabus
+#+LATEX_COMPILER: xelatex
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [12pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{xurl}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \makeatletter
+#+LATEX_HEADER: \renewcommand{\maketitle}{%
+#+LATEX_HEADER:   \begin{flushleft}
+#+LATEX_HEADER:     \includegraphics[width=0.5\textwidth]{logo.png}
+#+LATEX_HEADER:   \end{flushleft}
+#+LATEX_HEADER:   \begin{center}
+#+LATEX_HEADER:     {\LARGE\@title\par}
+#+LATEX_HEADER:     \vspace{0.5em}
+#+LATEX_HEADER:     {\large\@author\par}
+#+LATEX_HEADER:     \vspace{0.5em}
+#+LATEX_HEADER:     {\large\@date\par}
+#+LATEX_HEADER:   \end{center}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \makeatother
+#+OPTIONS: toc:nil num:nil
 
-** schedule
+#+TITLE: INFO 656: Machine Learning
+#+AUTHOR: Professor Filipa Calado
+#+DATE: Fall 2026
 
-*** Unit 1: foundations of machine learning
+** Course Information
+Section: 01 \\
+Semester: Fall 2026 \\
+Meeting Dates & Times: Wednesdays, 3:00 PM - 5:50 PM \\
+Credits: 3 \\
+Prerequisites or other restrictions: 664
+
+** Instructor Contact Information
+Filipa Calado, PhD (she) \\
+Office Location: Pratt Manhattan, room 602 \\
+Office Hours:  Mondays 5:00pm - 6:00pm, Tuesdays 1:30pm-2:30pm, and by
+appointment \\
+Phone: 718-687-5194 \\
+Email: fcalado@pratt.edu \\
+Zoom: https://pratt.zoom.us/my/fcalado \\
+Website: https://filipacalado.com 
+
+** Course Description:
+Machine learning is a rapidly growing field that develops algorithms
+for tasks such as data classification and prediction. These
+algorithms are programmed to operate and adjust themselves
+independently of human intervention (i.e., to learn), allowing data
+work to occur quickly and at scale. Machine learning is a key
+technology behind the automation across many social areas today,
+often branded AI.
+
+This course offers an introduction to machine learning as a practical
+tool that we can use, and as a technological field with social
+implications. We will learn about key concepts in machine learning;
+survey a few key machine learning techniques, such as supervised
+methods for machine learning (regression and classification), which
+attempt to map data onto desired outputs, and unsupervised methods
+(clustering and association), which attempt to find structure within
+data itself; use openly available tools to implement these techniques
+on text and image data; learn how to assess the effectiveness of
+different techniques on particular datasets; and discuss basic issues
+that confront all machine learning methods.
+
+** Detailed Description:
+This course prioritizes a critical approach to machine learning and
+recent advances in ML research. Therefore, in addition to learning the
+basics of ML principles and models, this course centers topics of
+dataset curation, algorithmic bias, and auditing & evaluation methods,
+particularly in relation to recent ML research. At a time when
+automated coding assistants provide much technical knowledge (i.e.,
+applying algorithms and writing program code) this critical approach
+will give students a powerful skillset for assessing ML capabilities.
+
+** Course Goals:
+The goals of this course are to:
+- introduce students to key concepts and some common techniques in
+  machine learning, as well as openly available tools
+- help students to develop technical and critical thinking skills
+  regarding machine learning
+- enable students to conduct a machine learning experiment and
+  communicate the result of their project
+
+** Student Learning Outcomes:
+By the end of the course, students will be able to:
+- describe different machine learning methods, including their
+  limitations
+- select an appropriate machine learning method for a given use case
+- implement machine learning algorithms and assess their performance
+- execute a machine learning experiment using openly available tools
+- support the design of their experiment by discussing both the
+  technical aspect and the topic’s significance
+
+** Course Requirements
+*** Sources and Materials
+All materials will be linked via the syllabus or available to download
+on the course github at https://github.com/gofilipa/656
+
+*** Assignments
+Participation in class discussion: 20% of final grade. Because we
+spend much of the first 2/3 of the course learning about concepts from
+ML, including recent research, it is imperative that you do the
+readings and come prepared to discuss them in class, as well as to
+offer your opinion. Some of the weekly homeworks are designed to get
+you thinking about the readings (the "provocations" homeworks). You
+are encouraged to share your provocations during class discussion. 
+
+Weekly homeworks. 30% of final grade. These assignments may be coding
+assignments or they may be short written responses (i.e.
+"provocations"), approximately 1 page in length. Provocations consist
+of a focused reflection on the reading, and must include a question
+meant to provoke discussion among peers (a provocative, thoughtful,
+and open-ended question).
+
+Conference paper: 30% of final grade. 8 - 12 pages in length. This is
+a group project. The paper should explore a current issue in ML
+research and propose an intervention in the form of an experiment,
+audit, or review. It should be written in accordance with the [[https://facctconference.org/2027/cfp.html][Call for
+Papers (CFP)]] for the [[https://facctconference.org/index.html][Fairness, Accountability, and Transparency
+(FAccT) Conference]].
+
+Final project: 20% of final grade. A machine learning project of your
+choosing, such as a Small Language Model fine-tuned on custom data, or
+a Sentiment Analysis experiment. You might use ML techniques that we
+learned in class, but can also go beyond these techniques. All data,
+methodology, and code should be well annotated. Finally, project must
+include a README.md explaining the main components (specific
+guidelines will be distributed in the middle of the semester). Can be
+done in partners but if that's the case the final project should scale
+in complexity. Includes a final presentation between 5 - 10 minutes
+long (the exact length for the presentation is TBD -- it will depend
+on how many individuals vs groups end up presenting).
+
+*** Assessment & Grading
+**** Grade Breakdown
+Participation in class discussion: 20%  \\
+
+Weekly homeworks. 30% \\
+
+Conference paper: 30% \\
+
+Final project: 20% \\
+
+Attendance alone is not considered a percentage of the grade, but the
+overall grade may be lowered based on absences (see Attendance Policy
+below).
+
+**** Pratt Institute Grade System
+
+Grade Evaluation Quality Points per Credit
+
+A Excellent 4.0 \\
+A- Excellent 3.7 \\
+B+ Very Good 3.3 \\
+B Good 3.0 \\
+B- Good 2.7 \\
+C+ Above Average 2.3 \\
+C Average 2.0 \\
+C- Below Average (UG only) 1.7 \\
+D+ Less than Acceptable (UG only) 1.3 \\
+D Less than Acceptable (UG only) 1.0 \\
+F Failure 0.0 \\
+WF Failure Due to Lack of Attendance 0.0 
+
+** Course Schedule
+*** Unit 1: Foundations of Machine Learning
 **** Week 1 (Aug 26): Introduction
-Topics:
-- Machine Learning
-- The command line
-- Python programming
-
-Activities:
-- Part 1: syllabus review;
-- Part 2: using the command line, Python review if time
-
-Homework #1 for next week:
-- Write a provocation in response to the "The Dark Side of Data
-  Scaling" essay assigned for next week. Submit the provocation on
-  Canvas (max 1 page), and be prepared to share it verbally with the
-  class.
-  
-**** Week 2 (Sept 2): (Training) Data
 Readings:
-- Jesse Dodge, Maarten Sap, Ana Marasović, William Agnew, Gabriel
-  Ilharco, Dirk Groeneveld, Margaret Mitchell, and Matt Gardner. 2021.
-  "Documenting Large Webtext Corpora: A Case Study on the Colossal
-  Clean Crawled Corpus." In /Proceedings of the 2021 Conference on
-  Empirical Methods in Natural Language Processing/, November 2021.
-  Association for Computational Linguistics, Online and Punta Cana,
-  Dominican Republic, 1286–1305.
-  https://doi.org/10.18653/v1/2021.emnlp-main.98
+- HAI article, "AI Hiring Tools Can Yield Racial Bias and Systemic
+  Rejection."
+  https://hai.stanford.edu/news/ai-hiring-tools-can-yield-racial-bias-and-systemic-rejection.
+  
+Activities:
+- Part 1: syllabus review; discuss HAI article
+- Part 2: using the command line & python
+  
+**** Week 2 (Sept 2): Data & Bias
+Readings:
 - Abeba Birhane, Sepehr Dehdashtian, Vinay Prabhu, and Vishnu
   Boddeti. 2024. "The Dark Side of Dataset Scaling: Evaluating Racial
   Classification in Multimodal Models." In The /2024 ACM Conference on
   Fairness, Accountability, and Transparency/, June 03, 2024. ACM, Rio
   de Janeiro Brazil, 1229–1244.
   https://doi.org/10.1145/3630106.3658968
+- Dodge, Jesse, et al. “Documenting Large Webtext Corpora: A Case
+  Study on the Colossal Clean Crawled Corpus.” Proceedings of the 2021
+  Conference on Empirical Methods in Natural Language Processing,
+  edited by Marie-Francine Moens et al., Association for Computational
+  Linguistics, 2021, pp. 1286–305. ACLWeb,
+  https://doi.org/10.18653/v1/2021.emnlp-main.98.
 
-Topics:
-- Web data
-- Dataset scaling
-
+Homework #2 due:
+- write a response in response to the "Dataset Scaling" essay 1 - 2
+  pages double spaced. Submit the response on Canvas, and be prepared
+  to share your ideas verbally with the class.
+  
 Activities:
 - Part 1: share provocations and discuss readings; begin python lab on
   data collections and cleaning with pandas using data from the MET
@@ -47,12 +203,6 @@ Activities:
 - Part 2: continue python lab; data exploration and cleaning in
   groups.
 
-Homework #2 for next week:
-- find a dataset on NYC Open Data, Kaggle, or elsewhere. Open it in a
-  python notebook and practice cleaning and/or structuring the
-  dataset. Write up a summary of how you cleaned the data, as a
-  comment in the last cell. Submit your notebook to canvas.
-  
 **** Week 3 (Sept 9): Supervised Learning: Linear & Logistic Regression 
 Readings:
 - Andrew Ng's lecture notes on Linear & Logistic Regression, pages
@@ -61,89 +211,110 @@ Readings:
   42 (link to the [[https://www.youtube.com/watch?v=dLc-lfEEYss&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=9][non-scary version]])
 - explore Chris Deotte, [[http://www.ccom.ucsd.edu/~cdeotte/programs/classify.html]["Classifier Playground"]]
 
-Topics:
-- Linear Regression, Logistic Regression
-  
+Homework #3 due:
+- find a dataset on NYC Open Data, Kaggle, or elsewhere. Open it in a
+  python notebook and practice cleaning and/or structuring the
+  dataset. Write up a summary of how you cleaned the data, as a
+  comment in the last cell. Submit your notebook to canvas.
+
 Activities:
 - Part 1: discussion of linear regression; in class python lab on
   linear regression with scikit-learn
 - Part 2: discussion of logistic regression; in class python lab on
   logistic regression with scikit-learn
-
-Homework #3 for next week:
-- Write a provocation based on one of the readings for next week.
-  Submit it on canvas and come to class ready to discuss it.
-
-**** Week 4 (Sept 16): Unsupervised learning: Clustering
+  
+**** Week 4 (Sept 16): Unsupervised Learning: K-means Clustering & Decision Trees
 Readings:
-- Joy Buolamwini and Timnit Gebru. 2018. "Gender Shades:
-  Intersectional Accuracy Disparities in Commercial Gender
-  Classification". In /Proceedings of the 1st Conference on Fairness,
-  Accountability and Transparency/, January 21, 2018. PMLR, 77–91.
-  Retrieved July 9, 2026 from
-  https://proceedings.mlr.press/v81/buolamwini18a.html
-  - [[http://gendershades.org/overview.html][link to interactive version of results]]
-- Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, and
-  Shmargaret Shmitchell. 2021. On the Dangers of Stochastic Parrots:
-  Can Language Models Be Too Big? 🦜. In Proceedings of the 2021 ACM
-  Conference on Fairness, Accountability, and Transparency (FAccT
-  ’21), March 01, 2021. Association for Computing Machinery, New York,
-  NY, USA, 610–623. https://doi.org/10.1145/3442188.3445922
-- Gael Varoquaux, Sasha Luccioni, and Meredith Whittaker. 2025. Hype,
-  Sustainability, and the Price of the Bigger-is-Better Paradigm in
-  AI. In Proceedings of the 2025 ACM Conference on Fairness,
-  Accountability, and Transparency (FAccT ’25), June 23, 2025.
-  Association for Computing Machinery, New York, NY, USA, 61–75.
-  https://doi.org/10.1145/3715275.3732006
- 
-Activities:
-- Part 1: discussion of provocations; start python lab on k-means
-  clusetring
-- Part 2: begin research on FAccT
+- Lavigne, Sam, et al. “Predicting Financial Crime: Augmenting the
+  Predictive Policing Arsenal.” arXiv:1704.07826, arXiv, 25 Apr. 2017.
+  arXiv.org, https://doi.org/10.48550/arXiv.1704.07826.
 
-Homework #4 for next week:
+Homework #4 due:
+- find a dataset to practice either linear or logistic regression
+  using sci-kit learn. In the last cell of the notebook, write up a
+  summary of what you learned about your data and/or topic, and what
+  potential blind spots, oversights, or risks might be associated with
+  your analysis. Submit your notebook on canvas.
+
+Activities:
+- Part 1: python lab on k-means clustering
+- Part 2: discuss White Collar Crime project
+
+**** Week 5 (Sept 23): Model Evaluation
+Readings:
+- Devinney, Hannah, et al. “We Don't Talk About That: Case Studies on
+  Intersectional Analysis of Social Bias in Large Language Models.”
+  Proceedings of the 5th Workshop on Gender Bias in Natural Language
+  Processing (GeBNLP), edited by Agnieszka Faleńska et al.,
+  Association for Computational Linguistics, 2024, pp. 33–44. ACLWeb,
+  https://doi.org/10.18653/v1/2024.gebnlp-1.3.
+- Sui, Peiqi, et al. “Critical Confabulation: Can LLMs Hallucinate for
+  Social Good?” arXiv:2511.07722, arXiv, 6 Mar. 2026. arXiv.org,
+  https://doi.org/10.48550/arXiv.2511.07722.
+
+Homework #5 due:
 - Do some research on current issues in ML. You might check out some
   of the papers from this summer's [[https://facctconference.org/2026/acceptedpapers.html][FACCT]] conference (or from last
   year's NEURIPS or EMNLP conferences, or another related conference).
-  Pick *two* recent research papers that seem interesting to you.
-  Write up a short summary of each, and why you find them interesting
-  (about 5-8 sentences for each paper). Submit the summaries on
-  Canvas, and be ready to briefly share and discuss them with the
-  class.
-
-**** Week 5 (Sept 23): ML ethics (start papers)
-Readings:
-- None (except for homework)
+  Pick *one* recent paper that seem interesting to you. Write up a
+  short summary, and explain why you find it interesting. Submit the
+  summaries on Canvas, and be ready to briefly share and discuss them
+  with the class.
   
 Activities:
-- Part 1: share out papers that we are interested in; class discussion
-  on topics
-- Part 2: organize into teams of 3-4 by topic of interest; start work
-  on writing papers; teams to come up with check-in schedule for the
+- Part 1: discuss evaluations, practice hands-on with evaluation
+  software 
+- Part 2: share out papers that we are interested in so far; class
+  discussion on topics; organize into provisional teams for conference
+  paper.
+ 
+*** Unit 2: Language Modeling
+**** Week 6 (Sept 30): Conference paper workshop day I
+Readings:
+- None (except for homework)
+
+Homework #6:
+- With your team, submit a research question (there can be more than
+  one), a list of potential sources, and a detailed work plan for the
+  next month, with distribution of tasks and expected time allocated
+  for each team member.
+  
+Activities:
+- Part 1: share research questions
+- Part 2: continue sharing & come up with check-in schedule for the
   next month
 
-Homework #5: Each team will come to class next week with an annotated
-bibliography of at least 8-10 papers that are relevant to your topic
-of interest. 3-5 sentences of annotation per paper, including at least
-one sentence explaining how this paper may be useful for your project.
-
-*** Unit 2: language modeling
-**** Week 6 (Sept 30): Word Vectors
+**** Week 7 (Oct 7): Word Vectors
 Readings:
 - Jay Alammar, "[[https://jalammar.github.io/illustrated-word2vec/][The Illustrated Word2Vec]]." 2018.
 - Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
   Efficient Estimation of Word Representations in Vector Space.
   https://doi.org/10.48550/arXiv.1301.3781
+- Read one of the following articles on web datasets:
+  - Jesse Dodge, Maarten Sap, Ana Marasović, William Agnew, Gabriel
+    Ilharco, Dirk Groeneveld, Margaret Mitchell, and Matt
+    Gardner. 2021. "Documenting Large Webtext Corpora: A Case Study on
+    the Colossal Clean Crawled Corpus." In /Proceedings of the 2021
+    Conference on Empirical Methods in Natural Language Processing/,
+    November 2021. Association for Computational Linguistics, Online
+    and Punta Cana, Dominican Republic, 1286–1305.
+    https://doi.org/10.18653/v1/2021.emnlp-main.98
+  - FineWeb: Decanting the Web for the Finest Text Data at Scale - a
+    Hugging Face Space by HuggingFaceFW.
+    https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1.
+    Accessed 7 July 2026.
+
+Homework #7 due:
+- Submit an annotated bibliography of at least 10-15 papers that are
+  relevant to your team's topic(s) of interest. 3-5 sentences of
+  annotation per paper, including at least one sentence explaining how
+  this paper may be useful for further ML research on the topic.
 
 Activities:
 - Part 1: discuss word embeddings; python lab on Word2Vec
-- Part 2: group work on papers: definining a research question and
-  plan 
+- Part 2: group work on papers
 
-Homework #7: Come to class next week with a well defined research
-question and plan for exploring/answering the research question
-
-**** Week 7 (Oct 7): Neural networks
+**** Week 8 (Oct 14): Neural networks
 Readings:
 - Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
   Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
@@ -156,94 +327,290 @@ Readings:
   - 3Blue1Brown, "[[https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi][Neural Networks]]" (YouTube playlist)
   - Chris Deotte, "[[http://www.ccom.ucsd.edu/~cdeotte/programs/neuralnetwork.html][Neural Network Playground]]"
 
+Homework #7 due:
+- Submit a detailed outline for the first draft, containing claims and
+  key evidence/quotations.
+
 Activities:
 - Part 1: discuss neural networks; python lab on backpropagation.
-- Part 2: discuss analysis and results section of papers;
+- Part 2: continue to work on papers; discuss all of the necessary
+  components of a paper
 
-Homework #7: Come to class next week with an outline of the results of
-your analysis and some preliminary thoughts for writing the
-discussion.
+**** Week 9 (Oct 21): Abstracts due
+Readings:
+- None (focus on papers)
+  
+/Note: Abstracts are due on FAccT website on Monday, Oct 27, if
+submitting./
 
-**** Week 8 (Oct 14): Fine-Tuning I
+Homework #9 due:
+- Submit a draft of the Abstract, Results and Discussion sections of
+  the paper.
+  
+Activities:
+- Part 1: peer review of abstracts, Results, and Discussion sections
+- Part 2: discuss & plan revisions
+
+**** Week 10 (Oct 28): Conference paper workshop day II (drafts due)
+Readings:
+- None (focus on papers)
+
+/Note: final papers due on FAccT on Tuesday, November 3, if
+submitting/
+
+Homework #10: 
+- Submit full draft of paper. 
+
+Activities:
+- Part 1: peer review of full paper
+- Part 2: discuss & plan revisions
+
+*** Unit 3: Final Projects - SLMs
+**** Week 11 (Nov 4): Fine-Tuning I
 Readings:
 - Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and
   Ilya Sutskever. 2019. "Language Models are Unsupervised Multitask
   Learners."
   https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
-  
-Activities:
-- Part 1: discuss "Stochastic Parrots" and "Gender Shades" papers;
-  start fine-tuning lab
-- Part 2: continue to work on results & discussion components of
-  papers; discuss all of the necessary components of a paper
-
-Homework #9: Come to class next week with a preliminary draft of the
-paper, with all or most of the components drafted
-
-**** Week 9 (Oct 21): Fine-tuning II (submit abstracts)
-Readings:
-- None - focus on papers.
-
-Due: abstracts due on FAccT website.
- 
-Activities:
-Part 1: continue fine-tuning lab; discuss web scraping
-Part 2: peer review of papers, round 1
-
-**** Week 10 (Oct 28): Paper review (submit drafts)
-Readings:
-- None - focus on papers
-
-Due in class: full draft of paper. (note: final papers due on FAccT on
-Tuesday, November 3).
+- Sarah Ciston. A CRITICAL FIELD GUIDE FOR WORKING WITH MACHINE
+  LEARNING DATASETS. https://knowingmachines.org/critical-field-guide.
+  Accessed 22 July 2026.
 
 Activities:
-Part 1: peer review, round 2
-Part 2: peer review, round 3
+- Part 1: fine-tuning workshop
+- Part 2: self-guided exploration
+**** Week 12 (Nov 11): Fine-Tuning II
+Readings
+- Bots, LLMs, and Automated Access — Internet Archive Developer
+  Portal. https://archive.org/developers/bots.html. Accessed 8
+  July 2026.
+- FineWeb: Decanting the Web for the Finest Text Data at Scale - a
+  Hugging Face Space by HuggingFaceFW.
+  https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1.
+  Accessed 7 July 2026.
 
-*** Unit 3: final projects
-**** Week 11 (Nov 4): project workshops
-Readings:
-- TBD: reading on SLMs.
-
-**** Week 12 (Nov 11): project workshops
+Activities:
+- Part 1: web scraping workshop
+- Part 2: self-guided exploration
 **** Week 13 (Nov 18): project workshops
 **** week 14 (Nov 25): NO CLASS - thanksgiving break
 **** week 15 (Dec 2): project workshops
 **** week 16 (Dec 9): presentations
-** assignments:
-Participation in class discussion: 10% of final grade. Being active
-and engaged during class discussions, showing understanding and
-attention to the assignned readings. 
 
-Weekly homeworks. 30% of final grade. These assignments may be coding
-assignments or they may be short written responses (i.e.
-"provocations"), approximately 1 page in length. Provocations consist
-of a focused reflection on the reading, and must include a question
-meant to provoke discussion among peers (a provocative, thoughtful,
-and open-ended question).
+** Course Resources 
+*** Cool ML projects
+- Thenewinquiry/Whitecollar. 26 Feb. 2017, Python. The New Inquiry, 19
+  Oct. 2021. GitHub, https://github.com/thenewinquiry/whitecollar.
+- “Mr. Chatterbox, or, The Modern Prometheus.” Estragon, 30 Mar. 2026,
+  https://www.estragon.news/mr-chatterbox-or-the-modern-prometheus/.
+- “Developing Emotion-Based Speech Technology for the Māori Language.”
+  Data & Society,
+  https://datasociety.net/points/developing-emotion-based-speech-technology-for-the-maori-language/.
+  Accessed 7 May 2026.
 
-Conference paper: 30% of final grade. 12 - 14 pages in length. The
-paper should explore a current issue in ML research and propose an
-intervention in the form of an experiment, audit, or review. It should
-be written in accordance with the [[https://facctconference.org/2027/cfp.html][Call for Papers (CFP)]] for the
-[[https://facctconference.org/index.html][Fairness, Accountability, and Transparency (FAccT) Conference]].
+*** Sample Datasets
+- “LGBTQ+ Legislative Tracking 2025.” Google Docs,
+  https://docs.google.com/spreadsheets/u/1/d/1NfY8VvrUNQKX77CXilxlE1pepRSGTMZ70LoyFwx6fbk/edit?gid=719771929&usp=embed_facebook.
+  Accessed 8 July 2026.
 
-Final project: 20% of final grade. A machine learning project of your
-choosing, such as a Small Language Model fine-tuned on custom data, or
-a Sentiment Analysis experiment. You might use ML techniques that we
-learned in class, but can also go beyond these techniques. All data,
-methodology, and code should be well annotated. Finally, project must
-include a README.md explaining the main components (specific
-guidelines will be distributed in the middle of the semester). Can be
-done in partners but if that's the case the final project should scale
-in complexity.
-
-Final project presentation: 10% of final grade. 8 - 10 minutes
-maximum. Must include a walkthrough of the code.
-
-** resources
-
+*** My personal tutorial recommendations
+- Andrej Karpathy's /Microgpt/ project.
+  https://karpathy.github.io/2026/02/12/microgpt/.
 - Andrew Ng's [[https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU][playlist of the CS229 course]] at Standford.
 - Andrew Ng's [[https://www.youtube.com/playlist?list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI][playlist of Machine Learning couse]] on Coursera.
+- Language Modelling — The Complete Guide — Language Modelling — The
+  Complete Guide. https://karam-nus.github.io/language-modelling/.
+  Accessed 25 June 2026.
+
+** Policies
+
+The following abbreviated set of policies is especially relevant to
+this class. Full details on policies and procedures can be found on
+the Pratt website or in the Office of the Vice President for Student
+Affairs, Main Building, Lower Level.
+
+*** Community Standards
+
+All Pratt students, faculty, and staff members are expected to value
+and uphold the community standards essential to the pursuit of
+academic excellence and social responsibility. These include
+expectations for social conduct, academic integrity,
+non-discrimination, and other policies described in the link above,
+and apply to all Pratt-sponsored activities, on or off campus.
+
+*** Academic Integrity
+
+Academic integrity at Pratt means using your own and original ideas in
+creating academic work. It also means that if you use the ideas or
+influence of others in your work, you must acknowledge them.
+
+At Pratt,
+
+- We do our own work,
+- We are creative, and
+- We give credit where it is due.
+
+When students submit any work for academic credit, they make an
+implicit claim that the work is wholly their own, completed without
+the assistance of any unauthorized person. These works include, but
+are not limited to exams, quizzes, presentations, papers, projects,
+studio work, and other assignments and assessments. In addition, no
+student shall prevent another student from making their work. Students
+may study, collaborate, and work together on assignments at the
+discretion of the instructor.
+
+Examples of infractions include but are not limited to:
+
+The following examples are drawn from the Academic Integrity Code and
+should be curated or supplemented based on assignments for your
+course.
+
+1. Plagiarism, defined as using the exact language or a close
+   paraphrase of someone else’s ideas without citation.
+   
+2. Violations of fair use, including the unauthorized and uncited use
+   of another’s artworks, images, designs, etc.
+   
+3. The supplying or receiving of completed work including papers,
+   projects, outlines, artworks, designs, prototypes, models, or
+   research for submission by any
+    person other than the author.
+4. The unauthorized submission of the same or essentially the same
+   piece of work for credit in two different classes.
+   
+5. The unauthorized supplying or receiving of information about the
+   form or content of an examination.
+   
+6. The supplying or receiving of partial or complete answers, or
+   suggestions for answers; or the supplying or receiving of
+   assistance in interpretation of questions on any examination from
+   any source not explicitly authorized. (This includes copying or
+   reading of another student’s work or consultation of notes or other
+   sources during an examination.)
+   
+7. The use of generative artificial intelligence (AI) to produce or to
+   improve work, whether visual or textual, except when called for by
+   an assignment or instructor and acknowledged transparently as one
+   tool among others in the creative process.
+
+The Academic Integrity Standing Committee (AISC) is charged with
+educating faculty, staff, and students about academic integrity
+practices. Whenever possible, we strive to resolve alleged infractions
+at the most local level possible, such as between student and
+professor, or within a department or school. When necessary, members
+of this committee will form an Academic Integrity Hearing Board to
+hear cases regarding cheating, plagiarism, and other infractions
+described below; these infractions can be grounds for citation,
+sanction, or dismissal. Detailed procedures are explained in the full
+version of the Academic Integrity Policy.
+
+*** Attendance Policy
+
+Consistent attendance is essential for the completion of any course or
+program. Attending class does not earn students any specific portion
+of their grade, but is the pre-condition for passing the course, while
+missing class may seriously harm a student’s grade. Pratt Institute
+respects students’ requirements to observe days of cultural
+significance, including religious holy days, and recognizes that some
+students might need to miss class to do so. In this, or other similar,
+circumstance, students are responsible for consulting with faculty
+ahead of time about how and when they can make up work they will miss.
+Reasonable accommodations for students with documented disabilities
+will continue to be provided, as appropriate. For full details, see
+Pratt’s Attendance Policy.
+
+The expectations for this class are as follows:
+- Come to every class
+- Arrive promptly
+- If for some reason you cannot make it to class, or will be late to
+  class, please email me and let me know ahead of time.
+
+Those who email me ahead of time with a good reason for missing class
+will incur an excused absence. Those who do not will incur an
+unexcused absence. For each unexcused absence, grades may be lowered a
+letter grade. Three or more unexcused absences in some courses
+(especially those that meet only once per week) may result in an
+automatic “F” for the course.
+
+*** Academic Support
+
+Multiple academic support resources are available to students across campus:
+
+- For assistance with time management and/or studio, subject, and
+  software tutoring, contact the Student Success Center at
+  success@pratt.edu.
+- For assistance with writing assignments, contact the Writing and
+  Tutorial Center at wtc@pratt.edu. The Pratt Libraries can also help
+  with research and citations.
+- Academic advisors are also a great resource; students can find their
+  advisor’s contact information or schedule an appointment through
+  Starfish.
+
+*** Accessibility
+
+The Learning/Access Center (L/AC) coordinates access for students with
+disabilities. Students who identify as having any type of disability
+are entitled and encouraged to enroll with the L/AC in order to
+determine and implement reasonable accommodations. Contact the
+Learning/Access Center at lac@pratt.edu or 718.802.3123 for
+information or to schedule an appointment.
+
+*** Title IX and Sexual Misconduct Policy
+
+Pratt Institute is committed to fostering an environment that is safe,
+secure and free from sex discrimination and sexual harassment, sexual
+violence, dating and domestic violence, and stalking among all forms
+of sexual misconduct. The Institute takes prompt and appropriate
+action to address misconduct, end a hostile environment if one has
+been created, and prevent the recurrence of a hostile environment. To
+submit a concern, please use the Title IX and Sexual Misconduct
+Disclosure Form. For full details, see the Title IX and Sexual
+Misconduct Policy.
+
+If you inform me of an issue of sex discrimination or sexual
+misconduct, I will keep the information as private as I can. However,
+as a faculty member, I am a mandatory reporter of sexual misconduct
+and required to bring it to the attention of the Institute’s Title IX
+Coordinator, who can also be contacted at titleix@pratt.edu. You can
+also speak to someone confidentially by contacting our confidential
+resources in Health Services or the Counseling Center.
+
+*** Nondiscrimination and Anti-Harassment Policy
+
+Pratt is committed to fostering a welcoming, safe, non-discriminatory,
+and harassment-free educational, living, and working environment for
+its community. To submit a concern, please use the Discrimination and
+Harassment Disclosure Form, which also allows anonymous reports. For
+full details, see the Nondiscrimination and Anti-Harassment Policy.
+
+*** Wellbeing
+
+Pratt is dedicated to creating a culture where the entire community
+can flourish and thrive. Taking time to care for yourself and seeking
+appropriate support is important to achieving your academic and
+professional goals. Several resources are available through Starfish,
+including our Student Advocate and Care Coordinator, who can also be
+reached at 718.399.4546 or studentadvocate@pratt.edu. If you or anyone
+you know experiences overwhelming academic stress, persistent
+difficult feelings, or challenging life events, the Counseling Center
+can be reached 24/7 by calling 718.687.5356. To schedule a
+consultation, please call or email therapy@pratt.edu
+
+*** Starfish
+
+Starfish provides students with contact information for advisors,
+instructors, department chairs, and support services across the
+campus. Faculty can also use Starfish to inform students of their
+progress in class and connect them with resources. Students are
+contacted by support offices whenever a flag is raised.
+
+*** Public Safety & Emergency Contacts
+
+The Department of Public Safety provides 24-hour-a-day protection to
+the campus, including an emergency response guide. Contact Public
+Safety at security@pratt.edu or 718.636.3540. The Pratt Emergency
+Alert System is used to send urgent messages to registered mobile
+devices and emails (faculty, staff, and students have the option to
+opt-out, which must be renewed each year). You can update your
+emergency contact information in the Safety section of OnePratt.
 

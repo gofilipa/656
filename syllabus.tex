@@ -1,0 +1,768 @@
+% Created 2026-08-20 Thu 17:34
+% Intended LaTeX compiler: xelatex
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{xurl}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{titling}
+\makeatletter
+\renewcommand{\maketitle}{%
+\begin{flushleft}
+\includegraphics[width=0.5\textwidth]{logo.png}
+\end{flushleft}
+\begin{center}
+{\LARGE\@title\par}
+\vspace{0.5em}
+{\large\@author\par}
+\vspace{0.5em}
+{\large\@date\par}
+\end{center}
+}
+\makeatother
+\author{Professor Filipa Calado}
+\date{Fall 2026}
+\title{INFO 656: Machine Learning}
+\hypersetup{
+ pdfauthor={Professor Filipa Calado},
+ pdftitle={INFO 656: Machine Learning},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.3 (Org mode 9.6.15)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{Course Information}
+\label{sec:org43fed55}
+Section: 01 \\[0pt]
+Semester: Fall 2026 \\[0pt]
+Meeting Dates \& Times: Wednesdays, 3:00 PM - 5:50 PM \\[0pt]
+Credits: 3 \\[0pt]
+Prerequisites or other restrictions: 664
+
+\section*{Instructor Contact Information}
+\label{sec:org04cc991}
+Filipa Calado, PhD (she) \\[0pt]
+Office Location: Pratt Manhattan, room 602 \\[0pt]
+Office Hours:  Mondays 5:00pm - 6:00pm, Tuesdays 1:30pm-2:30pm, and by
+appointment \\[0pt]
+Phone: 718-687-5194 \\[0pt]
+Email: fcalado@pratt.edu \\[0pt]
+Zoom: \url{https://pratt.zoom.us/my/fcalado} \\[0pt]
+Website: \url{https://filipacalado.com} 
+
+\section*{Course Description:}
+\label{sec:org58fe635}
+Machine learning is a rapidly growing field that develops algorithms
+for tasks such as data classification and prediction. These
+algorithms are programmed to operate and adjust themselves
+independently of human intervention (i.e., to learn), allowing data
+work to occur quickly and at scale. Machine learning is a key
+technology behind the automation across many social areas today,
+often branded AI.
+
+This course offers an introduction to machine learning as a practical
+tool that we can use, and as a technological field with social
+implications. We will learn about key concepts in machine learning;
+survey a few key machine learning techniques, such as supervised
+methods for machine learning (regression and classification), which
+attempt to map data onto desired outputs, and unsupervised methods
+(clustering and association), which attempt to find structure within
+data itself; use openly available tools to implement these techniques
+on text and image data; learn how to assess the effectiveness of
+different techniques on particular datasets; and discuss basic issues
+that confront all machine learning methods.
+
+\section*{Detailed Description:}
+\label{sec:org741d260}
+This course prioritizes a critical approach to machine learning and
+recent advances in ML research. Therefore, in addition to learning the
+basics of ML principles and models, this course centers topics of
+dataset curation, algorithmic bias, and auditing \& evaluation methods,
+particularly in relation to recent ML research. At a time when
+automated coding assistants provide much technical knowledge (i.e.,
+applying algorithms and writing program code) this critical approach
+will give students a powerful skillset for assessing ML capabilities.
+
+\section*{Course Goals:}
+\label{sec:orga923e24}
+The goals of this course are to:
+\begin{itemize}
+\item introduce students to key concepts and some common techniques in
+machine learning, as well as openly available tools
+\item help students to develop technical and critical thinking skills
+regarding machine learning
+\item enable students to conduct a machine learning experiment and
+communicate the result of their project
+\end{itemize}
+
+\section*{Student Learning Outcomes:}
+\label{sec:orga19f00a}
+By the end of the course, students will be able to:
+\begin{itemize}
+\item describe different machine learning methods, including their
+limitations
+\item select an appropriate machine learning method for a given use case
+\item implement machine learning algorithms and assess their performance
+\item execute a machine learning experiment using openly available tools
+\item support the design of their experiment by discussing both the
+technical aspect and the topic’s significance
+\end{itemize}
+
+\section*{Course Requirements}
+\label{sec:org94923fa}
+\subsection*{Sources and Materials}
+\label{sec:org2ff3460}
+All materials will be linked via the syllabus or available to download
+on the course github at \url{https://github.com/gofilipa/656}
+
+\subsection*{Assignments}
+\label{sec:orgf48e799}
+Participation in class discussion: 20\% of final grade. Because we
+spend much of the first 2/3 of the course learning about concepts from
+ML, including recent research, it is imperative that you do the
+readings and come prepared to discuss them in class, as well as to
+offer your opinion. Some of the weekly homeworks are designed to get
+you thinking about the readings (the "provocations" homeworks). You
+are encouraged to share your provocations during class discussion. 
+
+Weekly homeworks. 30\% of final grade. These assignments may be coding
+assignments or they may be short written responses (i.e.
+"provocations"), approximately 1 page in length. Provocations consist
+of a focused reflection on the reading, and must include a question
+meant to provoke discussion among peers (a provocative, thoughtful,
+and open-ended question).
+
+Conference paper: 30\% of final grade. 8 - 12 pages in length. This is
+a group project. The paper should explore a current issue in ML
+research and propose an intervention in the form of an experiment,
+audit, or review. It should be written in accordance with the \href{https://facctconference.org/2027/cfp.html}{Call for
+Papers (CFP)} for the \href{https://facctconference.org/index.html}{Fairness, Accountability, and Transparency
+(FAccT) Conference}.
+
+Final project: 20\% of final grade. A machine learning project of your
+choosing, such as a Small Language Model fine-tuned on custom data, or
+a Sentiment Analysis experiment. You might use ML techniques that we
+learned in class, but can also go beyond these techniques. All data,
+methodology, and code should be well annotated. Finally, project must
+include a README.md explaining the main components (specific
+guidelines will be distributed in the middle of the semester). Can be
+done in partners but if that's the case the final project should scale
+in complexity. Includes a final presentation between 5 - 10 minutes
+long (the exact length for the presentation is TBD -- it will depend
+on how many individuals vs groups end up presenting).
+
+\subsection*{Assessment \& Grading}
+\label{sec:org6ad02d4}
+\subsubsection*{Grade Breakdown}
+\label{sec:org411b1bf}
+Participation in class discussion: 20\%  \\[0pt]
+
+Weekly homeworks. 30\% \\[0pt]
+
+Conference paper: 30\% \\[0pt]
+
+Final project: 20\% \\[0pt]
+
+Attendance alone is not considered a percentage of the grade, but the
+overall grade may be lowered based on absences (see Attendance Policy
+below).
+
+\subsubsection*{Pratt Institute Grade System}
+\label{sec:org3941f57}
+
+Grade Evaluation Quality Points per Credit
+
+A Excellent 4.0 \\[0pt]
+A- Excellent 3.7 \\[0pt]
+B+ Very Good 3.3 \\[0pt]
+B Good 3.0 \\[0pt]
+B- Good 2.7 \\[0pt]
+C+ Above Average 2.3 \\[0pt]
+C Average 2.0 \\[0pt]
+C- Below Average (UG only) 1.7 \\[0pt]
+D+ Less than Acceptable (UG only) 1.3 \\[0pt]
+D Less than Acceptable (UG only) 1.0 \\[0pt]
+F Failure 0.0 \\[0pt]
+WF Failure Due to Lack of Attendance 0.0 
+
+\section*{Course Schedule}
+\label{sec:org84d7db5}
+\subsection*{Unit 1: Foundations Of Machine Learning}
+\label{sec:org3eacbd0}
+\subsubsection*{Week 1 (Aug 26): Introduction}
+\label{sec:orgb315668}
+Readings:
+\begin{itemize}
+\item HAI article, "AI Hiring Tools Can Yield Racial Bias and Systemic
+Rejection."
+\url{https://hai.stanford.edu/news/ai-hiring-tools-can-yield-racial-bias-and-systemic-rejection}.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: syllabus review; discuss HAI article
+\item Part 2: using the command line \& python
+\end{itemize}
+
+\subsubsection*{Week 2 (Sept 2): Data \& Bias}
+\label{sec:orgb58b68f}
+Readings:
+\begin{itemize}
+\item Abeba Birhane, Sepehr Dehdashtian, Vinay Prabhu, and Vishnu
+Boddeti. 2024. "The Dark Side of Dataset Scaling: Evaluating Racial
+Classification in Multimodal Models." In The \emph{2024 ACM Conference on
+Fairness, Accountability, and Transparency}, June 03, 2024. ACM, Rio
+de Janeiro Brazil, 1229–1244.
+\url{https://doi.org/10.1145/3630106.3658968}
+\item Dodge, Jesse, et al. “Documenting Large Webtext Corpora: A Case
+Study on the Colossal Clean Crawled Corpus.” Proceedings of the 2021
+Conference on Empirical Methods in Natural Language Processing,
+edited by Marie-Francine Moens et al., Association for Computational
+Linguistics, 2021, pp. 1286–305. ACLWeb,
+\url{https://doi.org/10.18653/v1/2021.emnlp-main.98}.
+\end{itemize}
+
+Homework \#2 due:
+\begin{itemize}
+\item write a response in response to the "Dataset Scaling" essay 1 - 2
+pages double spaced. Submit the response on Canvas, and be prepared
+to share your ideas verbally with the class.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: share provocations and discuss readings; begin python lab on
+data collections and cleaning with pandas using data from the MET
+API.
+\item Part 2: continue python lab; data exploration and cleaning in
+groups.
+\end{itemize}
+
+\subsubsection*{Week 3 (Sept 9): Supervised Learning: Linear \& Logistic Regression}
+\label{sec:orgea1e47b}
+Readings:
+\begin{itemize}
+\item Andrew Ng's lecture notes on Linear \& Logistic Regression, pages
+8-13, 20-23
+\item Andrew Ng's \href{https://www.youtube.com/watch?v=4b4MUYve\_U8\&list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU\&index=2}{video explaining Linear Regression}, watch until minute
+42 (link to the \href{https://www.youtube.com/watch?v=dLc-lfEEYss\&list=PLkDaE6sCZn6FNC6YRfRQc\_FbeQrF8BwGI\&index=9}{non-scary version})
+\item explore Chris Deotte, \href{http://www.ccom.ucsd.edu/\~cdeotte/programs/classify.html}{"Classifier Playground"}
+\end{itemize}
+
+Homework \#3 due:
+\begin{itemize}
+\item find a dataset on NYC Open Data, Kaggle, or elsewhere. Open it in a
+python notebook and practice cleaning and/or structuring the
+dataset. Write up a summary of how you cleaned the data, as a
+comment in the last cell. Submit your notebook to canvas.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: discussion of linear regression; in class python lab on
+linear regression with scikit-learn
+\item Part 2: discussion of logistic regression; in class python lab on
+logistic regression with scikit-learn
+\end{itemize}
+
+\subsubsection*{Week 4 (Sept 16): Unsupervised Learning: K-means Clustering \& Decision Trees}
+\label{sec:orgc141be5}
+Readings:
+\begin{itemize}
+\item Lavigne, Sam, et al. “Predicting Financial Crime: Augmenting the
+Predictive Policing Arsenal.” arXiv:1704.07826, arXiv, 25 Apr. 2017.
+arXiv.org, \url{https://doi.org/10.48550/arXiv.1704.07826}.
+\end{itemize}
+
+Homework \#4 due:
+\begin{itemize}
+\item find a dataset to practice either linear or logistic regression
+using sci-kit learn. In the last cell of the notebook, write up a
+summary of what you learned about your data and/or topic, and what
+potential blind spots, oversights, or risks might be associated with
+your analysis. Submit your notebook on canvas.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: python lab on k-means clustering
+\item Part 2: discuss White Collar Crime project
+\end{itemize}
+
+\subsubsection*{Week 5 (Sept 23): Model Evaluation}
+\label{sec:orgab79de2}
+Readings:
+\begin{itemize}
+\item Devinney, Hannah, et al. “We Don't Talk About That: Case Studies on
+Intersectional Analysis of Social Bias in Large Language Models.”
+Proceedings of the 5th Workshop on Gender Bias in Natural Language
+Processing (GeBNLP), edited by Agnieszka Faleńska et al.,
+Association for Computational Linguistics, 2024, pp. 33–44. ACLWeb,
+\url{https://doi.org/10.18653/v1/2024.gebnlp-1.3}.
+\item Sui, Peiqi, et al. “Critical Confabulation: Can LLMs Hallucinate for
+Social Good?” arXiv:2511.07722, arXiv, 6 Mar. 2026. arXiv.org,
+\url{https://doi.org/10.48550/arXiv.2511.07722}.
+\end{itemize}
+
+Homework \#5 due:
+\begin{itemize}
+\item Do some research on current issues in ML. You might check out some
+of the papers from this summer's \href{https://facctconference.org/2026/acceptedpapers.html}{FACCT} conference (or from last
+year's NEURIPS or EMNLP conferences, or another related conference).
+Pick \textbf{one} recent paper that seem interesting to you. Write up a
+short summary, and explain why you find it interesting. Submit the
+summaries on Canvas, and be ready to briefly share and discuss them
+with the class.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: discuss evaluations, practice hands-on with evaluation
+software
+\item Part 2: share out papers that we are interested in so far; class
+discussion on topics; organize into provisional teams for conference
+paper.
+\end{itemize}
+
+\subsection*{Unit 2: Language Modeling}
+\label{sec:org51472ad}
+\subsubsection*{Week 6 (Sept 30): Conference paper workshop day I}
+\label{sec:org44f9e9b}
+Readings:
+\begin{itemize}
+\item None (except for homework)
+\end{itemize}
+
+Homework \#6:
+\begin{itemize}
+\item With your team, submit a research question (there can be more than
+one), a list of potential sources, and a detailed work plan for the
+next month, with distribution of tasks and expected time allocated
+for each team member.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: share research questions
+\item Part 2: continue sharing \& come up with check-in schedule for the
+next month
+\end{itemize}
+
+\subsubsection*{Week 7 (Oct 7): Word Vectors}
+\label{sec:orge74012a}
+Readings:
+\begin{itemize}
+\item Jay Alammar, "\href{https://jalammar.github.io/illustrated-word2vec/}{The Illustrated Word2Vec}." 2018.
+\item Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
+Efficient Estimation of Word Representations in Vector Space.
+\url{https://doi.org/10.48550/arXiv.1301.3781}
+\item Read one of the following articles on web datasets:
+\begin{itemize}
+\item Jesse Dodge, Maarten Sap, Ana Marasović, William Agnew, Gabriel
+Ilharco, Dirk Groeneveld, Margaret Mitchell, and Matt
+Gardner. 2021. "Documenting Large Webtext Corpora: A Case Study on
+the Colossal Clean Crawled Corpus." In \emph{Proceedings of the 2021
+Conference on Empirical Methods in Natural Language Processing},
+November 2021. Association for Computational Linguistics, Online
+and Punta Cana, Dominican Republic, 1286–1305.
+\url{https://doi.org/10.18653/v1/2021.emnlp-main.98}
+\item FineWeb: Decanting the Web for the Finest Text Data at Scale - a
+Hugging Face Space by HuggingFaceFW.
+\url{https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1}.
+Accessed 7 July 2026.
+\end{itemize}
+\end{itemize}
+
+Homework \#7 due:
+\begin{itemize}
+\item Submit an annotated bibliography of at least 10-15 papers that are
+relevant to your team's topic(s) of interest. 3-5 sentences of
+annotation per paper, including at least one sentence explaining how
+this paper may be useful for further ML research on the topic.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: discuss word embeddings; python lab on Word2Vec
+\item Part 2: group work on papers
+\end{itemize}
+
+\subsubsection*{Week 8 (Oct 14): Neural networks}
+\label{sec:org10f0018}
+Readings:
+\begin{itemize}
+\item Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
+Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
+"Attention Is All You Need."
+\url{https://doi.org/10.48550/arXiv.1706.03762}
+\item Jay Alammar. The Illustrated BERT, ELMo, and co. (How NLP Cracked
+Transfer Learning). Retrieved April 14, 2025 from
+\url{https://jalammar.github.io/illustrated-bert/}
+\item Optional (maybe helpful!):
+\begin{itemize}
+\item 3Blue1Brown, "\href{https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1\_67000Dx\_ZCJB-3pi}{Neural Networks}" (YouTube playlist)
+\item Chris Deotte, "\href{http://www.ccom.ucsd.edu/\~cdeotte/programs/neuralnetwork.html}{Neural Network Playground}"
+\end{itemize}
+\end{itemize}
+
+Homework \#7 due:
+\begin{itemize}
+\item Submit a detailed outline for the first draft, containing claims and
+key evidence/quotations.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: discuss neural networks; python lab on backpropagation.
+\item Part 2: continue to work on papers; discuss all of the necessary
+components of a paper
+\end{itemize}
+
+\subsubsection*{Week 9 (Oct 21): Abstracts due}
+\label{sec:org12b7e16}
+Readings:
+\begin{itemize}
+\item None (focus on papers)
+\end{itemize}
+
+\emph{Note: Abstracts are due on FAccT website on Monday, Oct 27, if
+submitting.}
+
+Homework \#9 due:
+\begin{itemize}
+\item Submit a draft of the Abstract, Results and Discussion sections of
+the paper.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: peer review of abstracts, Results, and Discussion sections
+\item Part 2: discuss \& plan revisions
+\end{itemize}
+
+\subsubsection*{Week 10 (Oct 28): Conference paper workshop day II (drafts due)}
+\label{sec:org2c0d230}
+Readings:
+\begin{itemize}
+\item None (focus on papers)
+\end{itemize}
+
+\emph{Note: final papers due on FAccT on Tuesday, November 3, if
+submitting}
+
+Homework \#10: 
+\begin{itemize}
+\item Submit full draft of paper.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: peer review of full paper
+\item Part 2: discuss \& plan revisions
+\end{itemize}
+
+\subsection*{Unit 3: Final Projects - SLMs}
+\label{sec:org87ea369}
+\subsubsection*{Week 11 (Nov 4): Fine-Tuning I}
+\label{sec:org46b5a3f}
+Readings:
+\begin{itemize}
+\item Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and
+Ilya Sutskever. 2019. "Language Models are Unsupervised Multitask
+Learners."
+\url{https://cdn.openai.com/better-language-models/language\_models\_are\_unsupervised\_multitask\_learners.pdf}
+\item Sarah Ciston. A CRITICAL FIELD GUIDE FOR WORKING WITH MACHINE
+LEARNING DATASETS. \url{https://knowingmachines.org/critical-field-guide}.
+Accessed 22 July 2026.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: fine-tuning workshop
+\item Part 2: self-guided exploration
+\end{itemize}
+\subsubsection*{Week 12 (Nov 11): Fine-Tuning II}
+\label{sec:orga2c1456}
+Readings
+\begin{itemize}
+\item Bots, LLMs, and Automated Access — Internet Archive Developer
+Portal. \url{https://archive.org/developers/bots.html}. Accessed 8
+July 2026.
+\item FineWeb: Decanting the Web for the Finest Text Data at Scale - a
+Hugging Face Space by HuggingFaceFW.
+\url{https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1}.
+Accessed 7 July 2026.
+\end{itemize}
+
+Activities:
+\begin{itemize}
+\item Part 1: web scraping workshop
+\item Part 2: self-guided exploration
+\end{itemize}
+\subsubsection*{Week 13 (Nov 18): project workshops}
+\label{sec:orgaa5b89a}
+\subsubsection*{week 14 (Nov 25): NO CLASS - thanksgiving break}
+\label{sec:orgeac50df}
+\subsubsection*{week 15 (Dec 2): project workshops}
+\label{sec:org0695814}
+\subsubsection*{week 16 (Dec 9): presentations}
+\label{sec:orga65cbd4}
+
+\section*{Course Resources}
+\label{sec:org0b23e2f}
+\subsection*{Cool ML projects}
+\label{sec:org2d931ac}
+\begin{itemize}
+\item Thenewinquiry/Whitecollar. 26 Feb. 2017, Python. The New Inquiry, 19
+Oct. 2021. GitHub, \url{https://github.com/thenewinquiry/whitecollar}.
+\item “Mr. Chatterbox, or, The Modern Prometheus.” Estragon, 30 Mar. 2026,
+\url{https://www.estragon.news/mr-chatterbox-or-the-modern-prometheus/}.
+\item “Developing Emotion-Based Speech Technology for the Māori Language.”
+Data \& Society,
+\url{https://datasociety.net/points/developing-emotion-based-speech-technology-for-the-maori-language/}.
+Accessed 7 May 2026.
+\end{itemize}
+
+\subsection*{Sample Datasets}
+\label{sec:org8bca1c2}
+\begin{itemize}
+\item “LGBTQ+ Legislative Tracking 2025.” Google Docs,
+\url{https://docs.google.com/spreadsheets/u/1/d/1NfY8VvrUNQKX77CXilxlE1pepRSGTMZ70LoyFwx6fbk/edit?gid=719771929\&usp=embed\_facebook}.
+Accessed 8 July 2026.
+\end{itemize}
+
+\subsection*{My personal tutorial recommendations}
+\label{sec:org8c9f7f5}
+\begin{itemize}
+\item Andrej Karpathy's \emph{Microgpt} project.
+\url{https://karpathy.github.io/2026/02/12/microgpt/}.
+\item Andrew Ng's \href{https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU}{playlist of the CS229 course} at Standford.
+\item Andrew Ng's \href{https://www.youtube.com/playlist?list=PLkDaE6sCZn6FNC6YRfRQc\_FbeQrF8BwGI}{playlist of Machine Learning couse} on Coursera.
+\item Language Modelling — The Complete Guide — Language Modelling — The
+Complete Guide. \url{https://karam-nus.github.io/language-modelling/}.
+Accessed 25 June 2026.
+\end{itemize}
+
+\section*{Policies}
+\label{sec:orgee70794}
+
+The following abbreviated set of policies is especially relevant to
+this class. Full details on policies and procedures can be found on
+the Pratt website or in the Office of the Vice President for Student
+Affairs, Main Building, Lower Level.
+
+\subsection*{Community Standards}
+\label{sec:orge4d5e1d}
+
+All Pratt students, faculty, and staff members are expected to value
+and uphold the community standards essential to the pursuit of
+academic excellence and social responsibility. These include
+expectations for social conduct, academic integrity,
+non-discrimination, and other policies described in the link above,
+and apply to all Pratt-sponsored activities, on or off campus.
+
+\subsection*{Academic Integrity}
+\label{sec:orgf6f412f}
+
+Academic integrity at Pratt means using your own and original ideas in
+creating academic work. It also means that if you use the ideas or
+influence of others in your work, you must acknowledge them.
+
+At Pratt,
+
+\begin{itemize}
+\item We do our own work,
+\item We are creative, and
+\item We give credit where it is due.
+\end{itemize}
+
+When students submit any work for academic credit, they make an
+implicit claim that the work is wholly their own, completed without
+the assistance of any unauthorized person. These works include, but
+are not limited to exams, quizzes, presentations, papers, projects,
+studio work, and other assignments and assessments. In addition, no
+student shall prevent another student from making their work. Students
+may study, collaborate, and work together on assignments at the
+discretion of the instructor.
+
+Examples of infractions include but are not limited to:
+
+The following examples are drawn from the Academic Integrity Code and
+should be curated or supplemented based on assignments for your
+course.
+
+\begin{enumerate}
+\item Plagiarism, defined as using the exact language or a close
+paraphrase of someone else’s ideas without citation.
+
+\item Violations of fair use, including the unauthorized and uncited use
+of another’s artworks, images, designs, etc.
+
+\item The supplying or receiving of completed work including papers,
+projects, outlines, artworks, designs, prototypes, models, or
+research for submission by any
+ person other than the author.
+\item The unauthorized submission of the same or essentially the same
+piece of work for credit in two different classes.
+
+\item The unauthorized supplying or receiving of information about the
+form or content of an examination.
+
+\item The supplying or receiving of partial or complete answers, or
+suggestions for answers; or the supplying or receiving of
+assistance in interpretation of questions on any examination from
+any source not explicitly authorized. (This includes copying or
+reading of another student’s work or consultation of notes or other
+sources during an examination.)
+
+\item The use of generative artificial intelligence (AI) to produce or to
+improve work, whether visual or textual, except when called for by
+an assignment or instructor and acknowledged transparently as one
+tool among others in the creative process.
+\end{enumerate}
+
+The Academic Integrity Standing Committee (AISC) is charged with
+educating faculty, staff, and students about academic integrity
+practices. Whenever possible, we strive to resolve alleged infractions
+at the most local level possible, such as between student and
+professor, or within a department or school. When necessary, members
+of this committee will form an Academic Integrity Hearing Board to
+hear cases regarding cheating, plagiarism, and other infractions
+described below; these infractions can be grounds for citation,
+sanction, or dismissal. Detailed procedures are explained in the full
+version of the Academic Integrity Policy.
+
+\subsection*{Attendance Policy}
+\label{sec:orgc4c88b2}
+
+Consistent attendance is essential for the completion of any course or
+program. Attending class does not earn students any specific portion
+of their grade, but is the pre-condition for passing the course, while
+missing class may seriously harm a student’s grade. Pratt Institute
+respects students’ requirements to observe days of cultural
+significance, including religious holy days, and recognizes that some
+students might need to miss class to do so. In this, or other similar,
+circumstance, students are responsible for consulting with faculty
+ahead of time about how and when they can make up work they will miss.
+Reasonable accommodations for students with documented disabilities
+will continue to be provided, as appropriate. For full details, see
+Pratt’s Attendance Policy.
+
+The expectations for this class are as follows:
+\begin{itemize}
+\item Come to every class
+\item Arrive promptly
+\item If for some reason you cannot make it to class, or will be late to
+class, please email me and let me know ahead of time.
+\end{itemize}
+
+Those who email me ahead of time with a good reason for missing class
+will incur an excused absence. Those who do not will incur an
+unexcused absence. For each unexcused absence, grades may be lowered a
+letter grade. Three or more unexcused absences in some courses
+(especially those that meet only once per week) may result in an
+automatic “F” for the course.
+
+\subsection*{Academic Support}
+\label{sec:org0432b3a}
+
+Multiple academic support resources are available to students across campus:
+
+\begin{itemize}
+\item For assistance with time management and/or studio, subject, and
+software tutoring, contact the Student Success Center at
+success@pratt.edu.
+\item For assistance with writing assignments, contact the Writing and
+Tutorial Center at wtc@pratt.edu. The Pratt Libraries can also help
+with research and citations.
+\item Academic advisors are also a great resource; students can find their
+advisor’s contact information or schedule an appointment through
+Starfish.
+\end{itemize}
+
+\subsection*{Accessibility}
+\label{sec:org67e2ec5}
+
+The Learning/Access Center (L/AC) coordinates access for students with
+disabilities. Students who identify as having any type of disability
+are entitled and encouraged to enroll with the L/AC in order to
+determine and implement reasonable accommodations. Contact the
+Learning/Access Center at lac@pratt.edu or 718.802.3123 for
+information or to schedule an appointment.
+
+\subsection*{Title IX and Sexual Misconduct Policy}
+\label{sec:orgd82f214}
+
+Pratt Institute is committed to fostering an environment that is safe,
+secure and free from sex discrimination and sexual harassment, sexual
+violence, dating and domestic violence, and stalking among all forms
+of sexual misconduct. The Institute takes prompt and appropriate
+action to address misconduct, end a hostile environment if one has
+been created, and prevent the recurrence of a hostile environment. To
+submit a concern, please use the Title IX and Sexual Misconduct
+Disclosure Form. For full details, see the Title IX and Sexual
+Misconduct Policy.
+
+If you inform me of an issue of sex discrimination or sexual
+misconduct, I will keep the information as private as I can. However,
+as a faculty member, I am a mandatory reporter of sexual misconduct
+and required to bring it to the attention of the Institute’s Title IX
+Coordinator, who can also be contacted at titleix@pratt.edu. You can
+also speak to someone confidentially by contacting our confidential
+resources in Health Services or the Counseling Center.
+
+\subsection*{Nondiscrimination and Anti-Harassment Policy}
+\label{sec:org44c7d6c}
+
+Pratt is committed to fostering a welcoming, safe, non-discriminatory,
+and harassment-free educational, living, and working environment for
+its community. To submit a concern, please use the Discrimination and
+Harassment Disclosure Form, which also allows anonymous reports. For
+full details, see the Nondiscrimination and Anti-Harassment Policy.
+
+\subsection*{Wellbeing}
+\label{sec:org66be401}
+
+Pratt is dedicated to creating a culture where the entire community
+can flourish and thrive. Taking time to care for yourself and seeking
+appropriate support is important to achieving your academic and
+professional goals. Several resources are available through Starfish,
+including our Student Advocate and Care Coordinator, who can also be
+reached at 718.399.4546 or studentadvocate@pratt.edu. If you or anyone
+you know experiences overwhelming academic stress, persistent
+difficult feelings, or challenging life events, the Counseling Center
+can be reached 24/7 by calling 718.687.5356. To schedule a
+consultation, please call or email therapy@pratt.edu
+
+\subsection*{Starfish}
+\label{sec:orgf82c226}
+
+Starfish provides students with contact information for advisors,
+instructors, department chairs, and support services across the
+campus. Faculty can also use Starfish to inform students of their
+progress in class and connect them with resources. Students are
+contacted by support offices whenever a flag is raised.
+
+\subsection*{Public Safety \& Emergency Contacts}
+\label{sec:orge0f513a}
+
+The Department of Public Safety provides 24-hour-a-day protection to
+the campus, including an emergency response guide. Contact Public
+Safety at security@pratt.edu or 718.636.3540. The Pratt Emergency
+Alert System is used to send urgent messages to registered mobile
+devices and emails (faculty, staff, and students have the option to
+opt-out, which must be renewed each year). You can update your
+emergency contact information in the Safety section of OnePratt.
+\end{document}
