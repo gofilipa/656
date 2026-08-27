@@ -36,8 +36,8 @@ Prerequisites or other restrictions: 664
 ** Instructor Contact Information
 Filipa Calado, PhD (she) \\
 Office Location: Pratt Manhattan, room 602 \\
-Office Hours:  Mondays 5:00pm - 6:00pm, Tuesdays 1:30pm-2:30pm, and by
-appointment \\
+Office Hours:  Mondays 5:00pm - 6:00pm, Wednesdays 1:30pm-2:30pm, and by
+appointment at: https://calendly.com/fcalado-pratt/new-meeting \\
 Phone: 718-687-5194 \\
 Email: fcalado@pratt.edu \\
 Zoom: https://pratt.zoom.us/my/fcalado \\
@@ -67,12 +67,14 @@ that confront all machine learning methods.
 ** Detailed Description:
 This course prioritizes a critical approach to machine learning and
 recent advances in ML research. Therefore, in addition to learning the
-basics of ML principles and models, this course centers topics of
-dataset curation, algorithmic bias, and auditing & evaluation methods,
-particularly in relation to recent ML research. At a time when
-automated coding assistants provide much technical knowledge (i.e.,
-applying algorithms and writing program code) this critical approach
-will give students a powerful skillset for assessing ML capabilities.
+basics of ML principles and models, this course centers issues from ML
+research, including dataset curation, sustainability, algorithmic
+bias, and auditing & evaluation methods, among others.
+
+At a time when automated coding assistants provide much technical
+knowledge (i.e., applying algorithms and writing program code) this
+critical approach will endow students with crucial human-centered
+skills for developing and critiquing ML tools. 
 
 ** Course Goals:
 The goals of this course are to:
@@ -99,49 +101,55 @@ All materials will be linked via the syllabus or available to download
 on the course github at https://github.com/gofilipa/656
 
 *** Assignments
-Participation in class discussion: 20% of final grade. Because we
-spend much of the first 2/3 of the course learning about concepts from
-ML, including recent research, it is imperative that you do the
-readings and come prepared to discuss them in class, as well as to
-offer your opinion. Some of the weekly homeworks are designed to get
-you thinking about the readings (the "provocations" homeworks). You
-are encouraged to share your provocations during class discussion. 
+*Participation in class discussion*. 20% of final grade. Because we
+spend much of the course learning about concepts from ML, including
+recent research, you must do the readings and be prepared to discuss
+them in class, as well as to offer your opinion. Some of the weekly
+homeworks are designed to get you thinking about the readings (see
+below about the "provocations" homework). You are encouraged to share
+your provocations during class discussion.
 
-Weekly homeworks. 30% of final grade. These assignments may be coding
-assignments or they may be short written responses (i.e.
-"provocations"), approximately 1 page in length. Provocations consist
-of a focused reflection on the reading, and must include a question
-meant to provoke discussion among peers (a provocative, thoughtful,
-and open-ended question).
+*Weekly homeworks*. 25% of final grade. These assignments may be
+coding assignments or they may be short written responses (i.e.
+"provocations"), approximately 1 page or 300 words in length. Coding
+assignments will be based on skills that we learned in class the
+previous day, and the instructions will be described in detail in the
+course schedule. Written responses, also called "provocations,"
+consist of a focused reflection on the reading, and must include a
+question meant to provoke discussion among peers (a provocative,
+thoughtful, and open-ended question). You may use the provocation as
+an opportunity to express, work through, and develop your thoughts
+regarding an idea or quote from the reading, with the goal of
+eventually arriving at a question for further discussion.
 
-Conference paper: 30% of final grade. 8 - 12 pages in length. This is
-a group project. The paper should explore a current issue in ML
-research and propose an intervention in the form of an experiment,
-audit, or review. It should be written in accordance with the [[https://facctconference.org/2027/cfp.html][Call for
-Papers (CFP)]] for the [[https://facctconference.org/index.html][Fairness, Accountability, and Transparency
-(FAccT) Conference]].
-
-Final project: 20% of final grade. A machine learning project of your
-choosing, such as a Small Language Model fine-tuned on custom data, or
-a Sentiment Analysis experiment. You might use ML techniques that we
-learned in class, but can also go beyond these techniques. All data,
-methodology, and code should be well annotated. Finally, project must
-include a README.md explaining the main components (specific
+*Final project*. 25% of final grade. A machine learning project of
+your choosing, such as a Small Language Model fine-tuned on custom
+data, or a Sentiment Analysis experiment. You might use ML techniques
+that we learned in class, but can also go beyond these techniques. All
+data, methodology, and code should be well annotated. Finally, project
+must include a README.md explaining the main components (specific
 guidelines will be distributed in the middle of the semester). Can be
 done in partners but if that's the case the final project should scale
 in complexity. Includes a final presentation between 5 - 10 minutes
 long (the exact length for the presentation is TBD -- it will depend
 on how many individuals vs groups end up presenting).
 
+*Conference paper*. 30% of final grade. 8 - 12 pages in length. This
+is a group project. The paper should explore a current issue in ML
+research and propose an intervention in the form of an experiment,
+audit, or review. It should be written in accordance with the Call For
+Papers for the FAccT conference:
+https://facctconference.org/2027/cfp.html
+
 *** Assessment & Grading
 **** Grade Breakdown
 Participation in class discussion: 20%  \\
 
-Weekly homeworks. 30% \\
+Weekly homeworks. 25% \\
+
+Final project: 25% \\
 
 Conference paper: 30% \\
-
-Final project: 20% \\
 
 Attendance alone is not considered a percentage of the grade, but the
 overall grade may be lowered based on absences (see Attendance Policy
@@ -167,14 +175,14 @@ WF Failure Due to Lack of Attendance 0.0
 ** Course Schedule
 *** Unit 1: Foundations of Machine Learning
 **** Week 1 (Aug 26): Introduction
-Readings:
+Readings (to be done in class):
 - HAI article, "AI Hiring Tools Can Yield Racial Bias and Systemic
   Rejection."
   https://hai.stanford.edu/news/ai-hiring-tools-can-yield-racial-bias-and-systemic-rejection.
   
 Activities:
-- Part 1: syllabus review; discuss HAI article
-- Part 2: using the command line & python
+- Part 1: introductions; syllabus review
+- Part 2: read & discuss HAI article; python refresher
   
 **** Week 2 (Sept 2): Data & Bias
 Readings:
@@ -192,9 +200,9 @@ Readings:
   https://doi.org/10.18653/v1/2021.emnlp-main.98.
 
 Homework #2 due:
-- write a response in response to the "Dataset Scaling" essay 1 - 2
-  pages double spaced. Submit the response on Canvas, and be prepared
-  to share your ideas verbally with the class.
+- write a provocation on the "Dataset Scaling" essay 1 - 2 pages
+  double spaced. Submit the provocation on Canvas, and be prepared to
+  share your ideas verbally with the class.
   
 Activities:
 - Part 1: share provocations and discuss readings; begin python lab on
@@ -205,11 +213,13 @@ Activities:
 
 **** Week 3 (Sept 9): Supervised Learning: Linear & Logistic Regression 
 Readings:
-- Andrew Ng's lecture notes on Linear & Logistic Regression, pages
-  8-13, 20-23
-- Andrew Ng's [[https://www.youtube.com/watch?v=4b4MUYve_U8&list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU&index=2][video explaining Linear Regression]], watch until minute
-  42 (link to the [[https://www.youtube.com/watch?v=dLc-lfEEYss&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=9][non-scary version]])
-- explore Chris Deotte, [[http://www.ccom.ucsd.edu/~cdeotte/programs/classify.html]["Classifier Playground"]]
+- Andrew Ng's video explaining Linear Regression, watch until minute
+  42:
+  https://www.youtube.com/watch?v=4b4MUYve_U8&list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU&index=2
+  (or, link to the non-scary version:
+  https://www.youtube.com/watch?v=dLc-lfEEYss&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI&index=9 
+- explore Chris Deotte, "Classifier Playground":
+  http://www.ccom.ucsd.edu/~cdeotte/programs/classify.html
 
 Homework #3 due:
 - find a dataset on NYC Open Data, Kaggle, or elsewhere. Open it in a
@@ -254,12 +264,12 @@ Readings:
 
 Homework #5 due:
 - Do some research on current issues in ML. You might check out some
-  of the papers from this summer's [[https://facctconference.org/2026/acceptedpapers.html][FACCT]] conference (or from last
-  year's NEURIPS or EMNLP conferences, or another related conference).
-  Pick *one* recent paper that seem interesting to you. Write up a
-  short summary, and explain why you find it interesting. Submit the
-  summaries on Canvas, and be ready to briefly share and discuss them
-  with the class.
+  of the papers from this summer's FAccT conference:
+  https://facctconference.org/2026/acceptedpapers.html. Pick *one*
+  recent paper that seem interesting to you. Write up a short summary,
+  and explain why you find it interesting. Submit the summaries on
+  Canvas, and be ready to briefly share and discuss them with the
+  class.
   
 Activities:
 - Part 1: discuss evaluations, practice hands-on with evaluation
@@ -268,7 +278,7 @@ Activities:
   discussion on topics; organize into provisional teams for conference
   paper.
  
-*** Unit 2: Language Modeling
+*** Unit 2: Conference Papers & Language Modeling
 **** Week 6 (Sept 30): Conference paper workshop day I
 Readings:
 - None (except for homework)
@@ -286,23 +296,11 @@ Activities:
 
 **** Week 7 (Oct 7): Word Vectors
 Readings:
-- Jay Alammar, "[[https://jalammar.github.io/illustrated-word2vec/][The Illustrated Word2Vec]]." 2018.
+- Jay Alammar, "The Illustrated Word2Vec" 2018.
+  https://jalammar.github.io/illustrated-word2vec/
 - Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
   Efficient Estimation of Word Representations in Vector Space.
   https://doi.org/10.48550/arXiv.1301.3781
-- Read one of the following articles on web datasets:
-  - Jesse Dodge, Maarten Sap, Ana Marasović, William Agnew, Gabriel
-    Ilharco, Dirk Groeneveld, Margaret Mitchell, and Matt
-    Gardner. 2021. "Documenting Large Webtext Corpora: A Case Study on
-    the Colossal Clean Crawled Corpus." In /Proceedings of the 2021
-    Conference on Empirical Methods in Natural Language Processing/,
-    November 2021. Association for Computational Linguistics, Online
-    and Punta Cana, Dominican Republic, 1286–1305.
-    https://doi.org/10.18653/v1/2021.emnlp-main.98
-  - FineWeb: Decanting the Web for the Finest Text Data at Scale - a
-    Hugging Face Space by HuggingFaceFW.
-    https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1.
-    Accessed 7 July 2026.
 
 Homework #7 due:
 - Submit an annotated bibliography of at least 10-15 papers that are
@@ -324,8 +322,10 @@ Readings:
   Transfer Learning). Retrieved April 14, 2025 from
   https://jalammar.github.io/illustrated-bert/
 - Optional (maybe helpful!):
-  - 3Blue1Brown, "[[https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi][Neural Networks]]" (YouTube playlist)
-  - Chris Deotte, "[[http://www.ccom.ucsd.edu/~cdeotte/programs/neuralnetwork.html][Neural Network Playground]]"
+  - 3Blue1Brown, "Neural Networks" YouTube playlist:
+    https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
+  - Chris Deotte, "Neural Network Playground":
+    http://www.ccom.ucsd.edu/~cdeotte/programs/neuralnetwork.htm 
 
 Homework #7 due:
 - Submit a detailed outline for the first draft, containing claims and
@@ -337,11 +337,11 @@ Activities:
   components of a paper
 
 **** Week 9 (Oct 21): Abstracts due
-Readings:
-- None (focus on papers)
-  
 /Note: Abstracts are due on FAccT website on Monday, Oct 27, if
 submitting./
+
+Readings:
+- None (focus on papers)
 
 Homework #9 due:
 - Submit a draft of the Abstract, Results and Discussion sections of
@@ -352,11 +352,11 @@ Activities:
 - Part 2: discuss & plan revisions
 
 **** Week 10 (Oct 28): Conference paper workshop day II (drafts due)
-Readings:
-- None (focus on papers)
-
 /Note: final papers due on FAccT on Tuesday, November 3, if
 submitting/
+
+Readings:
+- None (focus on papers)
 
 Homework #10: 
 - Submit full draft of paper. 
@@ -365,7 +365,7 @@ Activities:
 - Part 1: peer review of full paper
 - Part 2: discuss & plan revisions
 
-*** Unit 3: Final Projects - SLMs
+*** Unit 3: Final Projects - Small Language Models (SLMs)
 **** Week 11 (Nov 4): Fine-Tuning I
 Readings:
 - Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and
@@ -409,18 +409,20 @@ Activities:
   Accessed 7 May 2026.
 
 *** Sample Datasets
-- “LGBTQ+ Legislative Tracking 2025.” Google Docs,
-  https://docs.google.com/spreadsheets/u/1/d/1NfY8VvrUNQKX77CXilxlE1pepRSGTMZ70LoyFwx6fbk/edit?gid=719771929&usp=embed_facebook.
+- "Immigration and Customs Enforcement" data. Collected by the
+  Deportation Data Project. https://deportationdata.org/data/processed/ice.html
+- “LGBTQ+ Legislative Tracking 2025.” Google Docs, https://docs.google.com/spreadsheets/u/1/d/1NfY8VvrUNQKX77CXilxlE1pepRSGTMZ70LoyFwx6fbk/edit?gid=719771929&usp=embed_facebook.
   Accessed 8 July 2026.
 
-*** My personal tutorial recommendations
+*** Learning resources and tutorials (my personal recommendations)
 - Andrej Karpathy's /Microgpt/ project.
   https://karpathy.github.io/2026/02/12/microgpt/.
-- Andrew Ng's [[https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU][playlist of the CS229 course]] at Standford.
-- Andrew Ng's [[https://www.youtube.com/playlist?list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI][playlist of Machine Learning couse]] on Coursera.
+- Andrew Ng's playlist of the CS229 course at Standford:
+  https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU]
+- Andrew Ng's playlist of Machine Learning couse on Coursera:
+  https://www.youtube.com/playlist?list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI
 - Language Modelling — The Complete Guide — Language Modelling — The
   Complete Guide. https://karam-nus.github.io/language-modelling/.
-  Accessed 25 June 2026.
 
 ** Policies
 

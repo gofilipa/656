@@ -1,0 +1,100 @@
+% Created 2026-08-26 Wed 17:31
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{fcalado}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={fcalado},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.3 (Org mode 9.6.15)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Class notes}
+\label{sec:orgaa5d2ae}
+
+\subsection{Week 1}
+\label{sec:org5e42edd}
+
+\begin{enumerate}
+\item In your understanding, why do automated processes discriminate
+against certain groups, what factors specifically causes them to
+discriminate? Try to guess the factors.
+\begin{itemize}
+\item it could be the model is not a equitable choice.
+\item it could be the dataset — there’s more training samples (existing
+data) of majority groups having jobs, so the model will
+perpetuate these trends
+\item scaling up creating a cycle issue of bias
+\item aggregate analyses can make it difficult to see specific
+instances of discrimination
+\end{itemize}
+
+\item Do you perceive any potential oversights or flaws in the authors’
+arguments? Is there anything that should be interrogated or
+explored in more depth?
+\begin{itemize}
+\item leaves a considerable aspect unaddressed: does not consider
+applicants with Visas, who are automatically turned down.
+\item could also expand into other aspects of discrimination like
+gender, class, other aspects of background.
+\item what about the other vendors?
+\item could introduce some controls to see if the results change?
+\item may not be considering how multiple apps / person might create
+some bad fits for job apps.
+\end{itemize}
+\end{enumerate}
+
+Python challenge:
+
+Write some python code that does something while containing the
+following components listed below.
+\begin{itemize}
+\item a loop
+\item a list
+\item a function
+\end{itemize}
+
+Solution:
+\begin{verbatim}
+import random
+
+def greeting(names):
+    greetings = [
+        "how are you doing today?",
+        "tudo bem?",
+        "what's shakin'?",
+        "oi!",
+        "como te sientes?"
+    ]
+    for i in names:
+        print(f"Hello {i}, {random.choice(greetings)}")
+
+
+greeting(['Kirsten', 'Filipa', 'Tony', 'Clare'])
+\end{verbatim}
+
+Output:
+\begin{verbatim}
+Hello Kirsten, como te sientes?
+Hello Filipa, oi!
+Hello Tony, what's shakin'?
+Hello Clare, how are you doing today?
+\end{verbatim}
+\end{document}

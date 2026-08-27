@@ -1,0 +1,66 @@
+* Class notes
+
+** Week 1
+
+1. In your understanding, why do automated processes discriminate
+   against certain groups, what factors specifically causes them to
+   discriminate? Try to guess the factors.
+   - it could be the model is not a equitable choice.
+   - it could be the dataset — there’s more training samples (existing
+     data) of majority groups having jobs, so the model will
+     perpetuate these trends
+   - scaling up creating a cycle issue of bias
+   - aggregate analyses can make it difficult to see specific
+     instances of discrimination
+
+2. Do you perceive any potential oversights or flaws in the authors’
+   arguments? Is there anything that should be interrogated or
+   explored in more depth?
+   - leaves a considerable aspect unaddressed: does not consider
+     applicants with Visas, who are automatically turned down.
+   - could also expand into other aspects of discrimination like
+     gender, class, other aspects of background.
+   - what about the other vendors?
+   - could introduce some controls to see if the results change?
+   - may not be considering how multiple apps / person might create
+     some bad fits for job apps.
+
+Python challenge:
+
+Write some python code that does something while containing the
+following components listed below.
+- a loop
+- a list
+- a function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#+begin_src python
+     def greeting(names):
+	 greetings = [
+	     "how are you doing today?",
+	     "tudo bem?",
+	     "what's shakin'?",
+	     "oi!",
+	     "como te sientes?"
+	 ]
+	 for i in names:
+	     print(f"Hello {i}, {random.choice(greetings)}")
+
+
+     greeting(['Kirsten', 'Filipa', 'Tony', 'Clare'])
+#+end_src

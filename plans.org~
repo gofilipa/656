@@ -1,0 +1,83 @@
+* plans
+** week 1: introduction
+*** introductions, 15
+- your name, program, pronouns, last thing you watched in transit
+
+*** syllabus review, 20 
+2 main goals of the course:
+- traditional ML education:
+  - learn the most important algorithms (linear, logistic, also unsupervised)
+  - learn some principles about model architecture
+- less traditional:
+  - examine the most current ML research for common issues.
+  - problems with bias, automation, sustainability, dataset curation,
+    etc.
+  - considering the ways that coding tools provide much of the
+    algorithmic knowledge, this expertise with critical skills will
+    give you an edge when applying for ML jobs, or when using ML tools
+    in your job.
+
+The main assignment of the course is actually a paper, a conference
+paper. Requires you to know and respond to the most current research. 
+
+*** HAI article, 40-45
+- Read the article & answer prompts, 15 minutes
+  - 10 minutes read, 5 minutes answer
+  - prompts for reading:
+    - In your understanding, why do these automated processes
+      discriminate, what causes them to discriminate? Try to narrow down
+      the root cause.
+    - Do you perceive any potential oversights or flaws in the authors'
+      arguments? Is there anything that should be interrogated or
+      explored in more depth?
+- Discuss in small groups, 10 minutes.
+  - introduce yourself to your group
+- Discuss as large group, 15 minutes
+  - root cause: that increasing scale brings in all kinds of problems.
+    The common denomenator.q
+  - oversight: that if you apply to a lot of jobs, you're maybe using a
+    similar application, which is not tailored and may be rejected for
+    not being a good fit.
+  
+*** break
+*** python challenge, 30 
+Write some python code that contains the following components below.
+Try to do it without a coding tool. But if you must, know that you
+will have to explain (and therefore know) what each line of code is
+doing.
+
+Required:
+- a loop
+- a list
+- a function
+
+One solution:
+#+begin_src python
+  import random
+  def greeting(name):
+      greetings = [
+	  "how are you doing today?",
+	  "what's up?",
+	  "como te sientes?",
+	  "what's shakin'?",
+	  "tudo bem?"
+      ]
+      print(f"Hello {name}, {random.choice(greetings)}")
+
+  greeting('Filipa')
+#+end_src
+
+#+begin_src python
+  Hello Filipa, como te sientes?
+#+end_src
+*** share, 20-30
+*** python refresher (if time)
+- data types
+- variables
+- list indexing, slicing
+- loops
+- logic
+- functions
+- dictionaries
+- libraries
+

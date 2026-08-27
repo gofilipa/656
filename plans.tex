@@ -1,0 +1,140 @@
+% Created 2026-08-26 Wed 11:25
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{fcalado}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={fcalado},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.3 (Org mode 9.6.15)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{week 1: introduction}
+\label{sec:orgbbf74a4}
+\subsection{introductions, 15}
+\label{sec:org8d62016}
+\begin{itemize}
+\item your name, program, pronouns, last thing you watched in transit
+\end{itemize}
+
+\subsection{syllabus review, 20}
+\label{sec:org26c905d}
+2 main goals of the course:
+\begin{itemize}
+\item traditional ML education:
+\begin{itemize}
+\item learn the most important algorithms (linear, logistic, also unsupervised)
+\item learn some principles about model architecture
+\end{itemize}
+\item less traditional:
+\begin{itemize}
+\item examine the most current ML research for common issues.
+\item problems with bias, automation, sustainability, dataset curation,
+etc.
+\item considering the ways that coding tools provide much of the
+algorithmic knowledge, this expertise with critical skills will
+give you an edge when applying for ML jobs, or when using ML tools
+in your job.
+\end{itemize}
+\end{itemize}
+
+The main assignment of the course is actually a paper, a conference
+paper. Requires you to know and respond to the most current research. 
+
+\subsection{HAI article, 40-45}
+\label{sec:orgf2d8188}
+\begin{itemize}
+\item Read the article \& answer prompts, 15 minutes
+\begin{itemize}
+\item 10 minutes read, 5 minutes answer
+\item prompts for reading:
+\begin{itemize}
+\item In your understanding, why do these automated processes
+discriminate, what causes them to discriminate? Try to narrow down
+the root cause.
+\item Do you perceive any potential oversights or flaws in the authors'
+arguments? Is there anything that should be interrogated or
+explored in more depth?
+\end{itemize}
+\end{itemize}
+\item Discuss in small groups, 10 minutes.
+\begin{itemize}
+\item introduce yourself to your group
+\end{itemize}
+\item Discuss as large group, 15 minutes
+\begin{itemize}
+\item root cause: that increasing scale brings in all kinds of problems.
+The common denomenator.q
+\item oversight: that if you apply to a lot of jobs, you're maybe using a
+similar application, which is not tailored and may be rejected for
+not being a good fit.
+\end{itemize}
+\end{itemize}
+
+\subsection{break}
+\label{sec:org8e15dc4}
+\subsection{python challenge, 30}
+\label{sec:orgdd73547}
+Write some python code that contains the following components below.
+Try to do it without a coding tool. But if you must, know that you
+will have to explain (and therefore know) what each line of code is
+doing.
+
+Required:
+\begin{itemize}
+\item a loop
+\item a list
+\item a function
+\end{itemize}
+
+One solution:
+\begin{verbatim}
+import random
+def greeting(name):
+    greetings = [
+        "how are you doing today?",
+        "what's up?",
+        "como te sientes?",
+        "what's shakin'?",
+        "tudo bem?"
+    ]
+    print(f"Hello {name}, {random.choice(greetings)}")
+
+greeting('Filipa')
+\end{verbatim}
+
+\begin{verbatim}
+Hello Filipa, como te sientes?
+\end{verbatim}
+\subsection{share, 20-30}
+\label{sec:orga90dd42}
+\subsection{python refresher (if time)}
+\label{sec:orgc10f4ba}
+\begin{itemize}
+\item data types
+\item variables
+\item list indexing, slicing
+\item loops
+\item logic
+\item functions
+\item dictionaries
+\item libraries
+\end{itemize}
+\end{document}

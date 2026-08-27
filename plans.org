@@ -1,0 +1,258 @@
+* plans
+** week 1: introduction
+*** introductions, 15
+- your name, program, pronouns, last thing you watched in transit
+
+*** syllabus review, 20 
+2 main goals of the course:
+- traditional ML education:
+  - learn the most important algorithms (linear, logistic, also unsupervised)
+  - learn some principles about model architecture
+- less traditional:
+  - examine the most current ML research for common issues.
+  - problems with bias, automation, sustainability, dataset curation,
+    etc.
+  - considering the ways that coding tools provide much of the
+    algorithmic knowledge, this expertise with critical skills will
+    give you an edge when applying for ML jobs, or when using ML tools
+    in your job.
+
+The main assignment of the course is actually a paper, a conference
+paper. Requires you to know and respond to the most current research. 
+
+*** HAI article, 40-45
+- Read the article & answer prompts, 15 minutes
+  - 10 minutes read, 5 minutes answer
+  - prompts for reading:
+    - In your understanding, why do these automated processes
+      discriminate, what causes them to discriminate? Try to narrow down
+      the root cause.
+    - Do you perceive any potential oversights or flaws in the authors'
+      arguments? Is there anything that should be interrogated or
+      explored in more depth?
+- Discuss in small groups, 10 minutes.
+  - introduce yourself to your group
+- Discuss as large group, 15 minutes
+  - root cause: that increasing scale brings in all kinds of problems.
+    The common denomenator.q
+  - oversight: that if you apply to a lot of jobs, you're maybe using a
+    similar application, which is not tailored and may be rejected for
+    not being a good fit.
+  
+*** break
+*** python challenge, 30 
+Write some python code that contains the following components below.
+Use a blank sheet of paper to code.
+
+Required:
+- a loop
+- a list
+- a function
+
+One solution:
+#+begin_src python
+  import random
+  def greeting(name):
+      greetings = [
+	  "how are you doing today?",
+	  "what's up?",
+	  "como te sientes?",
+	  "what's shakin'?",
+	  "tudo bem?"
+      ]
+      print(f"Hello {name}, {random.choice(greetings)}")
+
+  greeting('Filipa')
+#+end_src
+
+#+begin_src python
+  Hello Filipa, como te sientes?
+#+end_src
+*** share, 20-30
+*** python refresher (if time)
+- data types
+- variables
+- list indexing, slicing
+- loops
+- logic
+- functions
+- dictionaries
+- libraries
+
+** week 2: data & bias
+
+*** cleaning a dataset
+- involves knowing what you can know from a dataset
+- decide what you want to predict
+
+Inspect the dataset in groups. 
+
+**** preliminary exploration
+
+#+begin_src python
+
+  import pandas as pd
+
+  df = pd.read_csv("2026-bills.csv")
+
+  df.shape
+  df.info()
+  df.head()
+  df.value_counts('Bill_Type')
+  df['State']
+#+end_src
+
+**** "enacted"
+
+Let's create a sub-df with just bills which are "enacted"
+
+#+begin_src python
+  enacted = df['Manual Status'] == 'Enacted'
+#+end_src
+
+What kinds of questions can we ask about this data?
+- what is the Bill Type that's likely to be enacted?
+- in which State is a bill likely to be enacted?
+
+**** what do we want to predict?
+- think about which of these columns can be used to guess about
+  another column. 
+- how to label a bill based on its summary and notes.
+  - Summary + Notes = Bill Type
+- other things which could be interesting, but we won't pursue (for
+  now):
+  - Enacted - what states/sponsors/types are likely to be enacted?
+  - Sponsors - are there any patterns in who is sponsoring certain
+    bills?
+  - State - are there patterns in which states have certain bills?
+
+**** cleaning 
+- we need three columns: summary, notes, bill type
+  - examine each column to look for inconsistencies
+  - what do we need to clean from each column, if at all?
+
+Start with Bill Type. What are the most frequent values for this
+column?
+
+#+begin_src python
+  df["Bill Type"].value_counts()
+#+end_src
+
+There are 218 different labels. That's because we have examples like
+the one below. We need to cut these down.
+
+#+begin_quote
+"DEI Ban"
+"DEI Ban "
+" DEI Ban"
+"DEI Ban  "
+#+end_quote
+
+First, preserve the original.
+
+#+begin_src python
+  df["Bill Type Raw"] = df["Bill Type"]
+#+end_src
+
+Then, let's split up the long string into individual ones.
+
+#+begin_src python
+  df["Bill Type"].str.split("/")
+#+end_src
+
+Now, create a new column for the split labels. 
+
+#+begin_src python
+  df["bill_type_labels"] = (
+    df["Bill Type"]
+    .fillna("")
+    .str.split("/")
+)
+#+end_src
+
+Use strip() to remove white spaces.
+
+#+begin_src python
+  def clean_labels(labels):
+    return [label.strip() for label in labels]
+
+  df["bill_type_labels"] = df["bill_type_labels"].apply(clean_labels)
+#+end_src
+
+Make the difference between these two columns visible.
+
+#+begin_src python
+print(df["Bill Type Raw"].iloc[0])
+print(df["bill_type_labels"].iloc[0])
+#+end_src
+
+Now, to pull out the individual lable, use ~explode()~
+
+#+begin_src python
+  labels = df["bill_type_labels"].explode()
+#+end_src
+
+We can ask how many times each label is used!
+
+#+begin_src python
+  labels.value_counts()
+  labels.unique()
+  # see the comparison between the original and our new categories.
+  len(labels.unique())
+  len(df['Bill Type Raw'].unique())
+#+end_src
+
+Are there any other cleaning steps we'd want to do?
+- remove labels that appear 1 time? less than 3 times?
+
+**** Final step — MultiLabelBinarizer
+To train a classifier, we would create a "sparse" matrix. A sparse
+matrix has 0s and 1s to indicate the presence of a category.
+
+We will use the library ~sklearn~.
+
+#+begin_src python
+  from sklearn.preprocessing import MultiLabelBinarizer
+
+  mlb = MultiLabelBinarizer()
+
+  Y = mlb.fit_transform(df["bill_type_labels"])
+#+end_src
+
+This creates an ~mlb~ object and ~Y~ object. The first contains our
+classes, and the second is our matrix.
+
+#+begin_src python
+
+  # all of our unique labels
+  mlb.classes_
+
+  # scary matrix...
+  Y
+
+  # see that we have the same number of rows as bills
+  # and we have the same number of columns as labels!!
+  Y.shape()
+
+#+end_src
+
+**** our workflow
+
+RAW BILL TYPE
+      │
+      ▼
+Preserve original
+      │
+      ▼
+Split on "/"
+      │
+      ▼
+Clean whitespace
+      │
+      ▼
+MultiLabelBinarizer
+      │
+      ▼
+0 / 1 matrix
+
+** week 3:
