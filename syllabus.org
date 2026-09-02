@@ -423,6 +423,11 @@ Activities:
   https://www.youtube.com/playlist?list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI
 - Language Modelling — The Complete Guide — Language Modelling — The
   Complete Guide. https://karam-nus.github.io/language-modelling/.
+- py4u blog. “Python Web Scraping: Why Requests Triggers Cloudflare
+  Security (But Urllib Doesn’t) – Solutions Explained.” Py4u, December
+  1, 2025.
+  https://www.py4u.org/blog/python-s-requests-triggers-cloudflare-s-security-while-urllib-does-not/.
+
 
 ** Policies
 

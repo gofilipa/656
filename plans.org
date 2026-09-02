@@ -80,66 +80,95 @@ One solution:
 - libraries
 
 ** week 2: data & bias
-
 *** cleaning a dataset
-- involves knowing what you can know from a dataset
+- how to create a virtual environment
+- exploring a dataset
 - decide what you want to predict
+- cleaning the dataset accordingly 
 
-Inspect the dataset in groups. 
+**** create virtual environment for ml packages 5-10
+#+begin_src console
+  # make a new folder for our work
+  cd Desktop
+  mkdir 656-notebooks
+  
+  # create and activate the environment
+  conda create --name ml-env pandas scikit-learn ipykernel
+  conda activate ml-env
 
-**** preliminary exploration
+  # now add the kernel to use on Jupyter
+  ipython kernel install --user --name=ml-env
+#+end_src
+
+Your conda environment will be installed in
+
+~/Users/fcalado/.conda/envs/ml-env/bin/python~
+
+Your kernel will be installed at:
+
+~/Users/fcalado/Library/Jupyter/kernels/ml-env~
+
+**** access dataset
+https://bit.ly/lgbtq-legislation-2025
+
+Go to the sheet, navigate to the "Anti-LGBTQ Bills", download as csv.
+
+**** preliminary exploration 5-10 
 
 #+begin_src python
 
   import pandas as pd
 
-  df = pd.read_csv("2026-bills.csv")
+  df = pd.read_csv("2025-bills.csv")
 
   df.shape
   df.info()
   df.head()
-  df.value_counts('Bill_Type')
+  df.columns
   df['State']
+  df.value_counts('State')
+  df.value_counts('Bill_Type')
 #+end_src
 
-**** "enacted"
-
-Let's create a sub-df with just bills which are "enacted"
-
-#+begin_src python
-  enacted = df['Manual Status'] == 'Enacted'
-#+end_src
-
-What kinds of questions can we ask about this data?
-- what is the Bill Type that's likely to be enacted?
-- in which State is a bill likely to be enacted?
-
-**** what do we want to predict?
-- think about which of these columns can be used to guess about
-  another column. 
+**** GROUPS: close reading dataset in groups, 20-30 minutes
+- pass out the printout
+- what kind of predictions could we make from the data? 10 min
+  - think about which of these columns can be used to guess about
+    another column.
+    - Example:
+    - what states are likely to have "Worst" risk?
+- share 20 min
 - how to label a bill based on its summary and notes.
   - Summary + Notes = Bill Type
-- other things which could be interesting, but we won't pursue (for
-  now):
-  - Enacted - what states/sponsors/types are likely to be enacted?
-  - Sponsors - are there any patterns in who is sponsoring certain
-    bills?
-  - State - are there patterns in which states have certain bills?
-
-**** cleaning 
+  - other things which could be interesting, but we won't pursue (for
+    now):
+    - Sponsors - are there any patterns in who is sponsoring certain
+      bills?
+    - State - are there patterns in which states have certain bill
+      types? or how many bills per state?
+- the decisions we make about prediction will affect the way we clean
+  and process the dataset.
+- for looking at "worst" we might want to create a new dataframe of
+  just worst bills for Youth State Risk. 
+#+begin_src python
+  worst = df['Youth State Risk'] == 'Worst'
+#+end_src
+**** cleaning
+- we are looking to predict bill type based on summary and notes
 - we need three columns: summary, notes, bill type
-  - examine each column to look for inconsistencies
+  - spend a couple of minutes looking at the column. Check for
+    inconsistencies, things we'd want to standardize or regularize. 
   - what do we need to clean from each column, if at all?
 
-Start with Bill Type. What are the most frequent values for this
-column?
+We can also use pandas to do this programmatically. What are the most
+frequent values for this column?
 
 #+begin_src python
   df["Bill Type"].value_counts()
 #+end_src
 
-There are 218 different labels. That's because we have examples like
-the one below. We need to cut these down.
+There are 298 different labels. That's because we have examples like
+the one below. 
 
 #+begin_quote
 "DEI Ban"
@@ -148,29 +177,26 @@ the one below. We need to cut these down.
 "DEI Ban  "
 #+end_quote
 
-First, preserve the original.
+So we decide that we want to cut down the inconsistent labels. First,
+preserve the original.
 
 #+begin_src python
   df["Bill Type Raw"] = df["Bill Type"]
 #+end_src
 
-Then, let's split up the long string into individual ones.
+Second, let's split up the long string into individual ones.
 
 #+begin_src python
   df["Bill Type"].str.split("/")
 #+end_src
 
-Now, create a new column for the split labels. 
+Third, create a new column for the split labels. 
 
 #+begin_src python
-  df["bill_type_labels"] = (
-    df["Bill Type"]
-    .fillna("")
-    .str.split("/")
-)
+df["bill_type_labels"] = df["Bill Type"].str.split("/").fillna("")
 #+end_src
 
-Use strip() to remove white spaces.
+Fourth, strip() to remove white spaces.
 
 #+begin_src python
   def clean_labels(labels):
@@ -186,7 +212,7 @@ print(df["Bill Type Raw"].iloc[0])
 print(df["bill_type_labels"].iloc[0])
 #+end_src
 
-Now, to pull out the individual lable, use ~explode()~
+Fifth, pull out the individual label, use ~explode()~
 
 #+begin_src python
   labels = df["bill_type_labels"].explode()
@@ -205,7 +231,7 @@ We can ask how many times each label is used!
 Are there any other cleaning steps we'd want to do?
 - remove labels that appear 1 time? less than 3 times?
 
-**** Final step — MultiLabelBinarizer
+**** final step — MultiLabelBinarizer
 To train a classifier, we would create a "sparse" matrix. A sparse
 matrix has 0s and 1s to indicate the presence of a category.
 
@@ -238,21 +264,24 @@ classes, and the second is our matrix.
 
 **** our workflow
 
-RAW BILL TYPE
-      │
-      ▼
-Preserve original
-      │
-      ▼
-Split on "/"
-      │
-      ▼
-Clean whitespace
-      │
-      ▼
-MultiLabelBinarizer
-      │
-      ▼
+RAW BILL TYPE ->
+
+Preserve original ->
+
+Split on "/" ->
+
+Create new column with no NANs ->
+
+Clean whitespace ->
+
+MultiLabelBinarizer ->
+
 0 / 1 matrix
 
+*** break
+*** provocations sharing 30 minutes
+- in partners, share your provocations. 5 minutes.
+- share out with the class. 10 minutes. 
+*** continue cleaning
+*** start homework
 ** week 3:

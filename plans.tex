@@ -1,4 +1,4 @@
-% Created 2026-08-26 Wed 11:25
+% Created 2026-09-02 Wed 08:52
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -26,16 +26,18 @@
 
 \tableofcontents
 
-\section{week 1: introduction}
-\label{sec:orgbbf74a4}
-\subsection{introductions, 15}
-\label{sec:org8d62016}
+\section{plans}
+\label{sec:org437a0a6}
+\subsection{week 1: introduction}
+\label{sec:org2ec7a61}
+\subsubsection{introductions, 15}
+\label{sec:org2ebb024}
 \begin{itemize}
 \item your name, program, pronouns, last thing you watched in transit
 \end{itemize}
 
-\subsection{syllabus review, 20}
-\label{sec:org26c905d}
+\subsubsection{syllabus review, 20}
+\label{sec:org2fe9e86}
 2 main goals of the course:
 \begin{itemize}
 \item traditional ML education:
@@ -58,8 +60,8 @@ in your job.
 The main assignment of the course is actually a paper, a conference
 paper. Requires you to know and respond to the most current research. 
 
-\subsection{HAI article, 40-45}
-\label{sec:orgf2d8188}
+\subsubsection{HAI article, 40-45}
+\label{sec:org4a14726}
 \begin{itemize}
 \item Read the article \& answer prompts, 15 minutes
 \begin{itemize}
@@ -88,14 +90,12 @@ not being a good fit.
 \end{itemize}
 \end{itemize}
 
-\subsection{break}
-\label{sec:org8e15dc4}
-\subsection{python challenge, 30}
-\label{sec:orgdd73547}
+\subsubsection{break}
+\label{sec:orgeff8e77}
+\subsubsection{python challenge, 30}
+\label{sec:org51b56a4}
 Write some python code that contains the following components below.
-Try to do it without a coding tool. But if you must, know that you
-will have to explain (and therefore know) what each line of code is
-doing.
+Use a blank sheet of paper to code.
 
 Required:
 \begin{itemize}
@@ -123,10 +123,10 @@ greeting('Filipa')
 \begin{verbatim}
 Hello Filipa, como te sientes?
 \end{verbatim}
-\subsection{share, 20-30}
-\label{sec:orga90dd42}
-\subsection{python refresher (if time)}
-\label{sec:orgc10f4ba}
+\subsubsection{share, 20-30}
+\label{sec:org55de924}
+\subsubsection{python refresher (if time)}
+\label{sec:org03be252}
 \begin{itemize}
 \item data types
 \item variables
@@ -137,4 +137,211 @@ Hello Filipa, como te sientes?
 \item dictionaries
 \item libraries
 \end{itemize}
+
+\subsection{week 2: data \& bias}
+\label{sec:org95f2d9d}
+\subsubsection{provocations sharing 30 minutes}
+\label{sec:org4de0343}
+\begin{itemize}
+\item in partners, share your provocations. 5 minutes.
+\item share out with the class. 10 minutes.
+\end{itemize}
+\subsubsection{cleaning a dataset}
+\label{sec:org75981c6}
+\begin{itemize}
+\item knowing the elements \& limitations of a dataset
+\item decide what you want to predict
+\item cleaning the dataset accordingly
+\end{itemize}
+
+\begin{enumerate}
+\item preliminary exploration
+\label{sec:org15ff9df}
+
+\begin{verbatim}
+
+import pandas as pd
+
+df = pd.read_csv("2026-bills.csv")
+
+df.shape
+df.info()
+df.head()
+df.value_counts('Bill_Type')
+df['State']
+\end{verbatim}
+
+\item GROUPS: close reading dataset in groups, 10 minutes
+\label{sec:org8a3a857}
+\begin{itemize}
+\item pass out the printout
+\item what kind of predictions could we make from the data?
+\begin{itemize}
+\item think about which of these columns can be used to guess about
+another column.
+\begin{itemize}
+\item Example:
+\item what states are likely to have bills become "enacted"?
+\item \texttt{enacted = df['Manual Status'] == 'Enacted'}
+\end{itemize}
+\item how to label a bill based on its summary and notes.
+\begin{itemize}
+\item Summary + Notes = Bill Type
+\end{itemize}
+\item other things which could be interesting, but we won't pursue (for
+now):
+\begin{itemize}
+\item Enacted - what states/sponsors/types are likely to be enacted?
+\item Sponsors - are there any patterns in who is sponsoring certain
+bills?
+\item State - are there patterns in which states have certain bills?
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\item example: "enacted"
+\label{sec:orgfb11acf}
+
+Let's create a sub-df with just bills which are "enacted"
+
+
+
+What kinds of questions can we ask about this data?
+\begin{itemize}
+\item what is the Bill Type that's likely to be enacted?
+\end{itemize}
+
+\item cleaning
+\label{sec:org0968aa5}
+\begin{itemize}
+\item we need three columns: summary, notes, bill type
+\begin{itemize}
+\item examine each column to look for inconsistencies
+\item what do we need to clean from each column, if at all?
+\end{itemize}
+\end{itemize}
+
+Start with Bill Type. What are the most frequent values for this
+column?
+
+\begin{verbatim}
+df["Bill Type"].value_counts()
+\end{verbatim}
+
+There are 218 different labels. That's because we have examples like
+the one below. We need to cut these down.
+
+\begin{quote}
+"DEI Ban"
+"DEI Ban "
+" DEI Ban"
+"DEI Ban  "
+\end{quote}
+
+First, preserve the original.
+
+\begin{verbatim}
+df["Bill Type Raw"] = df["Bill Type"]
+\end{verbatim}
+
+Then, let's split up the long string into individual ones.
+
+\begin{verbatim}
+df["Bill Type"].str.split("/")
+\end{verbatim}
+
+Now, create a new column for the split labels. 
+
+\begin{verbatim}
+  df["bill_type_labels"] = (
+    df["Bill Type"]
+    .fillna("")
+    .str.split("/")
+)
+\end{verbatim}
+
+Use strip() to remove white spaces.
+
+\begin{verbatim}
+def clean_labels(labels):
+  return [label.strip() for label in labels]
+
+df["bill_type_labels"] = df["bill_type_labels"].apply(clean_labels)
+\end{verbatim}
+
+Make the difference between these two columns visible.
+
+\begin{verbatim}
+print(df["Bill Type Raw"].iloc[0])
+print(df["bill_type_labels"].iloc[0])
+\end{verbatim}
+
+Now, to pull out the individual lable, use \texttt{explode()}
+
+\begin{verbatim}
+labels = df["bill_type_labels"].explode()
+\end{verbatim}
+
+We can ask how many times each label is used!
+
+\begin{verbatim}
+labels.value_counts()
+labels.unique()
+# see the comparison between the original and our new categories.
+len(labels.unique())
+len(df['Bill Type Raw'].unique())
+\end{verbatim}
+
+Are there any other cleaning steps we'd want to do?
+\begin{itemize}
+\item remove labels that appear 1 time? less than 3 times?
+\end{itemize}
+
+\item final step — MultiLabelBinarizer
+\label{sec:org402827e}
+To train a classifier, we would create a "sparse" matrix. A sparse
+matrix has 0s and 1s to indicate the presence of a category.
+
+We will use the library \texttt{sklearn}.
+
+\begin{verbatim}
+from sklearn.preprocessing import MultiLabelBinarizer
+
+mlb = MultiLabelBinarizer()
+
+Y = mlb.fit_transform(df["bill_type_labels"])
+\end{verbatim}
+
+This creates an \texttt{mlb} object and \texttt{Y} object. The first contains our
+classes, and the second is our matrix.
+
+\begin{verbatim}
+
+# all of our unique labels
+mlb.classes_
+
+# scary matrix...
+Y
+
+# see that we have the same number of rows as bills
+# and we have the same number of columns as labels!!
+Y.shape()
+
+\end{verbatim}
+
+\item our workflow
+\label{sec:org1a58366}
+
+RAW BILL TYPE -> Preserve original -> Split on "/" -> Clean whitespace
+-> MultiLabelBinarizer -> 0 / 1 matrix
+\end{enumerate}
+
+\subsubsection{break}
+\label{sec:orge1ba7b3}
+\subsubsection{continue cleaning}
+\label{sec:org0eecd56}
+\subsubsection{start homework}
+\label{sec:org1b7d2c9}
+\subsection{week 3:}
+\label{sec:org5b38d50}
 \end{document}
