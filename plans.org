@@ -293,7 +293,7 @@ MultiLabelBinarizer ->
 - practice with sci-kit learn
 - time to practice on own datasets
 
-*** Overview of Linear Regression
+*** overview of Linear Regression
 
 **** "linear" relationships
 What is the relationship between the three columns, going row by row?
@@ -398,6 +398,7 @@ Once you get the lowest possible value for w, then you plug it back
 into the line function, and you're done!
 
 *** scikit learn
+From datacamp: https://www.datacamp.com/tutorial/sklearn-linear-regression
 
 **** loading, prepping data
 #+begin_quote console

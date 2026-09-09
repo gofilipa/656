@@ -1,4 +1,4 @@
-% Created 2026-09-02 Wed 11:05
+% Created 2026-09-08 Tue 17:56
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -26,242 +26,420 @@
 
 \tableofcontents
 
-\section{week 2: data \& bias}
-\label{sec:org2d350b5}
-\subsection{cleaning a dataset}
-\label{sec:org72c7813}
+\section{week 3: linear regression}
+\label{sec:org0881e23}
 \begin{itemize}
-\item how to create a virtual environment
-\item exploring a dataset
-\item decide what you want to predict
-\item cleaning the dataset accordingly
+\item intuit linear regression
+\item hypothesis, loss, gradient descent
+\item practice with sci-kit learn
+\item break
+\item intuit logistic regression
+\item practice with sci-kit learn
+\item time to practice on own datasets
 \end{itemize}
 
-\subsubsection{create virtual environment for ml packages 5-10}
-\label{sec:org223ce76}
-\begin{verbatim}
-# make a new folder for our work
-cd Desktop
-mkdir 656-notebooks
+\subsection{overview of Linear Regression}
+\label{sec:org00df41c}
 
-# create and activate the environment
-conda create --name ml-env pandas scikit-learn ipykernel
-conda activate ml-env
+\subsubsection{"linear" relationships}
+\label{sec:org1a84069}
+What is the relationship between the three columns, going row by row?
+What is the pattern hidden in each row?
 
-# now add the kernel to use on Jupyter
-ipython kernel install --user --name=ml-env
-\end{verbatim}
+\begin{center}
+\begin{tabular}{rrr}
+a & b & c\\[0pt]
+\hline
+4 & 2 & 8\\[0pt]
+1 & 2 & 5\\[0pt]
+0 & 5 & 10\\[0pt]
+2 & 1 & 4\\[0pt]
+\end{tabular}
+\end{center}
 
-Your conda environment will be installed in
+a*2 + b = c
 
-\texttt{/Users/fcalado/.conda/envs/ml-env/bin/python}
+This is what's called a linear relationship.
 
-Your kernel will be installed at:
+\subsubsection{"supervised learning"}
+\label{sec:orge49327d}
+When the data is labeled in some way. We will see examples of learning
+where the data is not labeled at all, next week. 
 
-\texttt{/Users/fcalado/Library/Jupyter/kernels/ml-env}
+\subsubsection{defintion}
+\label{sec:orgb5119b9}
+Linear Regression is a supervised learning algorithm that predicts
+continuous values based on one or more input variables. It fits a
+straight line that best represents the data.
 
-\subsubsection{access dataset}
-\label{sec:org2b37082}
-\url{https://bit.ly/lgbtq-legislation-2025}
+The goal of linear regression is to find a straight line that
+\emph{minimizes the error} (the difference) between the observed data
+points and the predicted values. This line helps us predict the
+dependent variable for new, unseen data.
 
-Go to the sheet, navigate to the "Anti-LGBTQ Bills", download as csv.
+\subsubsection{graphing linear regresssion}
+\label{sec:org3389ad6}
 
-\subsubsection{preliminary exploration 5-10}
-\label{sec:org72ea1e9}
-
-\begin{verbatim}
-
-import pandas as pd
-
-df = pd.read_csv("2025-bills.csv")
-
-df.shape
-df.info()
-df.head()
-df.columns
-df['State']
-df.value_counts('State')
-df.value_counts('Bill_Type')
-\end{verbatim}
-
-\subsubsection{GROUPS: close reading dataset in groups, 20-30 minutes}
-\label{sec:org36b7d5c}
+Housing example:
 \begin{itemize}
-\item pass out the printout
-\item what kind of predictions could we make from the data? 10 min
+\item you have a dataset of house size and their prices.
+\item the larger the house, the higher the price
+\item linear regression wants to find the line that cuts through the
+most points as possible
+\item the size of the houses is the X
 \begin{itemize}
-\item think about which of these columns can be used to guess about
-another column.
-\begin{itemize}
-\item Example:
-\item what states are likely to have "Worst" risk?
+\item input variable
 \end{itemize}
-\end{itemize}
-\item share 20 min
-\item how to label a bill based on its summary and notes.
+\item the price is the Y
 \begin{itemize}
-\item Summary + Notes = Bill Type
-\item other things which could be interesting, but we won't pursue (for
-now):
-\begin{itemize}
-\item Sponsors - are there any patterns in who is sponsoring certain
-bills?
-\item State - are there patterns in which states have certain bill
-types? or how many bills per state?
+\item target variable -> what we want to predict
 \end{itemize}
-\end{itemize}
-\item the decisions we make about prediction will affect the way we clean
-and process the dataset.
-\item for looking at "worst" we might want to create a new dataframe of
-just worst bills for Youth State Risk.
-\end{itemize}
-\begin{verbatim}
-worst = df['Youth State Risk'] == 'Worst'
-\end{verbatim}
-\subsubsection{cleaning}
-\label{sec:orgc78b895}
-\begin{itemize}
-\item we are looking to predict bill type based on summary and notes
-\item we need three columns: summary, notes, bill type
-\begin{itemize}
-\item spend a couple of minutes looking at the column. Check for
-inconsistencies, things we'd want to standardize or regularize.
-\item what do we need to clean from each column, if at all?
-\end{itemize}
+\item (x, y) is a single training example
 \end{itemize}
 
-We can also use pandas to do this programmatically. What are the most
-frequent values for this column?
+\subsubsection{3 formulas under the hood}
+\label{sec:orgb7bab30}
+You want Y to represent a straight line.
+\begin{itemize}
+\item What is the formula for a line?
+\item w,b are coefficients, parameters.
+\end{itemize}
 
 \begin{verbatim}
-df["Bill Type"].value_counts()
+Y = mx + b
+
+or,
+
+f(x) = wx + b
 \end{verbatim}
 
-There are 298 different labels. That's because we have examples like
-the one below. 
+Some intuition:
+\begin{itemize}
+\item f(x) = 0*x + 1.5
+\begin{itemize}
+\item w = 0, b = 1.5
+\item the line starts at y = 1.5 and runs horizontal (flat) across the x
+axis)
+\end{itemize}
+\item f(x) = 0.5*x + 0
+\begin{itemize}
+\item w = .5 (which is really .5/1)
+\item b = 0
+\end{itemize}
+\item f(x) = .5*x + 1
+\begin{itemize}
+\item is actually the same line as above, but starts at 1
+\end{itemize}
+\end{itemize}
 
+\textbf{\textbf{The goal, as you can see above, is to have right values for w,b so
+that you can fit a straight line best through the data.}}
+
+So how do you find these values for w,b?
+\begin{itemize}
+\item we need to measure how well our line fits our data.
+\item you start with the cost function:
+\begin{itemize}
+\item measures the error between our prediction and the actual value
+\item MSE - mean squared error (squared to get rid of negatives)
+\end{itemize}
+\end{itemize}
+
+\begin{verbatim}
+(y(hat) - y^i)^2
+\end{verbatim}
+
+The cost function takes J as its variable.
+\begin{itemize}
+\item you want to get the smallest J possible.
+\item you want to minimize the error bewteen the prediction and the actual
+value.
+\item the J graph is actually a parabola -- there is a lowest point for J,
+and that is what we want.
+\begin{itemize}
+\item we input differnt values of w until we get the lowest value for J.
+\item see Andrew Ng, \#12 Machine Learning Specialization [Course 1, Week
+1, Lesson 3]
+\end{itemize}
+\end{itemize}
+
+But how do we know what values to pick for w that will minimize J?
+\begin{itemize}
+\item you use the gradient descent algorithm
+\item gradient descent finds where to minimize w.
+\begin{itemize}
+\item the formula takes current w and updates it by subtracting a
+"derivative" of w from w.
+\end{itemize}
+\end{itemize}
+
+\begin{verbatim}
+w = w - derivative of w
+\end{verbatim}
+
+Once you get the lowest possible value for w, then you plug it back
+into the line function, and you're done!
+
+\subsection{scikit learn}
+\label{sec:orgbc556f6}
+From datacamp: \url{https://www.datacamp.com/tutorial/sklearn-linear-regression}
+
+\subsubsection{loading, prepping data}
+\label{sec:org12b1c2b}
 \begin{quote}
-"DEI Ban"
-"DEI Ban "
-" DEI Ban"
-"DEI Ban  "
+
+
+conda activate 656-ml
+conda install matplotlib seaborn
 \end{quote}
 
-So we decide that we want to cut down the inconsistent labels. First,
-preserve the original.
+Importing libraries, loading data
 
 \begin{verbatim}
-df["Bill Type Raw"] = df["Bill Type"]
+# Import libraries.
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Let's use the well-known California housing dataset.
+
+# Read in California housing dataset.
+from sklearn.datasets import fetch_california_housing
+
+
+housing = fetch_california_housing()
 \end{verbatim}
 
-Second, let's split up the long string into individual ones.
-
-\begin{verbatim}
-df["Bill Type"].str.split("/")
-\end{verbatim}
-
-Third, create a new column for the split labels. 
-
-\begin{verbatim}
-df["bill_type_labels"] = df["Bill Type"].str.split("/").fillna("")
-\end{verbatim}
-
-Fourth, strip() to remove white spaces.
-
-\begin{verbatim}
-def clean_labels(labels):
-  return [label.strip() for label in labels]
-
-df["bill_type_labels"] = df["bill_type_labels"].apply(clean_labels)
-\end{verbatim}
-
-Make the difference between these two columns visible.
-
-\begin{verbatim}
-print(df["Bill Type Raw"].iloc[0])
-print(df["bill_type_labels"].iloc[0])
-\end{verbatim}
-
-Fifth, pull out the individual label, use \texttt{explode()}
-
-\begin{verbatim}
-labels = df["bill_type_labels"].explode()
-\end{verbatim}
-
-We can ask how many times each label is used!
-
-\begin{verbatim}
-labels.value_counts()
-labels.unique()
-# see the comparison between the original and our new categories.
-len(labels.unique())
-len(df['Bill Type Raw'].unique())
-\end{verbatim}
-
-Are there any other cleaning steps we'd want to do?
+Preparing the data
 \begin{itemize}
-\item remove labels that appear 1 time? less than 3 times?
+\item Let's split the data into training and testing sets.
+\item We import the train\_test\_split() method from
+sklearn.model\_selection, then invoke it, specifying a test set
+percentage, and a random\_state.
+\item We'll also use simple linear regression, using the feature
+corresponding to the average number of rooms.
 \end{itemize}
 
-\subsubsection{final step — MultiLabelBinarizer}
-\label{sec:org8326a48}
-To train a classifier, we would create a "sparse" matrix. A sparse
-matrix has 0s and 1s to indicate the presence of a category.
-
-We will use the library \texttt{sklearn}.
-
 \begin{verbatim}
-from sklearn.preprocessing import MultiLabelBinarizer
+# Import train_test_split.
+from sklearn.model_selection import train_test_split
 
-mlb = MultiLabelBinarizer()
 
-Y = mlb.fit_transform(df["bill_type_labels"])
+# Create features X and target y.
+X = pd.DataFrame(housing.data, columns=housing.feature_names)[["AveRooms"]]
+y = housing.target  # Median house value in $100,000s
+
+
+# Split the dataset into training (80%) and testing (20%) sets.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Examine our training data
+
+X_train
 \end{verbatim}
 
-This creates an \texttt{mlb} object and \texttt{Y} object. The first contains our
-classes, and the second is our matrix.
+Now that we've split the data into test and train sets, let's
+standardize features. This process ensures that all variables are on
+the same scale, which can improve model performance and numerical
+stability.
 
 \begin{verbatim}
+# Import StandardScaler.
+from sklearn.preprocessing import StandardScaler
 
-# all of our unique labels
-mlb.classes_
+# Instantiate StandardScaler.
+scaler = StandardScaler()
 
-# scary matrix...
-Y
+# Fit and transform training data.
+X_train_scaled = scaler.fit_transform(X_train)
 
-# see that we have the same number of rows as bills
-# and we have the same number of columns as labels!!
-Y.shape()
-
+# Also transform test data.
+X_test_scaled = scaler.transform(X_test)
 \end{verbatim}
 
-\subsubsection{our workflow}
-\label{sec:orga45adee}
+In this code, StandardScaler is a data preprocessing tool used to
+remove the mean and scale features to unit variance. This helps
+prevent certain features from dominating the model due to differences
+in scale.
+\begin{itemize}
+\item Compare X\_train with X\_train\_scaled to see the difference.
+\end{itemize}
 
-RAW BILL TYPE ->
+\subsubsection{training the model}
+\label{sec:orga9df5ca}
+Now, we will train the linear regression model
+\begin{itemize}
+\item To create a linear regression model, import LinearRegression() from
+sklearn.linear\_model. Invoke it and assign it to a variable.
+\end{itemize}
 
-Preserve original ->
+\begin{verbatim}
+# Import LinearRegression.
+from sklearn.linear_model import LinearRegression
 
-Split on "/" ->
 
-Create new column with no NANs ->
+# Instantiate linear regression model.
+model = LinearRegression()
 
-Clean whitespace ->
+# Fit the model to the training data.
+model.fit(X_train_scaled, y_train)
+\end{verbatim}
 
-MultiLabelBinarizer ->
+See coefficients:
+\begin{itemize}
+\item this is the weight, the "w", which is multiplied by all of the
+inputs in the x column.
+\end{itemize}
 
-0 / 1 matrix
+\begin{verbatim}
+model.coef_
+\end{verbatim}
+
+Making predictions
+\begin{itemize}
+\item Now that we've trained our model, we make predictions on the test
+set.
+\end{itemize}
+
+\begin{verbatim}
+# Make predictions on the testing data.
+y_pred = model.predict(X_test_scaled)
+
+# see our predictions
+y_pred
+\end{verbatim}
+
+\subsubsection{evaluating performance}
+\label{sec:org8886fef}
+Now that we've made predictions on the test set, we need to know how
+well they match with reality. There are several metrics available to
+evaluate the performance of a regression algorithm. Some of the most
+common ones are the coefficient of determination (R2), mean squared
+error (MSE), and root mean squared error (RMSE).
+
+The coefficient of determination, denoted R2, measures how well a
+regression model explains the variability of the target variable. In
+other words, it quantifies how much of the variability in the target
+variable is explained by the predictors, known as the goodness of fit.
+
+How do we interpret R2?
+
+R2 = 1: the model perfectly explains all the variance in the
+target variable.
+
+R2 = 0: the model explains none of the variance; predictions are
+no better than simply using the mean.
+
+R2 < 0: The model performs worse than simply using the mean,
+indicating a poor fit.
+
+\begin{verbatim}
+# Import metrics.
+from sklearn.metrics import mean_squared_error, r2_score
+
+
+# Calculate and print R^2 score.
+r2 = r2_score(y_test, y_pred)
+print(f"R-squared: {r2:.4f}")
+\end{verbatim}
+
+MSE calculates the average squared difference between actual and
+predicted values.
+
+\begin{verbatim}
+# Calculate and print MSE.
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean squared error: {mse:.4f}")
+\end{verbatim}
+
+\subsubsection{multiple linear regression}
+\label{sec:org980fb4a}
+
+Let's rerun the model using all of our available features, not just
+the average number of rooms. Do you expect better or worse results?
+
+\begin{verbatim}
+# Uses all features.
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+
+# Load data set.
+housing = fetch_california_housing()
+
+
+# Split into X, y.
+X = pd.DataFrame(housing.data, columns=housing.feature_names)
+y = housing.target  # Median house value in $100,000s
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+# Scale the data.
+scaler = StandardScaler()
+
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+
+# Create model and fit it to the training data.
+model = LinearRegression()
+model.fit(X_train_scaled, y_train)
+
+
+# Make predictions.
+y_pred = model.predict(X_test_scaled)
+
+
+# Calculate and print errors.
+r2 = r2_score(y_test, y_pred)
+print(f"R-squared: {r2:.4f}")
+
+
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean squared error: {mse:.4f}")
+
+
+rmse = mse ** 0.5
+print(f"Root mean squared error: {rmse:.4f}")
+\end{verbatim}
+
+We see the results are quite a bit better than when using only one
+feature. However, this raises the question of whether we need all the
+features. Are some features more relevant than others? Choosing the
+most relevant features from the dataset is known as feature selection.
+
+Feature selection is important for a number of reasons.
+\begin{itemize}
+\item Improves accuracy. Removing irrelevant or redundant features helps
+the model focus on meaningful patterns.
+\item Speeds up training. Reducing the number of features decreases
+computational time and memory usage.
+\end{itemize}
 
 \subsection{break}
-\label{sec:orgb4ef899}
-\subsection{provocations sharing 30 minutes}
-\label{sec:orgbed251e}
+\label{sec:org3c9b5fc}
+\subsection{logistic regression}
+\label{sec:org7e74d0a}
 \begin{itemize}
-\item in partners, share your provocations. 5 minutes.
-\item share out with the class. 10 minutes.
+\item wants to predict categories, classes, categorical values.
 \end{itemize}
-\subsection{continue cleaning}
-\label{sec:orga619b0c}
-\subsection{start homework}
-\label{sec:orgd5e1a68}
+
+
+\subsection{notes}
+\label{sec:org4d72342}
+
+Linear regression formula:
+
+y(w,x) = w0 + w1x1 + \ldots{} + wpxp
+
+Ordinary Least Squares
 \end{document}

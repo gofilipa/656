@@ -97,8 +97,8 @@ By the end of the course, students will be able to:
 
 ** Course Requirements
 *** Sources and Materials
-All materials will be linked via the syllabus or available to download
-on the course github at https://github.com/gofilipa/656
+Class notebooks are available at:
+https://github.com/gofilipa/656/tree/main/class-notebooks
 
 *** Assignments
 *Participation in class discussion*. 20% of final grade. Because we
