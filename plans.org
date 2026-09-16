@@ -310,10 +310,6 @@ a*2 + b = c
 
 This is what's called a linear relationship.
 
-**** "supervised learning"
-When the data is labeled in some way. We will see examples of learning
-where the data is not labeled at all, next week. 
-
 **** defintion
 Linear Regression is a supervised learning algorithm that predicts
 continuous values based on one or more input variables. It fits a
@@ -323,6 +319,10 @@ The goal of linear regression is to find a straight line that
 /minimizes the error/ (the difference) between the observed data
 points and the predicted values. This line helps us predict the
 dependent variable for new, unseen data.
+
+**** "supervised learning"
+When the data is labeled in some way. We will see examples of learning
+where the data is not labeled at all, next week. 
 
 **** graphing linear regresssion
 
@@ -627,8 +627,21 @@ Feature selection is important for a number of reasons.
 
 *** break
 *** logistic regression
-- wants to predict categories, classes, categorical values.
 
+**** background
+- wants to predict categories, classes, categorical values.
+- takes linear regression, but applies it a probability on the range
+  from 0 to 1. 
+  - Maximum Likelihood Estimation - MLE - outputs a probability based
+    on assuming a normal distribution.
+    - this is a likelihood-maximization method
+  - versus Mean Squared Error - MSE - outputs a number, continuous. 
+    - this is a distance minimizing approximation method
+- uses the /sigmoid/ function (also logistic function), which gives an
+  S shaped curve depicting a decision boundary.
+
+**** running logistic regression with python
+See notebook on github.
 
 *** notes
 
@@ -638,4 +651,347 @@ y(w,x) = w0 + w1x1 + ... + wpxp
 
 Ordinary Least Squares
 
-** week 4: clustering
+** week 4: clustering & decision trees
+
+*** k-means
+
+**** introduction to k-means algorithm
+
+k-means is a new algorithm, different from the
+regression/classification work you've already been doing:
+
+> **Linear regression:** predict a number, supervised.
+- predicts the slope of a line, linear relation between x -> y
+
+> **Logistic regression:** predict a category/class, supervised.
+- predicts the decision boundary between two types, y is true/false.
+
+> **K-means:** predict clusters, unsupervised.
+- predicts where to draw y lines to create groupings of data x.
+
+These different algorithms work on different spreads of data, and
+different question of prediction.
+
+A note on unsupervised learning:
+- **K-means doesn't know what the groups mean. It only knows which
+  observations are similar to one another.**
+- the difference between **a computationally produced grouping and an
+  interpretive category**.
+
+**** plotting our data in python
+Suppose we have people described by:
+- `age`
+- `annual_income`
+
+#+begin_src python
+  import pandas as pd
+  import matplotlib.pyplot as plt
+
+  df = pd.read_csv("people.csv")
+
+  plt.scatter(df["age"], df["annual_income"])
+  plt.xlabel("Age")
+  plt.ylabel("Annual income")
+  plt.show()
+#+end_src
+
+Identify possible clusters
+- where are there potential groupings in this data?
+  
+**** intuition on the "centroid"
+Imagine three clusters of dots.
+
+K-means essentially does this:
+
+1. Pick `k` centers. (random)
+2. Assign each data point to the nearest center.
+3. Move each center to the middle of its assigned data points.
+4. Repeat.
+5. Stop when the centers aren't changing much.
+
+You can describe the algorithm without equations:
+- initialize centers randomly
+- assign points to nearest center
+- move centers to be in the middle of the assigned points
+- re-assign points
+- re-move centers
+
+The iterative nature is much easier to understand visually than
+mathematically.
+
+**** introduce `K`
+How many groups should we look for?
+- that's where `k` comes in.
+- K is the number of clusters we are asking the algorithm to find.
+  
+At first, k = 3.
+- However, K-means doesn't automatically know that there are three
+  meaningful groups. We tell it to look for three.
+
+**** do it in Python
+
+#+begin_src python
+  from sklearn.cluster import KMeans
+
+  X = df[["age", "annual_income"]]
+
+  model = KMeans(n_clusters=3, random_state=42)
+
+  model.fit(X)
+#+end_src
+
+Then create a new column for cluster labels
+
+#+begin_src python
+  df["cluster"] = model.labels_
+  df
+
+#+end_src
+
+What does cluster 1 mean?
+- We don't know yet
+- The algorithm has created the grouping
+- But we have to interpret it.
+
+Let's make the clustering visible.
+
+#+begin_src python
+plt.scatter( df["age"], df["annual_income"], c=df["cluster"])
+
+plt.xlabel("Age")
+plt.ylabel("Annual income")
+plt.show()
+#+end_src
+
+Now that you can see the groups, does this look like a reasonable
+grouping?
+
+What does each cluster represent? Calculate group characteristics.
+
+#+begin_src python
+  df.groupby("cluster")[["age", "annual_income"]].mean()
+#+end_src
+
+Now start to interpret:
+- Cluster 0 = older/lower income
+- Cluster 1 = younger/lower income
+- Cluster 2 = middle-aged/higher income
+
+Those labels are our interpretation, not something k-means discovered.
+
+**** scaling & comparing
+It is important to scale values, like we did with logistic regression
+- the high numbers of the salary are affecting the creation of the
+  clusters
+  - the numbers we give an algorithm affect the patterns it sees.
+  - we need to scale the larger values, like income
+- K-means uses **distance**, so income can dominate the calculation.
+
+Introduce:
+
+#+begin_src python
+  from sklearn.preprocessing import StandardScaler
+
+  scaler = StandardScaler()
+
+  X_scaled = scaler.fit_transform(X)
+
+  X_scaled # compare to just X
+#+end_src
+
+Then, re-train the model.
+
+#+begin_src python
+  model = KMeans(n_clusters=3, random_state=42)
+
+  model.fit(X_scaled)
+
+  df["cluster"] = model.labels_  model = KMeans(n_clusters=3, random_state=42)
+
+  model.fit(X_scaled)
+
+  df["cluster"] = model.labels_
+#+end_src
+
+Now, compare the plots.
+
+#+begin_src python
+  plt.scatter( df["age"], df["annual_income"], c=df["cluster"])
+
+  plt.xlabel("Age")
+  plt.ylabel("Annual income")
+  plt.show()
+#+end_src
+
+**** in groups: deliberately change ~k~ to find other possibilities
+
+#+begin_src python
+model = KMeans(n_clusters=2, random_state=42)
+model.fit(X)
+df["cluster"] = model.labels_
+df
+plt.scatter( df["age"], df["annual_income"], c=df["cluster"])
+
+plt.xlabel("Age")
+plt.ylabel("Annual income")
+plt.show()
+#+end_src
+
+Try different values for K and compare the plots. Which one is best?
+
+This is a great moment to complicate the idea of "machine learning
+finds patterns." Because **the answer depends partly on decisions made
+by the researcher.**
+
+---
+
+**** question: does k-means discover groups, or does it construct groups?
+
+K-means:
+- doesn't know what a group means
+- doesn't know whether the grouping is socially meaningful
+- doesn't know whether the features are appropriate
+- doesn't know whether `k = 3` is conceptually justified
+- doesn't know whether the data itself reflects bias
+- simply optimizes a mathematical criterion based on the
+  representations we provide
+
+So the computational output isn't the end of the analysis. The
+interpretation comes afterward.
+
+*** break
+*** decision tree intuition
+- create a graph of when you can go skiing in different parts of the
+  world.
+  - latitude on the Y axis; month of the year on the X axis
+- create splits of the data, and write conditions for each
+  split
+  - first, create condition of *y > 30*
+    - this is the first split of the decision tree.
+  - then, in that subgroup, split off *x < 3*.
+    - this is the second split in the decision tree. 
+  - so, if y > 30  && x < 3, then yes you can ski.
+  - you begin to partition out the dataset this way.
+    - by asking questions about each quantrant, you fill out the
+      decision tree.
+- what is a random forrest?
+  - a collection of decision trees.
+  - decision trees tend to overfit, which means they predict only what
+    they have seen in their training data, they don't generalize. 
+
+*** install git
+- check if you have it, ~git --verision~
+- if not, install via homebrew
+
+*** white collar crime
+- you're going to learn how to download and run an ML project from
+  github on your own computer
+- you're also going to learn how to understand what's going on, and to
+  change some of the variables
+  
+**** setting up a repo from an ML project
+- First, clone the repo on github
+  - ~https://github.com/gofilipa/whitecollarcrime~
+- cd into your Desktop (or wherever you save projects).
+- run:
+  - ~git clone https://github.com/gofilipa/whitecollarcrime.git~
+- then, cd into the repo and set up your enviornment:
+
+#+begin_src console
+  # create * activate an env
+  conda create --name whitecollar
+  conda activate whitecollar
+
+  # install packages from the env
+  cd whitecollar
+  pip install -r requirements.txt
+  
+  # if you get a permissions error:
+  sudo python -m pip install -r requirements.txt
+#+end_src
+
+**** investigating an ML project
+***** what are **three main components** to an ML experiment/project?
+- training data, made of predictors and target
+- model
+- evaluation metric
+
+#+begin_src python
+  X = predictors
+  y = target
+  model = machine_learning_algorithm
+  score = evaluation metric
+#+end_src
+
+***** from the reading, in partners, 10 minutes
+**For this particular experiment, what is X, y, model, and score?**
+
+#+begin_src python
+  X → crime statistics, liquor licenses,
+      tax-exempt organizations,
+      investment advisers
+      (also fines)
+
+  y → financial crime: yes/no
+      (also: fines & crimes)
+
+  model → Random Forest
+      (also linear regression?)
+
+  score → Cross Validation
+#+end_src
+
+***** investigate the script, in partners, 20m
+We are going to focus on the first ~RandomForest~ algorithm, which
+predicts the likelihood of crime.
+
+Now, examine the script, and see how these are defined. What goes into
+them?
+- For each variable, explain what it variable is, and how it is used
+  in the script (what it passed into it, and where its outputs go).
+- Examine any other variables, but focus on these highlighted below:
+
+#+begin_src python
+  X
+  y
+  m
+  # examine functions:
+  fit()
+  predict()
+  score()
+#+end_src
+
+| Variable        | What it is                        | How it is used                            |
+|-----------------+-----------------------------------+-------------------------------------------|
+| `X`             | **Input features/predictors**     | training data given to model              |
+| `y`             | **Target**                        | Whether crime occurred (`True`/`False`)   |
+| `features`      | List of predictor names           | variables that become `X`                 |
+| `y_fines`       | Target for fine amount            | Used for the second prediction model      |
+| `y_allegations` | Target for allegation types       | Used for the third prediction model       |
+| `X_pred`        | Features for the geographic areas | Given to models to generate predictions   |
+| `CRIME_TYPES`   | List of crime categories          | Defines some features that go into `X`    |
+| `data`          | Dict w/ information for geog area | Stores raw/processed data before modeling |
+| `predictions`   | Dictionary of model predictions   | Stores predictions for each geog area     |
+| `types`         | Names of allegation categories    | the allegation predictions                |
+
+What is:
+- cross validation
+- RandomForestClassifier
+
+There is a problem with the evaluation metric in this script. What is
+it?
+
+**** moving to predict-notebook.ipynb
+- load up all of the imports and data processing in individual cells
+- when arriving to the first model, stop adding code
+- import new models for Logistic Regression and Decision Tree
+- change to different models and compare
+- try logistic regression and decision trees
+- what does this tell you?
+- next step: examine what exactly is happening to the data in the data
+  processing stage.
+  
+*** next week: evaluation
+** week 5:
+
+** week 6:
