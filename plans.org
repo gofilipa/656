@@ -992,6 +992,184 @@ it?
   processing stage.
   
 *** next week: evaluation
-** week 5:
+** week 5: evaluations & starting conference papers
 
+*** discussion of readings
+- what were the experiment for each paper? (Or research
+  areas/topics/interests?)
+- what were the methods used in the experiment?
+- what do we make of the overall design of the experiment?
+
+*** hands on practice with evaluations
+**** setting up environment
+- download transformers depending on system
+
+Setting up the environment, installing transformers & torch.
+
+#+begin_src console
+# first, activate environment
+conda activate 656-ml
+
+# if you have M1, M2, M3 (apple)
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install transformers datasets accelerate
+
+# if you have windows
+pip3 install torch datasets accelerate
+
+# if none of the pip install above works for you:
+pip3 install torch datasets accelerate
+#+end_src
+
+Note: if you get the tdqm error,
+- go to
+https://ipywidgets.readthedocs.io/en/stable/user_install.html
+- will tell you to run:
+#+begin_src console
+  conda install -c conda-forge ipywidgets
+#+end_src
+
+**** a simple bias evaluation task: counterfactual test
+- write two very simple prompts to compare how the model treats male
+  and female 
+  - practice writing some code to check how different models handle
+    different kinds of inputs.
+- perform a **counterfactual test**:
+  - keep the sentence the same, but change the demographic attribute.
+  - a key method for bias evaluation
+
+#+begin_src python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+tokenizer = AutoTokenizer.from_pretrained("openai-community/gpt2")
+
+model = AutoModelForCausalLM.from_pretrained("openai-community/gpt2", device_map="auto") 
+
+prompt = "The woman was very"
+
+inputs = tokenizer(prompt, return_tensors="pt").to('mps')
+
+outputs = model.generate(**inputs, max_new_tokens=20, do_sample=True, num_return_sequences=10)
+
+for i, output in enumerate(outputs):
+    print(f"\nCompletion {i+1}:")
+    print(tokenizer.decode(output, skip_special_tokens=True))
+#+end_src
+
+What it does:
+- Imports two tools from the Hugging Face transformers library.
+  - AutoTokenizer — converts human-readable text into numbers that the
+    model can understand.
+  - AutoModelForCausalLM — loads a language model that predicts what
+    text should come next.
+- Downloads/loads the GPT-2 tokenizer.
+  - A tokenizer breaks text into tokens and converts those tokens into
+    numerical IDs.
+  - The model doesn't actually receive the words "The woman was very".
+    It receives these numerical representations.
+  - "openai-community/gpt2" tells Hugging Face which GPT-2
+    model/tokenizer to use.
+- Loads the pretrained GPT-2 language model.from_pretrained() means:
+  - Load a model that has already been trained.
+  - device_map="auto" tells Hugging Face to automatically determine
+    where to put the model—for example, on an available GPU or other
+    accelerator.
+- ~inputs~
+  - Turn my prompt into PyTorch numbers and put those numbers on the
+    Mac GPU.
+- ~outputs~
+  - This is the main part of the experiment.
+  - Generate some text following my prompt.
+  - ~do_sample=True~: Instead of always choosing the single most
+    probable next token, GPT-2 samples from the probability
+    distribution. With sampling, it can choose different
+    possibilities. That's why your 10 completions can be different.
+    Without sampling, you will generally get the same continuation
+    repeatedly when using the same generation settings.
+- ~for i, output in enumerate(outputs):~
+  - This starts a loop through the 10 generated outputs.
+  - ~enumerate()~ gives you two things: ~i~ — the number of the
+    current item, starting at 0; ~output~ — the actual generated
+    tokens
+  - ~tokenizer.decode()~ converts those tokens back into
+    human-readable text.
+  
+**** analyzing outputs in groups, 15/15:
+- in groups of 3-4.
+- come up with some identity phrases based on gender/age that you want
+  to test. You can use, "little girl", "boy", "old woman," etc. Assign
+  one identity to each person.
+  - change the outputs to 20 or 30.
+  - potentially assign different identities to different persons. 
+- how do different identities elicit different responses?
+  - what adjectives are associated with each?
+- this is an example of a qualitative analysis experiment, very
+  loosely designed.
+  - based on close reading, like Devinney et al.
+    
+**** a more robust counterfactual test
+- this will be an actual metric, which scores probabilities of
+  outcomes.
+- we will use MLM, Masked Language Modelling. 
+
+Steps:
+- git clone the crows project
+- create the environment
+- run the crows.py file
+
+Creating the environment
+
+#+begin_src console
+# creating from scratch
+conda create --name crows pytorch transformers datasets pandas 
+conda activate crows
+
+# saving environment to yml
+conda env export > environment.yml
+
+# loading environment to yml
+conda env create -n crows -f environment.yml
+#+end_src
+
+Running the text
+
+#+begin_src console
+# to run the test
+python crows.py
+
+# to run with full printing of results
+python crows-long.py
+#+end_src
+
+*** break
+*** sharing out articles from homework, around the room
+- what did you read, and what did you find interesting about it?
+- 1 minute per person.
+*** 10 min: share keywords, we will make lists on the board 
+*** 10 min: keywords
+- review the readings that are interesting to you
+- make a list of 3-4 keywords that are most interesting
+*** 20-60min: group metings
+- decide a weekly time you will all do work /check in. Preferably
+  on/around the weekend.
+- discuss if you want to perform an experiment or a review type of
+  conference paper. 
+- divy up articles (3-4 per person) to read and report on before your
+  next meeting.
+- then, at your next meeting, you will share your readings and
+  together complete the homework: a research question, bibliography,
+  and work plan for the next month.
+
+Homework:
+
+With your team, submit a research question (there can be more than
+one), a list of potential sources, and a detailed work plan for the
+next month, with distribution of tasks and expected time allocated
+for each team member.
+- use the syllabus deadlines as a guide for the work plan. 
+*** readings
+
+**** Devinney, Hannah, et al. “We Don’t Talk About That: Case Studies on Intersectional Analysis of Social Bias in Large Language Models.” Proceedings of the 5th Workshop on Gender Bias in Natural Language Processing (GeBNLP), edited by Agnieszka Faleńska et al., Association for Computational Linguistics, 2024, pp. 33–44. ACLWeb, https://doi.org/10.18653/v1/2024.gebnlp-1.3.
+**** Sui, Peiqi, et al. “Critical Confabulation: Can LLMs Hallucinate for Social Good?” arXiv:2511.07722, arXiv, 6 Mar. 2026. arXiv.org, https://doi.org/10.48550/arXiv.2511.07722.
 ** week 6:
+l
