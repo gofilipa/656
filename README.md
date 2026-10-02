@@ -4,4 +4,4 @@ This is a repository for INFO: 656, taught by Filipa Calado at Pratt Institute S
 
 See the most recent [course syllabus](./syllabus.pdf). 
 
-Navigate to the weekly [python notebooks)(./class-notebooks).
+Navigate to the weekly [python notebooks](./class-notebooks).
