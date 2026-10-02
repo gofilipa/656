@@ -173,7 +173,7 @@ F Failure 0.0 \\
 WF Failure Due to Lack of Attendance 0.0 
 
 ** Course Schedule
-*** Unit 1: Foundations of Machine Learning
+*** Unit 1: Foundational Algorithms in ML
 **** Week 1 (Aug 26): Introduction
 Readings (to be done in class):
 - HAI article, "AI Hiring Tools Can Yield Racial Bias and Systemic
@@ -278,7 +278,7 @@ Activities:
   discussion on topics; organize into provisional teams for conference
   paper.
  
-*** Unit 2: Conference Papers & Language Modeling
+*** Unit 2: ML Research: Conference Papers
 **** Week 6 (Sept 30): Conference paper workshop day I
 Readings:
 - None (except for homework)
@@ -290,53 +290,38 @@ Homework #6:
   for each team member.
   
 Activities:
-- Part 1: share research questions
-- Part 2: continue sharing & come up with check-in schedule for the
-  next month
+- Part 1: discuss annotated bibliographies
+- Part 2: share research questions & come up with check-in schedule
+  for the next month
 
-**** Week 7 (Oct 7): Word Vectors
+**** Week 7 (Oct 7): Conference paper workshop day II
 Readings:
-- Jay Alammar, "The Illustrated Word2Vec" 2018.
-  https://jalammar.github.io/illustrated-word2vec/
-- Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
-  Efficient Estimation of Word Representations in Vector Space.
-  https://doi.org/10.48550/arXiv.1301.3781
-
+- None (except for homework)
+  
 Homework #7 due:
-- Submit an annotated bibliography of at least 10-15 papers that are
-  relevant to your team's topic(s) of interest. 3-5 sentences of
-  annotation per paper, including at least one sentence explaining how
-  this paper may be useful for further ML research on the topic.
+- Submit an annotated bibliography of at least 12-20 papers (4-5
+  papers per group member) that are relevant to your team's topic(s)
+  of interest. 4-5 sentences of annotation per paper, including at
+  least one sentence explaining how this paper may be useful for
+  further ML research on the topic.
 
 Activities:
-- Part 1: discuss word embeddings; python lab on Word2Vec
+- Part 1: discuss outlining & the parts of an academic paper
 - Part 2: group work on papers
 
-**** Week 8 (Oct 14): Neural networks
+**** Week 8 (Oct 14): Conference paper workshop day III
 Readings:
-- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
-  Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
-  "Attention Is All You Need."
-  https://doi.org/10.48550/arXiv.1706.03762
-- Jay Alammar. The Illustrated BERT, ELMo, and co. (How NLP Cracked
-  Transfer Learning). Retrieved April 14, 2025 from
-  https://jalammar.github.io/illustrated-bert/
-- Optional (maybe helpful!):
-  - 3Blue1Brown, "Neural Networks" YouTube playlist:
-    https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
-  - Chris Deotte, "Neural Network Playground":
-    http://www.ccom.ucsd.edu/~cdeotte/programs/neuralnetwork.htm 
+- None (focus on papers)
 
-Homework #7 due:
+Homework #8 due:
 - Submit a detailed outline for the first draft, containing claims and
   key evidence/quotations.
 
 Activities:
-- Part 1: discuss neural networks; python lab on backpropagation.
-- Part 2: continue to work on papers; discuss all of the necessary
-  components of a paper
+- Part 1: discuss "Abstract," "Results" & "Discussion" sections. 
+- part 1: group work on paper
 
-**** Week 9 (Oct 21): Abstracts due
+**** Week 9 (Oct 21): Conference paper workshop day IV (abstracts due)
 /Note: Abstracts are due on FAccT website on Monday, Oct 27, if
 submitting./
 
@@ -351,7 +336,7 @@ Activities:
 - Part 1: peer review of abstracts, Results, and Discussion sections
 - Part 2: discuss & plan revisions
 
-**** Week 10 (Oct 28): Conference paper workshop day II (drafts due)
+**** Week 10 (Oct 28): Conference paper workshop day V (drafts due)
 /Note: final papers due on FAccT on Tuesday, November 3, if
 submitting/
 
@@ -365,22 +350,50 @@ Activities:
 - Part 1: peer review of full paper
 - Part 2: discuss & plan revisions
 
-*** Unit 3: Final Projects - Small Language Models (SLMs)
-**** Week 11 (Nov 4): Fine-Tuning I
+*** Unit 3: Language Modeling & Final Projects
+**** Week 11 (Nov 4): Word Vectors
 Readings:
+- Jay Alammar, "The Illustrated Word2Vec" 2018.
+  https://jalammar.github.io/illustrated-word2vec/
+- Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
+  Efficient Estimation of Word Representations in Vector Space.
+  https://doi.org/10.48550/arXiv.1301.3781
+
+Homework:
+- None
+
+Activities:
+  - Part 1: discuss readings on word embeddings; python lab on Word2Vec
+  - Part 1: continue Word2Vec; individual practice
+    
+**** Week 12 (Nov 11): Transformer models & Backprop
+Readings:
+- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
+  Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
+  "Attention Is All You Need."
+  https://doi.org/10.48550/arXiv.1706.03762
+- Jay Alammar. The Illustrated BERT, ELMo, and co. (How NLP Cracked
+  Transfer Learning). Retrieved April 14, 2025 from
+  https://jalammar.github.io/illustrated-bert/
 - Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and
   Ilya Sutskever. 2019. "Language Models are Unsupervised Multitask
   Learners."
   https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
+- Optional (maybe helpful!):
+  - 3Blue1Brown, "Neural Networks" YouTube playlist:
+    https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
+  - Chris Deotte, "Neural Network Playground":
+    http://www.ccom.ucsd.edu/~cdeotte/programs/neuralnetwork.htm
+
+Activities:
+- Part 1: discuss Transformer architecture; python lab on backprop (Karpathy's version)
+- Part 2: continue python lab
+  
+**** Week 13 (Nov 18): Fine-Tuning
+Readings:
 - Sarah Ciston. A CRITICAL FIELD GUIDE FOR WORKING WITH MACHINE
   LEARNING DATASETS. https://knowingmachines.org/critical-field-guide.
   Accessed 22 July 2026.
-
-Activities:
-- Part 1: fine-tuning workshop
-- Part 2: self-guided exploration
-**** Week 12 (Nov 11): Fine-Tuning II
-Readings
 - Bots, LLMs, and Automated Access — Internet Archive Developer
   Portal. https://archive.org/developers/bots.html. Accessed 8
   July 2026.
@@ -390,12 +403,21 @@ Readings
   Accessed 7 July 2026.
 
 Activities:
-- Part 1: web scraping workshop
-- Part 2: self-guided exploration
-**** Week 13 (Nov 18): project workshops
+- Part 1: python lab on fine-tuning
+- Part 2: python lab on web scraping
+
 **** week 14 (Nov 25): NO CLASS - thanksgiving break
-**** week 15 (Dec 2): project workshops
-**** week 16 (Dec 9): presentations
+**** week 15 (Dec 2): Project workshops
+Readings:
+- None
+
+Homework #15:
+- Submit a README.md file for your final project
+
+Activities:
+- Part 1: work on projects
+- Part 2: work on projects
+**** week 16 (Dec 9): Presentations
 
 ** Course Resources 
 *** Cool ML projects

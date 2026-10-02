@@ -995,10 +995,20 @@ it?
 ** week 5: evaluations & starting conference papers
 
 *** discussion of readings
-- what were the experiment for each paper? (Or research
-  areas/topics/interests?)
-- what were the methods used in the experiment?
+- in partners, briefly:
+  - what were the experiment for each paper? (Or research
+    areas/topics/interests?)
+  - what was the methodology used to run the experiment?
+- what were the motivations for each paper?
+- what are the findings?
 - what do we make of the overall design of the experiment?
+- anything interesting of note?
+  - Devinney et al. (2024):
+    - found that the least refused identity was "man" and the most
+      refused was "a white Christian". Why is this so?
+    - because, "man" is so unmarked, so default, that naming it
+      explicitly draws extra attention to the concept of identity
+      (42). 
 
 *** hands on practice with evaluations
 **** setting up environment
@@ -1153,7 +1163,7 @@ python crows-long.py
 - decide a weekly time you will all do work /check in. Preferably
   on/around the weekend.
 - discuss if you want to perform an experiment or a review type of
-  conference paper. 
+  conference paper (you can change your mind later).
 - divy up articles (3-4 per person) to read and report on before your
   next meeting.
 - then, at your next meeting, you will share your readings and
@@ -1170,6 +1180,141 @@ for each team member.
 *** readings
 
 **** Devinney, Hannah, et al. “We Don’t Talk About That: Case Studies on Intersectional Analysis of Social Bias in Large Language Models.” Proceedings of the 5th Workshop on Gender Bias in Natural Language Processing (GeBNLP), edited by Agnieszka Faleńska et al., Association for Computational Linguistics, 2024, pp. 33–44. ACLWeb, https://doi.org/10.18653/v1/2024.gebnlp-1.3.
+
+Motivation:
+- identifies a gap in qualitative assessment of gender bias in LLM
+  outputs. (close reading)
+
+Findings:
+- 2 main findings:
+  - dominant identities treated as default -- assumed male, white,
+    Christian.
+    - "unmarked majority"
+  - discussion of identity is considered inappropriate.
+- unexpected effect of "unmarkedness" --- makes any identity itself
+  taboo.
+  - found that the least refused identity was "man" and the most
+    refused was "a white Christian". Why is this so?
+  - because, "man" is so unmarked, so default, that naming it
+    explicitly draws extra attention to the concept of identity (42).
+
+Methods:
+- EQUITBL method
+- 4 steps:
+  - generate templates
+  - feed templates to models
+  - run outputs through topic modelling
+  - close read top scored results from topic models
+    
 **** Sui, Peiqi, et al. “Critical Confabulation: Can LLMs Hallucinate for Social Good?” arXiv:2511.07722, arXiv, 6 Mar. 2026. arXiv.org, https://doi.org/10.48550/arXiv.2511.07722.
-** week 6:
-l
+
+Motivation:
+- how to use hallucinations in an effective way:
+  - "While typically treated as a failure mode, recent studies show
+    that some hallucinations could in fact be valuable, especially a
+    subset termed confabulations: a narrative-driven tendency to “fill
+    in” missing information with self-consistent stories that bear
+    close verisimilitude with reality" (Sui et al, 2026).
+  - "As a form of socially reparative practice, critical fabulation
+    aims to recover and reconstruct coherent stories from fragmentary
+    records and humanize the hidden figures they omit, using
+    speculative storytelling to read against-the-grain of the archives
+    that have systemically excluded them. This often involves adopting
+    marginalized points-of-view that contest and unsettle the
+    authorized accounts of history, to better understand their
+    limitations and interrogate “what might have happened”. Crucially,
+    the practice neither collapses speculation into facts nor licenses
+    the invention of new historical realities; instead, it clearly
+    defines a system of narrative ethics that bounds the scope of
+    critical fabulation to high-fidelity counter-narratives grounded
+    in the lacuna’s context" (Sui et al, 2026).
+  - "Drawing inspiration from how Hartman’s framework augments
+    low-resource settings with evidence-grounded human storytelling,
+    we propose to leverage LLMs’ extant behavior of confabulation to
+    operationalize critical fabulation as critical confabulation: an
+    AI storytelling workflow (Figure 1) for scaling the recovery of
+    divergent yet evidence-bound narratives with well-documented
+    affordances for useful knowledge production. Although critical
+    fabulation is widely regarded as effective for enhancing the
+    completeness of historical knowledge, its application has been
+    limited by the vastness of archival corpora—faithful
+    reconstruction of lacuna is labor-intensive because accountability
+    to extant historical evidence requires meticulous parsing of dense
+    and granular records. This tension motivates LLM-enabled
+    approaches to critical fabulation that can 1) identify potential
+    lacunae in large-scale archives, and 2) simulate multiple,
+    evidence-constrained possibilities (rather than assert a single
+    monolithic truth) to aid human scholars in the augmentation of
+    historical knowledge." (Sui et al, 2026).
+** week 6: Conference paper workshop day I
+
+Agenda
+- work on papers -> toward annotated bibliography
+- check in with me
+- check in with larger class
+- goal for today: leave class with 15-20 papers inside a zotero folder  
+
+*** introducing annotated bibliography assignment - 10 minutes
+what's next with the papers: 
+- 5 sources per person, 4 at the least (syllabus says 10-15, but was
+  for 2-3 person groups).
+- helping to get the ground research
+  - to form the perimeters of what's already been done in your topic
+  - help you to further refine your questions
+  - if you're doing a review type of paper, will also form your
+    analysis as well
+- will also form the basis of the lit review for the paper
+- needs to include:
+  - a short summary of the source (3 sentences), and
+  - an explanation of how it may be useful for the project (1-2
+    sentences).
+- also due, in two weeks, a detailed outline of the paper.
+  
+*** instructions for annotated bibs - 10 minutes
+- how to read a conference paper: 3 passes.
+  - first pass:
+    - read only the most important sections, 10 - 15 minutes per paper
+    - abstract, introduction, headings and subheadings, conclusions.
+    - ask 2 things:
+      - category: what type of paper is this? a review of work? an
+        evaluation? an experiment? an analysis of an existing system?
+      - contribution: what are the paper’s main contributions?
+  - second pass:
+    - read the paper in full, up to 1 hour per paper.
+    - where you will identify any potential gaps or areas of further research.
+    - how is this useful for your project?
+  - third pass:
+    - re-create the paper at each step, question every assumption.
+- places to look:
+  - FAccT proceedings
+  - ACM digital library
+  - ACL anthology
+  - google scholar
+- strategies for looking:
+  - checking keywords, conferences, topics.
+
+*** finding articles activity - 30 - 45 minutes
+- goal is to leave class with a list of 15-20 sources, with 4-5
+  assigned to each member in your group.
+
+1) assign each person a turf:
+- by sub topic or by venue (conference)
+
+2) each person completes a first pass on a number of articles on their
+   turf
+- final goal is to have at least 4-5 articles
+
+*** break
+*** group check-ins - 45 minutes - 1 hour
+First, think about:
+- what is the priority for your group at this point in the process
+  - what do you need to discuss with your group today
+Then, in groups:
+- decide on regular meeting schedule (if you don't have one already)
+- continue to work on finding papers
+
+*** big group check in
+- what is your area of research? 
+
+** week 7:
+** week 8:
