@@ -311,11 +311,14 @@ Activities:
 
 **** Week 8 (Oct 14): Conference paper workshop day III
 Readings:
-- None (focus on papers)
+- /How to Write a Computer Science Research Paper: Complete
+  Step-by-Step Guide/.
+  https://smartacademicwriting.com/how-write-computer-science-research-paper/
 
 Homework #8 due:
-- Submit a detailed outline for the first draft, containing claims and
-  key evidence/quotations.
+- Submit a detailed outline for the first draft, which includes all of
+  the major sections of a typical CS paper. In your outline, include
+  topics and/or claims, and key evidence/quotations.
 
 Activities:
 - Part 1: discuss "Abstract," "Results" & "Discussion" sections. 
@@ -326,11 +329,17 @@ Activities:
 submitting./
 
 Readings:
-- None (focus on papers)
+- Filipa Calado. 2025. Some Myths About Bias: A Queer Studies Reading
+  Of Gender Bias In NLP. In Proceedings of the 6th Workshop on Gender
+  Bias in Natural Language Processing (GeBNLP), pages 338–346, Vienna,
+  Austria. Association for Computational Linguistics.
+  https://aclanthology.org/2025.gebnlp-1.29/
+- Some Myths About Bias, peer review.
+  https://github.com/gofilipa/656/blob/main/peer-review-gebnlp.pdf
 
 Homework #9 due:
-- Submit a draft of the Abstract, Results and Discussion sections of
-  the paper.
+- Submit a draft of the Abstract, Results and/or Discussion sections
+  of the paper.
   
 Activities:
 - Part 1: peer review of abstracts, Results, and Discussion sections
@@ -341,7 +350,7 @@ Activities:
 submitting/
 
 Readings:
-- None (focus on papers)
+- TBD
 
 Homework #10: 
 - Submit full draft of paper. 

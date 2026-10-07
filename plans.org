@@ -1316,5 +1316,61 @@ Then, in groups:
 *** big group check in
 - what is your area of research? 
 
-** week 7:
+** week 7: Conference paper workshop day II
+*** academic paper structure, 20 minutes
+**** what are the different kinds of an ML/CS paper that you can write?
+- Empirical / Systems Paper
+  - proposes an algorithm, system, model, or framework and evaluates
+    it experimentally
+- Analytical Paper
+  - analyzes pre-existing algorithm, system, model, or framework.
+- Survey / Literature Review
+  - aystematically organises and synthesises research across a topic
+    area or sub-field
+- Mixed-Type Papers
+  - mixing the above, such as an analytical paper with a substantial
+    survey. 
+
+****  what are the parts of an academic paper?
+- A typical structure:
+
+#+begin_quote
+ 1. abstract
+    - second to last
+ 2. introduction
+    - last section to write
+ 3. related work
+    - literature review
+    - organize by theme / approach
+ 4. experiment or analysis
+    - put forth the main analysis of the paper
+ 5. discussion
+ 6. conclusion
+    - second to last
+ 7. bibliography   
+#+end_quote
+
+*** group work: research question, 10-20 minutes
+- check in with group, discuss the research
+  - each person report on what they found in the body of research.
+- then, as a group, formally decide:
+  - what will be the type of paper
+  - what will be the main research question
+  
+*** group work: outlining, 30+ minutes
+Defining sections & distributing tasks
+- write out a skeleton outline
+- start to fill it out with content, as much as you can
+  - using keywords
+  - cite articles
+- the outline is a draft. It might change
+  
+*** break
+
+*** group work: continue outlining, 30+ minutes
+*** make a plan to meet this week!
+*** homework:
+- Submit a detailed outline for the first draft, which includes all of
+  the major sections of a typical CS paper. In your outline, include
+  topics and/or claims, and key evidence/quotations.
 ** week 8:
