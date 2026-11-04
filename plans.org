@@ -1246,7 +1246,7 @@ Motivation:
     evidence-constrained possibilities (rather than assert a single
     monolithic truth) to aid human scholars in the augmentation of
     historical knowledge." (Sui et al, 2026).
-** week 6: Conference paper workshop day I
+** week 6: Conference paper workshop day I: annotated bibs
 
 Agenda
 - work on papers -> toward annotated bibliography
@@ -1315,8 +1315,8 @@ Then, in groups:
 
 *** big group check in
 - what is your area of research? 
-
-** week 7: Conference paper workshop day II
+  
+** week 7: Conference paper workshop day II: outlining
 *** academic paper structure, 20 minutes
 **** what are the different kinds of an ML/CS paper that you can write?
 - Empirical / Systems Paper
@@ -1373,4 +1373,205 @@ Defining sections & distributing tasks
 - Submit a detailed outline for the first draft, which includes all of
   the major sections of a typical CS paper. In your outline, include
   topics and/or claims, and key evidence/quotations.
-** week 8:
+** week 8: Conference paper workshop day III: writing abstracts, results, discussions
+Goals:
+- time for focused planning & writing the draft
+- I will circulate to speak to each group
+- at the end, we will do a big group check in
+
+*** biggest concern about the paper so far
+- go around the room and state the concern. 
+
+*** academic paper structure: review
+#+begin_quote
+ 1. abstract
+    - second to last
+ 2. introduction
+    - last section to write
+ 3. related work
+    - literature review
+    - organize by theme / approach
+ 4. experiment or analysis
+    - put forth the main analysis of the paper
+ 5. results
+    - where you discuss the results (if applicable)
+    - if not applicable, then discussion section needs to be longer
+ 6. discussion
+    - where you discuss the significance of the results
+ 7. conclusion
+    - re-state the motivation
+    - include big picture
+ 8. bibliography   
+#+end_quote
+
+*** abstract, results, discussion sections
+**** abstract
+- Urgency: Clearly state what your research is about and why it
+  matters.
+- RQ: What gap in knowledge are you addressing? What question are
+  you trying to solve?
+- Methods: Briefly describe how you conducted the study: your
+  approach, participants, data collection, or analysis techniques.
+- Results: Summarise the key findings of your research.
+- Significance: why are the results important? Big picture.
+
+**** analysis or results
+- reports the outcomes of the experiment OR
+- identifies patterns and trends in evidence OR
+- develop an argument or position from evidence
+  
+**** discussion
+- First, summarize the key findings from the research and link them to
+  the initial research question. 
+- Second, place the findings in context with lit review section and
+  previous research.
+- Third, address unexpected results. Describe the results and provide
+  a reasonable interpretation of why they may have appeared.
+- Fourth, address limitations or weaknesses in the analysis or project.
+- Fifth, provide a brief look at potential follow-up research studies. 
+
+*** group work:
+- plan these three sections
+*** break
+*** continue group work
+*** professor check ins
+*** class-wide check ins
+** week 9: Conference paper workshop Day IV: peer review: abstracts, results, disc
+Goals:
+- peer review of Abstracts, Analysis or Results, and Discussion
+  sections
+- orientation to the open review submission portal
+- Note: Abstracts are due on FAccT website on Monday, Oct 27
+
+*** Peer Review
+Review the paper sections in full before answering the questions below.
+
+Abstracts: to what extent does the abstract respond to the following
+areas? Point out where the abstract needs further elaboration. 
+- **Urgency**: does the paper address the urgency of the topic? Does
+  it identify a gap in the knowledge?
+- **Research Question(s)**: What is the main question being answered
+  in the paper? Is it sufficiently specific, or too broad?
+- **Methods**: does the abstract explain how the project conducts the
+  study, including approach, data collection, or analysis techniques?
+- **Results**: does the abstract summarize key findings?
+
+Analysis/Results: depending on the type of paper, make sure the
+analysis/results achieves one or more of the following:
+- /report the outcomes/ of the experiment.
+- /identify patterns/ and trends in evidence.
+- /develop an argument/ or position from evidence.
+
+Additionally, indicate whether:
+- the results are /organized into a logical sequence/, giving the main
+  findings first?
+- there is /enough information/ provided for the reader to interpret
+  the results? (I.e. do the results give a full accounting of what
+  occured in the experiment/analysis?)
+
+Discussion: to what extent does the discussion section do the
+following:
+- summarize the key findings from the research and link them to the
+  initial research question.
+- place the findings in context with lit review section and previous
+  research.
+- address limitations in the analysis or project and/or a brief look
+  at potential follow-up research studies.
+
+Finally, write one thing that this paper /does well/, and one aspect
+of the paper that /needs work/. These can be anything that stands out
+to you, from strength of argument to writing style.
+
+*** break
+
+*** Open Review - sign up, ORCID ID, how to submit an abstract.
+- start from the FAccT website. 
+
+*** plan for next week.
+- Meet with your groups and discuss your plan for the following week.
+- Homework: Submit full draft of paper.
+** week 10: Conference paper workshop Day V: peer review full draft
+Agenda
+- generate peer review checklist
+- peer review round 1
+- break
+- peer review round 2
+
+*** peer review checklist
+- what do we want to include in the peer review?
+
+Peer Review Checklist
+- abstract
+- introduction
+  - presents the urgency of the topic
+  - sets a particular angle for approaching the topic
+- relevant literature
+  - covers the topic's scope
+  - indicates highlights from prior work
+- methodology
+  - clear sense of individual steps 
+- results/analysis
+- discussion
+- conclusion
+  - wraps up the main points / argument
+  - ends with a big picture statement (why this matters) or with a
+    pointer to future work
+
+*** peer review: round 1 (25 min)
+
+*** break
+
+*** peer review: round 2 (25 min)
+
+** week 11: Word Vectors
+Agenda:
+- New Unit! Language modeling
+  - we move from word vectors, to transformer models, backpropagation,
+    to fine-tuning.
+  - by the end of it, you will have an /slm/. 
+- discuss word vectors
+- start lab on word vectors
+- break
+- continue lab word vectors, building models with custom data
+
+*** word vectors
+What are word vectors?
+
+"Word Representations in Vector Space" (look at the title)
+- words become points on a graph
+- they are "vectors" with lots of dimensions
+- draw vector for "cat"
+
+Moving through the article:
+- vector("Queen") = vector(”King”) - vector(”Man”) + vector(”Woman”)
+- Two new model architectures:
+  - CBOW
+  - Skip-gram
+- Other word pairs, word math:
+  - Athens + Greece - Oslo = Norway
+
+*** more research on word vectors
+Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word
+Embeddings. Bolukbasi et al 2016
+- word embeddings reflect gender bias
+- technique called "debias" which removes the bias from the embedding,
+  "neutralizes" them. 
+
+Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases
+in Word Embeddings But do not Remove Them, Hila Gonen, Yoav
+Goldberg, 2019. 
+- debias is like a bandaid, there's still bias in the embeddings.
+
+*** word vectors python lab
+- installing gensim and nltk
+- running the code from the paper
+
+*** break
+
+*** training your own WV model
+- scraping a text from project gutenberg
+- training a WV model on the text
+
+*** next week: transformer architecture & backprop
+
+** week 11: Word Vectors

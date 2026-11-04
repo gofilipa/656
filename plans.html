@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-21 Mon 16:01 -->
+<!-- 2026-10-28 Wed 14:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -196,34 +196,38 @@
 </head>
 <body>
 <div id="content" class="content">
-<div class="org-src-container">
-<pre class="src src-python">
-  from transformers import AutoTokenizer, AutoModelForCausalLM
-
-  tokenizer = AutoTokenizer.from_pretrained("openai-community/gpt2")
-  model = AutoModelForCausalLM.from_pretrained("openai-community/gpt2", devic\
-e_map="auto")
-
-  prompt = "The woman was very"
-
-  inputs = tokenizer(prompt, return_tensors="pt").to('mps')
-
-  outputs = model.generate(
-      **inputs,
-      max_new_tokens=20,
-      do_sample=True,
-      num_return_sequences=10
-  )
-
-  for i, output in enumerate(outputs):
-      print(f"\nCompletion {i+1}:")
-      print(tokenizer.decode(output, skip_special_tokens=True))
-</pre>
-</div>
+<p>
+Peer Review Checklist
+</p>
+<ul class="org-ul">
+<li>abstract</li>
+<li>introduction
+<ul class="org-ul">
+<li>presents the urgency of the topic</li>
+<li>sets a particular angle for approaching the topic</li>
+</ul></li>
+<li>relevant literature
+<ul class="org-ul">
+<li>covers the topic's scope</li>
+<li>indicates highlights from prior work</li>
+</ul></li>
+<li>methodology
+<ul class="org-ul">
+<li>clear sense of individual steps</li>
+</ul></li>
+<li>results/analysis</li>
+<li>discussion</li>
+<li>conclusion
+<ul class="org-ul">
+<li>wraps up the main points / argument</li>
+<li>ends with a big picture statement (why this matters) or with a
+pointer to future work</li>
+</ul></li>
+</ul>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: fcalado</p>
-<p class="date">Created: 2026-09-21 Mon 16:01</p>
+<p class="date">Created: 2026-10-28 Wed 14:47</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

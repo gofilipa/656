@@ -321,7 +321,8 @@ Homework #8 due:
   topics and/or claims, and key evidence/quotations.
 
 Activities:
-- Part 1: discuss "Abstract," "Results" & "Discussion" sections. 
+- Part 1: discuss "Abstract," "Analysis" (or "Results") & "Discussion"
+  sections.
 - part 1: group work on paper
 
 **** Week 9 (Oct 21): Conference paper workshop day IV (abstracts due)
@@ -338,11 +339,12 @@ Readings:
   https://github.com/gofilipa/656/blob/main/peer-review-gebnlp.pdf
 
 Homework #9 due:
-- Submit a draft of the Abstract, Results and/or Discussion sections
-  of the paper.
+- Submit a draft of the Abstract, Analysis (or Results) and Discussion
+  sections of the paper.
   
 Activities:
-- Part 1: peer review of abstracts, Results, and Discussion sections
+- Part 1: peer review of Abstracts, Analysis or Results, and
+  Discussion sections
 - Part 2: discuss & plan revisions
 
 **** Week 10 (Oct 28): Conference paper workshop day V (drafts due)
