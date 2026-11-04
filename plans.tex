@@ -1,4 +1,4 @@
-% Created 2026-10-28 Wed 14:47
+% Created 2026-11-04 Wed 14:50
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -26,55 +26,81 @@
 
 \tableofcontents
 
-\section{week 10: Conference paper workshop Day V: peer review full draft}
-\label{sec:orga658d1a}
-Agenda
+\section{week 11: Word Vectors}
+\label{sec:orgb4ae660}
+Agenda:
 \begin{itemize}
-\item generate peer review checklist
-\item peer review round 1
+\item New Unit! Language modeling
+\begin{itemize}
+\item we move from word vectors, to transformer models, backpropagation,
+to fine-tuning.
+\item by the end of it, you will have an \emph{slm}.
+\end{itemize}
+\item discuss word vectors
+\item start lab on word vectors
 \item break
-\item peer review round 2
+\item continue lab word vectors, building models with custom data
 \end{itemize}
 
-\subsection{peer review checklist}
-\label{sec:orga75d3a1}
+\subsection{word vectors}
+\label{sec:orgb665e8c}
+What are word vectors?
+
+"Word Representations in Vector Space" (look at the title)
 \begin{itemize}
-\item what do we want to include in the peer review?
+\item words become points on a graph
+\item they are "vectors" with lots of dimensions
+\item draw vector for "cat"
 \end{itemize}
 
-Peer Review Checklist
+Moving through the article:
 \begin{itemize}
-\item abstract
-\item introduction
+\item vector("Queen") = vector(”King”) - vector(”Man”) + vector(”Woman”)
+\item Two new model architectures:
 \begin{itemize}
-\item presents the urgency of the topic
-\item sets a particular angle for approaching the topic
+\item CBOW
+\item Skip-gram
 \end{itemize}
-\item relevant literature
+\item Other word pairs, word math:
 \begin{itemize}
-\item covers the topic's scope
-\item indicates highlights from prior work
-\end{itemize}
-\item methodology
-\begin{itemize}
-\item clear sense of individual steps
-\end{itemize}
-\item results/analysis
-\item discussion
-\item conclusion
-\begin{itemize}
-\item wraps up the main points / argument
-\item ends with a big picture statement (why this matters) or with a
-pointer to future work
+\item Athens + Greece - Oslo = Norway
 \end{itemize}
 \end{itemize}
 
-\subsection{peer review: round 1 (25 min)}
-\label{sec:orgea9e283}
+\subsection{more research on word vectors}
+\label{sec:org6e160f3}
+Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word
+Embeddings. Bolukbasi et al 2016
+\begin{itemize}
+\item word embeddings reflect gender bias
+\item technique called "debias" which removes the bias from the embedding,
+"neutralizes" them.
+\end{itemize}
+
+Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases
+in Word Embeddings But do not Remove Them, Hila Gonen, Yoav
+Goldberg, 2019. 
+\begin{itemize}
+\item debias is like a bandaid, there's still bias in the embeddings.
+\end{itemize}
+
+\subsection{word vectors python lab}
+\label{sec:org64b3f5d}
+\begin{itemize}
+\item installing gensim and nltk
+\item running the code from the paper
+\end{itemize}
 
 \subsection{break}
-\label{sec:org0319bad}
+\label{sec:org7ebbaaf}
 
-\subsection{peer review: round 2 (25 min)}
-\label{sec:orge5b6ac2}
+\subsection{training your own WV model}
+\label{sec:org4153fa3}
+\begin{itemize}
+\item scraping a text from project gutenberg
+\item training a WV model on the text
+\end{itemize}
+
+\subsection{next week: transformer architecture \& backprop}
+\label{sec:org6f7f3e9}
 \end{document}
