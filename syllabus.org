@@ -377,19 +377,14 @@ Activities:
   - Part 1: discuss readings on word embeddings; python lab on Word2Vec
   - Part 1: continue Word2Vec; individual practice
     
-**** Week 12 (Nov 11): Transformer models & Backprop
+**** Week 12 (Nov 11): BERT models
 Readings:
 - Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
   Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
   "Attention Is All You Need."
   https://doi.org/10.48550/arXiv.1706.03762
 - Jay Alammar. The Illustrated BERT, ELMo, and co. (How NLP Cracked
-  Transfer Learning). Retrieved April 14, 2025 from
-  https://jalammar.github.io/illustrated-bert/
-- Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and
-  Ilya Sutskever. 2019. "Language Models are Unsupervised Multitask
-  Learners."
-  https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
+  Transfer Learning). https://jalammar.github.io/illustrated-bert/
 - Optional (maybe helpful!):
   - 3Blue1Brown, "Neural Networks" YouTube playlist:
     https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
@@ -397,25 +392,24 @@ Readings:
     http://www.ccom.ucsd.edu/~cdeotte/programs/neuralnetwork.htm
 
 Activities:
-- Part 1: discuss Transformer architecture; python lab on backprop (Karpathy's version)
+- Part 1: discuss BERT architecture; python lab on BERT
 - Part 2: continue python lab
   
-**** Week 13 (Nov 18): Fine-Tuning
+**** Week 13 (Nov 18): GPT models
 Readings:
-- Sarah Ciston. A CRITICAL FIELD GUIDE FOR WORKING WITH MACHINE
-  LEARNING DATASETS. https://knowingmachines.org/critical-field-guide.
-  Accessed 22 July 2026.
-- Bots, LLMs, and Automated Access — Internet Archive Developer
-  Portal. https://archive.org/developers/bots.html. Accessed 8
-  July 2026.
+- Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and
+  Ilya Sutskever. 2019. "Language Models are Unsupervised Multitask
+  Learners." https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
+- John Schulman and others at Thinking Machines. 2025. "LoRA Without
+  Regret." https://thinkingmachines.ai/blog/lora/ 
 - FineWeb: Decanting the Web for the Finest Text Data at Scale - a
   Hugging Face Space by HuggingFaceFW.
   https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1.
   Accessed 7 July 2026.
 
 Activities:
-- Part 1: python lab on fine-tuning
-- Part 2: python lab on web scraping
+- Part 1: python lab on fine-tuning gpt2
+- Part 2: independent work on fine-tuning
 
 **** week 14 (Nov 25): NO CLASS - thanksgiving break
 **** week 15 (Dec 2): Project workshops
@@ -441,11 +435,17 @@ Activities:
   https://datasociety.net/points/developing-emotion-based-speech-technology-for-the-maori-language/.
   Accessed 7 May 2026.
 
-*** Sample Datasets
+*** Sample Datasets, on Gathering Data
 - "Immigration and Customs Enforcement" data. Collected by the
   Deportation Data Project. https://deportationdata.org/data/processed/ice.html
 - “LGBTQ+ Legislative Tracking 2025.” Google Docs, https://docs.google.com/spreadsheets/u/1/d/1NfY8VvrUNQKX77CXilxlE1pepRSGTMZ70LoyFwx6fbk/edit?gid=719771929&usp=embed_facebook.
   Accessed 8 July 2026.
+- Sarah Ciston. A CRITICAL FIELD GUIDE FOR WORKING WITH MACHINE
+  LEARNING DATASETS. https://knowingmachines.org/critical-field-guide.
+  Accessed 22 July 2026.
+- Bots, LLMs, and Automated Access — Internet Archive Developer
+  Portal. https://archive.org/developers/bots.html. Accessed 8
+  July 2026.
 
 *** Learning resources and tutorials (my personal recommendations)
 - Andrej Karpathy's /Microgpt/ project.

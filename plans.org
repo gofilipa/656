@@ -1574,4 +1574,327 @@ Goldberg, 2019.
 
 *** next week: transformer architecture & backprop
 
-** week 11: Word Vectors
+** week 12: BERT models
+Agenda
+- discuss BERT models & innovations
+- BERT inference lab
+- break
+- BERT fine-tuning lab
+- explore other datasets
+
+*** BERT model
+- open source model from google
+  - October 2018
+  - "encoder only" "transformer" architecture
+  - trained primarily by masked token prediction
+  - the goal of training is to come up with embeddings that are
+    context-aware
+- "encoder-only"
+  - it develops word embeddings, does not generate word predictions
+    (continuous words, like gpt) 
+  - masking words and making guesses
+  - bi-directional, looks both ways
+- "transformer" 
+  - attention mechanism
+    - a way of assessing the strength of relationships between words
+      in context
+  - https://github.com/jessevig/bertviz 
+- lineage of models
+  - gpt1 -> bert -> gpt2 -> gpt3
+  - https://huggingface.co/learn/llm-course/chapter1/4
+  - the "berts"
+    - bert -> roberta -> bart -> deberta
+
+*** BERT inference 
+- download transformers
+- pipeline function
+  - sentiment analysis task
+  - text classification task
+- looking at different fine-tuned models
+  - emotions
+  - toxicity
+- loading datasets for piping through bert
+  - imdb through emotions
+  - political bias through emotions
+
+#+begin_src python
+# first, install libraries
+# see more on torch installs: https://pytorch.org/get-started/locally/
+# see more on transformers installs: https://huggingface.co/docs/transformers/installation
+#
+# !conda activate 656-ml
+# !pip install torch torchvision
+# !conda install transformers datasets
+
+# the pipeline function for inference
+from transformers import pipeline
+
+# the sentiment analysis task (common NLP task)
+sentiment_pipe = pipeline("sentiment-analysis")
+out = sentiment_pipe("I love my machine learning class.")
+
+# see that it automatically loads up a version of bert
+
+# see the output
+out
+
+# multiple
+outs = sentiment_pipe(["I love my machine learning class.", "My machine learning class is meh.", "I am bored in my machine learning class."])
+outs
+
+# let's try with a different model
+pipe = pipeline("text-classification", model="SamLowe/roberta-base-go_emotions")
+outs = sentiment_pipe(["I love my machine learning class.", "My machine learning class is meh.", "I am bored in my machine learning class."])
+outs
+
+# BERT-like models (also called auto-encoding Transformer models) is
+# associate with "Masked language modeling (MLM)" randomly masks some
+# tokens in the input and trains the model to predict the original
+# tokens based on the surrounding context. This allows the model to
+# learn bidirectional context (looking at words both before and after
+# the masked word). These models use the bidirectional approach to
+# understand context from both directions.
+
+# They’re best suited for tasks that require deep understanding of
+# text, such as classification, named entity recognition, and question
+# answering.
+
+# BERT is the first model to effectively implement deep
+# bidirectionality to learn richer representations of the text by
+# attending to words on both sides.
+
+# let's try wiht another model, meant to classify toxic text
+toxic = pipeline("text-classification", model="unitary/toxic-bert")
+outs = toxic(["I love my machine learning class.", "My machine learning class is meh.", "I am bored in my machine learning class."])
+outs
+outs = toxic(["I hate rainy days.", "I would die to go there."])
+outs
+
+# now we are going pull in a ready-made dataset for inference
+from datasets import load_dataset
+
+# movie reviews
+imdb = load_dataset("stanfordnlp/imdb")
+
+# check out the dataset object
+imdb["test"][0]
+imdb["test"][:10]
+
+# There are two fields in this dataset:
+## text: the movie review text.
+## label: a value that is either 0 for a negative review or 1 for a positive review.
+
+emotions = pipeline("sentiment-analysis", model="SamLowe/roberta-base-go_emotions")
+emotions(imdb["test"][0]['text'])
+emotions(imdb["test"][1]['text'])
+
+# looping through the first ten
+for i in imdb["test"]['text'][:10]:
+    out = emotions(i)
+    print(i, out)
+    print('\n')
+    
+# now with another dataset from the hub, on political bias
+bias_data = load_dataset("cajcodes/political-bias")
+
+# see the datset object
+bias_data
+
+for i in bias_data['train']['text'][:10]:
+    print(i)
+    
+for i in bias_data["train"]['text'][:10]:
+    out = emotions(i)
+    print(i, out)
+    print('\n')
+for i in bias_data["train"]['text'][:10]:
+    out = emotions(i)
+    print(i, out)
+    print('\n')
+  
+#+end_src
+*** break
+
+*** BERT fine-tuning
+- checking installations
+- loading data
+- preparing data
+- training
+- inference
+- the rest of the tutorial has evaluations
+
+#+begin_src python
+  ## first install libraries, uncomment the line below
+# !pip install transformers datasets evaluate accelerate
+## if error with loading trl:
+# !pip install git+https://github.com/huggingface/trl.git
+
+########################
+### LOADING THE DATA ###
+########################
+
+# load the movie reviews
+from datasets import load_dataset
+
+imdb = load_dataset("stanfordnlp/imdb")
+
+# examine the data, which has two fields:
+#    text: the movie review text.
+#    label: a value that is either 0 for a negative review or 1 for a positive review.
+imdb["test"][0]
+
+##########################
+### PREPARING THE DATA ###
+##########################
+
+# now we will tokenize the data
+
+# load distilbert tokenizer
+from transformers import AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained("distilbert/distilbert-base-uncased")
+
+# Randomly sample 2,000 training examples
+train_dataset = imdb["train"].shuffle(seed=42).select(range(2000))
+
+# define our processing function for tokenization
+def preprocess_function(examples):
+    return tokenizer(examples["text"], truncation=True)
+
+# now, tokenize
+tokenized_train = train_dataset.map(
+    preprocess_function,
+    batched=True
+)
+
+# load our data collator, for padding the data to equal lengths
+from transformers import DataCollatorWithPadding
+data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
+
+# finally, create a map of the expected ids to their labels with id2label and label2id:
+id2label = {0: "NEGATIVE", 1: "POSITIVE"}
+label2id = {"NEGATIVE": 0, "POSITIVE": 1}
+
+################
+### TRAINING ###
+################
+
+# load the training libraries
+from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
+
+# load the training model
+model = AutoModelForSequenceClassification.from_pretrained(
+    "distilbert/distilbert-base-uncased", num_labels=2, id2label=id2label, label2id=label2id
+)
+
+# define our training arguments
+training_args = TrainingArguments(
+    output_dir="my_awesome_model",
+    learning_rate=2e-5,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
+    num_train_epochs=2,
+    weight_decay=0.01,
+)
+
+# define the trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_train,
+    processing_class=tokenizer,
+    data_collator=data_collator,
+)
+
+# train the model!
+trainer.train()
+
+# save the model locally
+trainer.save_model('./bert-finetuned')
+
+#################
+### INFERENCE ###
+#################
+
+# create a text for testing it out (whatever you want can go in the quotes)
+text = "This was a masterpiece. Not completely faithful to the books, but enthralling from beginning to end. Might be my favorite of the three."
+
+# load the pipeline for inference
+from transformers import pipeline
+
+# define our classifier with the newest model
+classifier = pipeline("sentiment-analysis", model="./bert-finetuned")
+
+# run the classifer
+classifier(text)
+
+# try out different prompts
+text1 = "What a boring film. Waste of time."
+classifier(text1)
+
+texts = ['Loved it', 'It was meh', 'I have seen better', 'It was too far long', 'It stimulated me', 'Visuals', 'Dialogue', 'Character development']
+for i in texts:
+    print(classifier(i))
+    
+# see the entire tutorial here (with evaluation): https://huggingface.co/docs/transformers/tasks/sequence_classification
+
+#+end_src
+*** exploring datasets you might use to train BERT on HF and Kaggle
+- filtering by task and size
+  
+** week 13: GPT models
+Agenda
+- discuss GPT models
+- fine-tuning lab
+- break
+- work on final projects
+
+*** GPT models
+
+BERT
+- bidirectional
+  - forward and backward
+- encoder
+  - masked language modeling
+- representations from
+- transformers
+  - attention mechanism
+
+GPT
+- generative
+  - next word prediction
+  - decoder
+- pre-trained
+  - unsupervised (trained on unlabeled data)
+- transformer
+  - atttention mechanism
+
+*** fine-tuning lab
+first, the regular lab, without PEFT.
+
+then, the lab with PEFT. 
+
+follow instructions here:
+- on fine-tuning: https://huggingface.co/docs/transformers/training
+- on peft:
+  https://huggingface.co/docs/peft/main/en/guides/peft_model_config 
+
+on reducing memory usage:
+- https://huggingface.co/docs/trl/main/en/reducing_memory_usage
+
+  
+*** break
+
+*** final projects
+- or do a presentation of your group's paper
+  - including a component addressing next steps for your paper (if
+    you were to pursue it)
+- do an analysis of model inference based on:
+  - two different datasets
+  - two different models on the same inference dataset
+  - deliverable:
+    - the code you used
+    - an explanation of what the outputs tell you about that dataset,
+      about bias, perspectives, etc. 
+    - thinking back to our conversations about biases in data that
+      persist in the model outputs
+

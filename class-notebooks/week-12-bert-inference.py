@@ -91,3 +91,7 @@ for i in bias_data["train"]['text'][:10]:
     out = emotions(i)
     print(i, out)
     print('\n')
+
+# if you want to go further with the emotions dataset and usage with
+# BERT, see the GoEmotions repo:
+# https://github.com/google-research/google-research/tree/master/goemotions

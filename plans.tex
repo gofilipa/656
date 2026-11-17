@@ -1,4 +1,4 @@
-% Created 2026-11-04 Wed 14:50
+% Created 2026-11-11 Wed 09:45
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -26,81 +26,304 @@
 
 \tableofcontents
 
-\section{week 11: Word Vectors}
-\label{sec:orgb4ae660}
-Agenda:
+\section{week 12: BERT models}
+\label{sec:org1f6d17e}
+Agenda
 \begin{itemize}
-\item New Unit! Language modeling
-\begin{itemize}
-\item we move from word vectors, to transformer models, backpropagation,
-to fine-tuning.
-\item by the end of it, you will have an \emph{slm}.
-\end{itemize}
-\item discuss word vectors
-\item start lab on word vectors
+\item discuss BERT models \& innovations
+\item BERT inference lab
 \item break
-\item continue lab word vectors, building models with custom data
+\item BERT fine-tuning lab
+\item explore other datasets
 \end{itemize}
 
-\subsection{word vectors}
-\label{sec:orgb665e8c}
-What are word vectors?
-
-"Word Representations in Vector Space" (look at the title)
+\subsection{BERT model}
+\label{sec:orge9b148b}
 \begin{itemize}
-\item words become points on a graph
-\item they are "vectors" with lots of dimensions
-\item draw vector for "cat"
+\item open source model from google
+\begin{itemize}
+\item October 2018
+\item "encoder only" "transformer" architecture
+\item trained primarily by masked token prediction
+\item the goal of training is to come up with embeddings that are
+context-aware
+\end{itemize}
+\item "encoder-only"
+\begin{itemize}
+\item it develops word embeddings, does not generate word predictions
+(continuous words, like gpt)
+\item masking words and making guesses
+\item bi-directional, looks both ways
+\end{itemize}
+\item "transformer" 
+\begin{itemize}
+\item attention mechanism
+\begin{itemize}
+\item a way of assessing the strength of relationships between words
+in context
+\end{itemize}
+\item \url{https://github.com/jessevig/bertviz}
+\end{itemize}
+\item lineage of models
+\begin{itemize}
+\item gpt1 -> bert -> gpt2 -> gpt3
+\item \url{https://huggingface.co/learn/llm-course/chapter1/4}
+\item the "berts"
+\begin{itemize}
+\item bert -> roberta -> bart -> deberta
+\end{itemize}
+\end{itemize}
 \end{itemize}
 
-Moving through the article:
+\subsection{BERT inference}
+\label{sec:org5b792ec}
 \begin{itemize}
-\item vector("Queen") = vector(”King”) - vector(”Man”) + vector(”Woman”)
-\item Two new model architectures:
+\item download transformers
+\item pipeline function
 \begin{itemize}
-\item CBOW
-\item Skip-gram
+\item sentiment analysis task
+\item text classification task
 \end{itemize}
-\item Other word pairs, word math:
+\item looking at different fine-tuned models
 \begin{itemize}
-\item Athens + Greece - Oslo = Norway
+\item emotions
+\item toxicity
 \end{itemize}
-\end{itemize}
-
-\subsection{more research on word vectors}
-\label{sec:org6e160f3}
-Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word
-Embeddings. Bolukbasi et al 2016
+\item loading datasets for piping through bert
 \begin{itemize}
-\item word embeddings reflect gender bias
-\item technique called "debias" which removes the bias from the embedding,
-"neutralizes" them.
+\item imdb through emotions
+\item political bias through emotions
+\end{itemize}
 \end{itemize}
 
-Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases
-in Word Embeddings But do not Remove Them, Hila Gonen, Yoav
-Goldberg, 2019. 
-\begin{itemize}
-\item debias is like a bandaid, there's still bias in the embeddings.
-\end{itemize}
+\begin{verbatim}
+# first, install libraries
+# see more on torch installs: https://pytorch.org/get-started/locally/
+# see more on transformers installs: https://huggingface.co/docs/transformers/installation
+#
+# !conda activate 656-ml
+# !pip install torch torchvision
+# !conda install transformers datasets
 
-\subsection{word vectors python lab}
-\label{sec:org64b3f5d}
-\begin{itemize}
-\item installing gensim and nltk
-\item running the code from the paper
-\end{itemize}
+# the pipeline function for inference
+from transformers import pipeline
 
+# the sentiment analysis task (common NLP task)
+sentiment_pipe = pipeline("sentiment-analysis")
+out = sentiment_pipe("I love my machine learning class.")
+
+# see that it automatically loads up a version of bert
+
+# see the output
+out
+
+# multiple
+outs = sentiment_pipe(["I love my machine learning class.", "My machine learning class is meh.", "I am bored in my machine learning class."])
+outs
+
+# let's try with a different model
+pipe = pipeline("text-classification", model="SamLowe/roberta-base-go_emotions")
+outs = sentiment_pipe(["I love my machine learning class.", "My machine learning class is meh.", "I am bored in my machine learning class."])
+outs
+
+# BERT-like models (also called auto-encoding Transformer models) is
+# associate with "Masked language modeling (MLM)" randomly masks some
+# tokens in the input and trains the model to predict the original
+# tokens based on the surrounding context. This allows the model to
+# learn bidirectional context (looking at words both before and after
+# the masked word). These models use the bidirectional approach to
+# understand context from both directions.
+
+# They’re best suited for tasks that require deep understanding of
+# text, such as classification, named entity recognition, and question
+# answering.
+
+# BERT is the first model to effectively implement deep
+# bidirectionality to learn richer representations of the text by
+# attending to words on both sides.
+
+# let's try wiht another model, meant to classify toxic text
+toxic = pipeline("text-classification", model="unitary/toxic-bert")
+outs = toxic(["I love my machine learning class.", "My machine learning class is meh.", "I am bored in my machine learning class."])
+outs
+outs = toxic(["I hate rainy days.", "I would die to go there."])
+outs
+
+# now we are going pull in a ready-made dataset for inference
+from datasets import load_dataset
+
+# movie reviews
+imdb = load_dataset("stanfordnlp/imdb")
+
+# check out the dataset object
+imdb["test"][0]
+imdb["test"][:10]
+
+# There are two fields in this dataset:
+## text: the movie review text.
+## label: a value that is either 0 for a negative review or 1 for a positive review.
+
+emotions = pipeline("sentiment-analysis", model="SamLowe/roberta-base-go_emotions")
+emotions(imdb["test"][0]['text'])
+emotions(imdb["test"][1]['text'])
+
+# looping through the first ten
+for i in imdb["test"]['text'][:10]:
+    out = emotions(i)
+    print(i, out)
+    print('\n')
+
+# now with another dataset from the hub, on political bias
+bias_data = load_dataset("cajcodes/political-bias")
+
+# see the datset object
+bias_data
+
+for i in bias_data['train']['text'][:10]:
+    print(i)
+
+for i in bias_data["train"]['text'][:10]:
+    out = emotions(i)
+    print(i, out)
+    print('\n')
+for i in bias_data["train"]['text'][:10]:
+    out = emotions(i)
+    print(i, out)
+    print('\n')
+
+\end{verbatim}
 \subsection{break}
-\label{sec:org7ebbaaf}
+\label{sec:orgf42711b}
 
-\subsection{training your own WV model}
-\label{sec:org4153fa3}
+\subsection{BERT fine-tuning}
+\label{sec:orga0283ff}
 \begin{itemize}
-\item scraping a text from project gutenberg
-\item training a WV model on the text
+\item checking installations
+\item loading data
+\item preparing data
+\item training
+\item inference
+\item the rest of the tutorial has evaluations
 \end{itemize}
 
-\subsection{next week: transformer architecture \& backprop}
-\label{sec:org6f7f3e9}
+\begin{verbatim}
+  ## first install libraries, uncomment the line below
+# !pip install transformers datasets evaluate accelerate
+## if error with loading trl:
+# !pip install git+https://github.com/huggingface/trl.git
+
+########################
+### LOADING THE DATA ###
+########################
+
+# load the movie reviews
+from datasets import load_dataset
+
+imdb = load_dataset("stanfordnlp/imdb")
+
+# examine the data, which has two fields:
+#    text: the movie review text.
+#    label: a value that is either 0 for a negative review or 1 for a positive review.
+imdb["test"][0]
+
+##########################
+### PREPARING THE DATA ###
+##########################
+
+# now we will tokenize the data
+
+# load distilbert tokenizer
+from transformers import AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained("distilbert/distilbert-base-uncased")
+
+# Randomly sample 2,000 training examples
+train_dataset = imdb["train"].shuffle(seed=42).select(range(2000))
+
+# define our processing function for tokenization
+def preprocess_function(examples):
+    return tokenizer(examples["text"], truncation=True)
+
+# now, tokenize
+tokenized_train = train_dataset.map(
+    preprocess_function,
+    batched=True
+)
+
+# load our data collator, for padding the data to equal lengths
+from transformers import DataCollatorWithPadding
+data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
+
+# finally, create a map of the expected ids to their labels with id2label and label2id:
+id2label = {0: "NEGATIVE", 1: "POSITIVE"}
+label2id = {"NEGATIVE": 0, "POSITIVE": 1}
+
+################
+### TRAINING ###
+################
+
+# load the training libraries
+from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
+
+# load the training model
+model = AutoModelForSequenceClassification.from_pretrained(
+    "distilbert/distilbert-base-uncased", num_labels=2, id2label=id2label, label2id=label2id
+)
+
+# define our training arguments
+training_args = TrainingArguments(
+    output_dir="my_awesome_model",
+    learning_rate=2e-5,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
+    num_train_epochs=2,
+    weight_decay=0.01,
+)
+
+# define the trainer
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_train,
+    processing_class=tokenizer,
+    data_collator=data_collator,
+)
+
+# train the model!
+trainer.train()
+
+# save the model locally
+trainer.save_model('./bert-finetuned')
+
+#################
+### INFERENCE ###
+#################
+
+# create a text for testing it out (whatever you want can go in the quotes)
+text = "This was a masterpiece. Not completely faithful to the books, but enthralling from beginning to end. Might be my favorite of the three."
+
+# load the pipeline for inference
+from transformers import pipeline
+
+# define our classifier with the newest model
+classifier = pipeline("sentiment-analysis", model="./bert-finetuned")
+
+# run the classifer
+classifier(text)
+
+# try out different prompts
+text1 = "What a boring film. Waste of time."
+classifier(text1)
+
+texts = ['Loved it', 'It was meh', 'I have seen better', 'It was too far long', 'It stimulated me', 'Visuals', 'Dialogue', 'Character development']
+for i in texts:
+    print(classifier(i))
+
+# see the entire tutorial here (with evaluation): https://huggingface.co/docs/transformers/tasks/sequence_classification
+
+\end{verbatim}
+\subsection{exploring datasets you might use to train BERT on HF and Kaggle}
+\label{sec:orgda8af62}
+\begin{itemize}
+\item filtering by task and size
+\end{itemize}
 \end{document}
