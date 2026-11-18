@@ -1,3 +1,4 @@
+
 * plans
 ** week 1: introduction
 *** introductions, 15
@@ -1885,9 +1886,9 @@ on reducing memory usage:
 *** break
 
 *** final projects
-- or do a presentation of your group's paper
-  - including a component addressing next steps for your paper (if
-    you were to pursue it)
+- conference papers, how are they going? 
+  - also might apply to Trust NLP workshop:
+    https://trustnlpworkshop.github.io/ 
 - do an analysis of model inference based on:
   - two different datasets
   - two different models on the same inference dataset
@@ -1898,3 +1899,5 @@ on reducing memory usage:
     - thinking back to our conversations about biases in data that
       persist in the model outputs
 
+*** evaluation lab
+Written to be asynchronous, but we will go through it together

@@ -1,0 +1,60 @@
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTIONS: [12pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{xurl}
+#+OPTIONS: toc:nil num:nil
+
+* INFO 656: Machine Learning
+
+* Final Project
+
+** Instructions
+
+For the final project, you will do an evaluation of a machine learning
+dataset, model, or both. For example, you may prompt the same model
+over two or more different datasets, or prompt two different models
+with the same (or multiple) datasets, in order to evaluate changes in
+the outputs.
+
+You may evaluate any aspect of the model's outputs, like social bias,
+performance, accuracy, or another metric.
+
+Regardless of the model and dataset that you choose to evaluate, you
+must include a close reading analysis of model outputs. Close reading
+means that you select individual examples to compare and examine the
+outputs closely, paying attention to word choice, tone, repetition,
+connotation, etc. You must choose at least 4 examples for close
+reading analysis, and each example should include a couple or more
+sentences of analysis.
+
+Please refer to the in-class example of evaluation, which you may use
+as a template for your chosen dataset and/or models:
+https://github.com/gofilipa/656/blob/main/final-project-eval-template.ipynb
+
+In your close reading analysis, you might draw from useful examples
+from our course readings, like Devinney, Hannah, et al.
+https://doi.org/10.18653/v1/2024.gebnlp-1.3 (for a useful example of
+what close reading of model outputs might look like); Abeba Birhane et
+al, "The Dark Side of Dataset Scaling: Evaluating Racial
+Classification in Multimodal Models."
+https://doi.org/10.1145/3630106.3658968 (for a critical perspective of
+training datasets).
+
+If you choose, you may also do a quantitative evaluation of the
+outputs, though this is not required. See the Huggingface Evaluate
+Library for more information about quantitative evaluation:
+https://huggingface.co/docs/evaluate/choosing_a_metric
+
+** Deliverables
+
+By the deadline of **Wednesday, December 9** at 3pm, You will be
+required to submit the following:
+- a python notebook performing the evaluation, on Canvas
+- a close reading analysis of at least 4 outputs (2 for each dataset,
+  if you are comparing 2 different datasets, for example), submitted
+  as a separate document, on Canvas
+- an overall assessment or main finding(s) from your close reading
+  analysis (submitted along with the close reading document on Canvas)
+- a short, 5 minute presentation on your process and main finding(s),
+  in person

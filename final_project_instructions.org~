@@ -1,0 +1,97 @@
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTIONS: [12pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{xurl}
+#+END_EXPORT
+#+OPTIONS: toc:nil num:nil
+
+#+BEGIN_EXPORT latex
+\vspace{\baselineskip}
+#+END_EXPORT
+
+Peer Review Committee \\
+Pratt Institute, School of Information \\
+144 West 14th Street, 6th Floor \\
+New York, NY 10011-7301 \\
+
+#+BEGIN_EXPORT latex
+\vspace{\baselineskip}
+#+END_EXPORT
+
+Dear Members of the SI Peer Review Committee,
+
+Kindly accept this letter and submitted materials as my application
+for third-year reappointment as Assistant Professor in the School of
+Information at Pratt Institute. Enclosed you will find my curriculum
+vitae, as well as teaching, research, and service statements, and
+copies of my course syllabi, evaluations, selected student projects,
+curriculum development documents, and my most recent research
+articles.
+
+Since joining Pratt, I have developed a research agenda that primarily
+focuses on using digital methods to study gender, sex, and sexuality
+in language. In my teaching, I have developed courses that bring
+together humanistic approaches with programming, machine learning, and
+digital humanities methods. I have also contributed to Pratt through
+service to faculty committees, the Pratt Faculty Union, and to student
+groups.
+
+I will briefly highlight several accomplishments from my first two
+years at Pratt.
+
+With regard to teaching: since Fall 2024, I have taught five courses
+across the School of Information: INFO 601: Foundations of
+Information; INFO 664: Programming Cultural Heritage; INFO 657:
+Digital Humanities; INFO 697: Special Topics—How to Build a Bot; and
+INFO 656: Machine Learning. Across these courses, I have worked to
+develop a teaching practice that brings together computational and
+humanistic skills, with particular attention to close reading,
+writing, and the contingent nature of knowledge.
+
+With regard to research: since joining Pratt, I have established a
+sustained interdisciplinary agenda connecting queer and trans studies,
+digital humanities, and AI ethics. As a language scholar trained
+primarily in English literature, I use computational tools to examine
+how language related to gender, sex, and sexuality is represented,
+processed, and transformed through information technologies. A central
+concern of this work is understanding how computational mechanisms
+shape what can be seen, represented, and said in language data.
+
+From Fall 2024 through Fall 2026, I have written five sole-author
+papers, two of which have been published in peer-reviewed venues and
+three of which are currently under review. Additionally, my book
+project, /Queer Code: Re-working Language Technologies/, is expected
+to be published in late 2027 or early 2028. Across these projects, I
+have sought to communicate across fields that do not always share
+methods or assumptions.
+
+In addition to my research and teaching, I have participated in
+faculty committees, taskforces, and the Pratt Faculty Union, as well
+as contributed to external broader scholarly communities as a
+reviewer.
+
+Taken together, my work has allowed me to build an exciting momentum,
+one which I am eager to further as a continued member of the Pratt SI
+faculty.
+
+Thank you for your consideration.
+
+Sincerely,
+#+BEGIN_EXPORT latex
+\vspace{\baselineskip}
+#+END_EXPORT
+#+BEGIN_EXPORT latex
+\vspace{\baselineskip}
+#+END_EXPORT
+#+BEGIN_EXPORT latex
+\vspace{\baselineskip}
+#+END_EXPORT
+#+BEGIN_EXPORT latex
+\vspace{\baselineskip}
+#+END_EXPORT
+
+Filipa Calado \\
+Assistant Professor \\
+School of Information \\
+Pratt Institute
