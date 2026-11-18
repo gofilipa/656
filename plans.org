@@ -1,4 +1,3 @@
-
 * plans
 ** week 1: introduction
 *** introductions, 15
@@ -1849,6 +1848,19 @@ Agenda
 - break
 - work on final projects
 
+*** fine tuning
+- what is base training or pre-training
+  - computationally expensive
+  - 1 trillion or more parameters
+  - massive training datasets (C4, FineWeb)
+  - both trained on the same dataset, but FineWeb developed additional
+    filtering that made it grab more high quality data. 
+  - problems with filtering unwanted content
+    - C4 "bad words" list
+    - C4's issue with repressing minority perspectives and information
+      about them.
+- problem of bias persists in FineWeb, though less so than C4. See the
+  appendix G for bias analysis. 
 *** GPT models
 
 BERT

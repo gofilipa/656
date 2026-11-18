@@ -1,4 +1,4 @@
-% Created 2026-11-18 Wed 11:45
+% Created 2026-11-18 Wed 14:38
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -27,7 +27,7 @@
 \tableofcontents
 
 \section{week 13: GPT models}
-\label{sec:org47357b8}
+\label{sec:org33f4f0f}
 Agenda
 \begin{itemize}
 \item discuss GPT models
@@ -36,8 +36,37 @@ Agenda
 \item work on final projects
 \end{itemize}
 
+\subsection{fine tuning}
+\label{sec:org0773b00}
+\begin{itemize}
+\item what is base training or pre-training
+\begin{itemize}
+\item computationally expensive
+\item 1 trillion or more parameters
+\item massive training datasets (C4, FineWeb)
+\item both trained on the same dataset, but FineWeb developed additional
+filtering that made it grab more high quality data.
+\item problems with filtering unwanted content
+\begin{itemize}
+\item C4 "bad words" list
+\item C4's issue with repressing minority perspectives and information
+about them.
+\end{itemize}
+\end{itemize}
+\item problem of bias persists in FineWeb, though less so than C4. See the
+appendix G for bias analysis.
+\end{itemize}
 \subsection{GPT models}
-\label{sec:orgdb23abc}
+\label{sec:orgec9eaf7}
+GPT and BERT are two of the most influential architectures in natural
+language processing but they are built with different design goals.
+
+
+GPT is an \textbf{\textbf{autoregressive}} model that generates text by predicting
+the next word,
+
+while BERT is a \textbf{\textbf{bidirectional}} model that understands context from
+both directions making it better for comprehension tasks.
 
 BERT
 \begin{itemize}
@@ -47,12 +76,18 @@ BERT
 \end{itemize}
 \item encoder
 \begin{itemize}
-\item masked language modeling
+\item Masked Language Modeling (training objective)
 \end{itemize}
 \item representations from
 \item transformers
 \begin{itemize}
 \item attention mechanism
+\end{itemize}
+\item This bidirectional attention allows BERT to understand the full
+context of a sentence at once rather than processing it
+sequentially.
+\begin{itemize}
+\item Good for: Sentiment analysis, question answering, classification
 \end{itemize}
 \end{itemize}
 
@@ -61,7 +96,8 @@ GPT
 \item generative
 \begin{itemize}
 \item next word prediction
-\item decoder
+\item "decoder"
+\item Causal Language Modeling (training objective)
 \end{itemize}
 \item pre-trained
 \begin{itemize}
@@ -71,10 +107,22 @@ GPT
 \begin{itemize}
 \item atttention mechanism
 \end{itemize}
+\item Like BERT, GPT also starts with text and positional embeddings and
+processes them through transformer layers of attention, Add and Norm
+and feed forward networks.
+\item But its additional decoder architecture makes GPT excel at text
+generation since it naturally learns to predict the next word in a
+sequence.
+\begin{itemize}
+\item Good for:
+\begin{itemize}
+\item Story writing, chatbots, code generation, creative tasks
+\end{itemize}
+\end{itemize}
 \end{itemize}
 
 \subsection{fine-tuning lab}
-\label{sec:orge9efe90}
+\label{sec:orge7ab9a6}
 first, the regular lab, without PEFT.
 
 then, the lab with PEFT. 
@@ -93,10 +141,10 @@ on reducing memory usage:
 
 
 \subsection{break}
-\label{sec:orgb03eeb5}
+\label{sec:org887bc90}
 
 \subsection{final projects}
-\label{sec:org8a78030}
+\label{sec:org1897cac}
 \begin{itemize}
 \item conference papers, how are they going? 
 \begin{itemize}
@@ -119,6 +167,6 @@ persist in the model outputs
 \end{itemize}
 
 \subsection{evaluation lab}
-\label{sec:org7f0d23b}
+\label{sec:org60c9bb1}
 Written to be asynchronous, but we will go through it together
 \end{document}
