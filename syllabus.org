@@ -122,17 +122,12 @@ an opportunity to express, work through, and develop your thoughts
 regarding an idea or quote from the reading, with the goal of
 eventually arriving at a question for further discussion.
 
-*Final project*. 25% of final grade. A machine learning project of
-your choosing, such as a Small Language Model fine-tuned on custom
-data, or a Sentiment Analysis experiment. You might use ML techniques
-that we learned in class, but can also go beyond these techniques. All
-data, methodology, and code should be well annotated. Finally, project
-must include a README.md explaining the main components (specific
-guidelines will be distributed in the middle of the semester). Can be
-done in partners but if that's the case the final project should scale
-in complexity. Includes a final presentation between 5 - 10 minutes
-long (the exact length for the presentation is TBD -- it will depend
-on how many individuals vs groups end up presenting).
+*Final project*. 25% of final grade. A comparison of machine learning
+models and/or datasets, on a topic of your choosing (gender bias,
+performance, accuracy, etc). Must contain a close reading evaluation
+of at least 4 outputs. If you want to pursue a separate ML project
+related to your interests, come speak with me before Thanksgiving
+break.
 
 *Conference paper*. 30% of final grade. 8 - 12 pages in length. This
 is a group project. The paper should explore a current issue in ML
@@ -405,24 +400,28 @@ Readings:
 - FineWeb: Decanting the Web for the Finest Text Data at Scale - a
   Hugging Face Space by HuggingFaceFW.
   https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1.
-  Accessed 7 July 2026.
 
 Activities:
 - Part 1: python lab on fine-tuning gpt2
-- Part 2: independent work on fine-tuning
+- Part 2: introduce final projects:
+  https://github.com/gofilipa/656/blob/main/final_project_instructions.pdf 
 
 **** week 14 (Nov 25): NO CLASS - thanksgiving break
 **** week 15 (Dec 2): Project workshops
 Readings:
 - None
 
-Homework #15:
-- Submit a README.md file for your final project
+Homework:
+- None.
 
 Activities:
-- Part 1: work on projects
+- Part 1: work on final projects:
+  https://github.com/gofilipa/656/blob/main/final_project_instructions.pdf
 - Part 2: work on projects
 **** week 16 (Dec 9): Presentations
+Due:
+- final project notebook and close reading analysis on canvas.
+- in-person project presentations
 
 ** Course Resources 
 *** Cool ML projects
